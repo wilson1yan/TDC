@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		737D15419C9BBF6036AE48C1 /* Pods_TDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9F885E76E5EE368AE10126 /* Pods_TDC.framework */; };
+		C3C389CB1D5C389D000540CD /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389C71D5C389D000540CD /* Task+CoreDataProperties.swift */; };
+		C3C389CC1D5C389D000540CD /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389C81D5C389D000540CD /* Task.swift */; };
+		C3C389CD1D5C389D000540CD /* Date+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */; };
+		C3C389CE1D5C389D000540CD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389CA1D5C389D000540CD /* Date.swift */; };
+		C3C389D01D5C38E7000540CD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389CF1D5C38E7000540CD /* CalendarViewController.swift */; };
+		C3C389D21D5C38FE000540CD /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389D11D5C38FE000540CD /* CellView.swift */; };
+		C3C389D41D5C3908000540CD /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389D31D5C3908000540CD /* AnimationClass.swift */; };
+		C3C389D81D5C39FC000540CD /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */; };
+		C3C38A011D5D20A4000540CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C38A001D5D20A4000540CD /* Images.xcassets */; };
+		C3C38A031D5D2268000540CD /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C38A021D5D2268000540CD /* CellView.xib */; };
 		C3E6FD2D1D5C34D0003EE9AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6FD2C1D5C34D0003EE9AA /* AppDelegate.swift */; };
-		C3E6FD2F1D5C34D0003EE9AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6FD2E1D5C34D0003EE9AA /* ViewController.swift */; };
+		C3E6FD2F1D5C34D0003EE9AA /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6FD2E1D5C34D0003EE9AA /* TaskListViewController.swift */; };
 		C3E6FD321D5C34D0003EE9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E6FD301D5C34D0003EE9AA /* Main.storyboard */; };
 		C3E6FD351D5C34D0003EE9AA /* TDC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3E6FD331D5C34D0003EE9AA /* TDC.xcdatamodeld */; };
 		C3E6FD371D5C34D0003EE9AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E6FD361D5C34D0003EE9AA /* Assets.xcassets */; };
@@ -16,14 +27,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7EFDE80ED7B6832B9107995F /* Pods-TDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDC/Pods-TDC.debug.xcconfig"; sourceTree = "<group>"; };
+		C3C389C71D5C389D000540CD /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3C389C81D5C389D000540CD /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3C389CA1D5C389D000540CD /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		C3C389CF1D5C38E7000540CD /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		C3C389D11D5C38FE000540CD /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		C3C389D31D5C3908000540CD /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
+		C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		C3C38A001D5D20A4000540CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C3C38A021D5D2268000540CD /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		C3E6FD291D5C34D0003EE9AA /* TDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E6FD2C1D5C34D0003EE9AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C3E6FD2E1D5C34D0003EE9AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3E6FD2E1D5C34D0003EE9AA /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		C3E6FD311D5C34D0003EE9AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3E6FD341D5C34D0003EE9AA /* TDC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TDC.xcdatamodel; sourceTree = "<group>"; };
 		C3E6FD361D5C34D0003EE9AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3E6FD391D5C34D0003EE9AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3E6FD3B1D5C34D0003EE9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE9F885E76E5EE368AE10126 /* Pods_TDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1991F246573930F65A98649 /* Pods-TDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDC/Pods-TDC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737D15419C9BBF6036AE48C1 /* Pods_TDC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DF76988935C80E5984E2AB7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7EFDE80ED7B6832B9107995F /* Pods-TDC.debug.xcconfig */,
+				D1991F246573930F65A98649 /* Pods-TDC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		37F9D04BDE6549BA65156F22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE9F885E76E5EE368AE10126 /* Pods_TDC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C3E6FD201D5C34D0003EE9AA = {
 			isa = PBXGroup;
 			children = (
 				C3E6FD2B1D5C34D0003EE9AA /* TDC */,
 				C3E6FD2A1D5C34D0003EE9AA /* Products */,
+				0DF76988935C80E5984E2AB7 /* Pods */,
+				37F9D04BDE6549BA65156F22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +100,33 @@
 		C3E6FD2B1D5C34D0003EE9AA /* TDC */ = {
 			isa = PBXGroup;
 			children = (
-				C3E6FD2C1D5C34D0003EE9AA /* AppDelegate.swift */,
-				C3E6FD2E1D5C34D0003EE9AA /* ViewController.swift */,
+				C3E6FD2E1D5C34D0003EE9AA /* TaskListViewController.swift */,
+				C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */,
+				C3C389C71D5C389D000540CD /* Task+CoreDataProperties.swift */,
+				C3C389C81D5C389D000540CD /* Task.swift */,
+				C3C389CF1D5C38E7000540CD /* CalendarViewController.swift */,
+				C3C389D11D5C38FE000540CD /* CellView.swift */,
+				C3C389D31D5C3908000540CD /* AnimationClass.swift */,
+				C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */,
+				C3C389CA1D5C389D000540CD /* Date.swift */,
+				C3E6FD411D5C34E1003EE9AA /* Supporting Files */,
 				C3E6FD301D5C34D0003EE9AA /* Main.storyboard */,
-				C3E6FD361D5C34D0003EE9AA /* Assets.xcassets */,
-				C3E6FD381D5C34D0003EE9AA /* LaunchScreen.storyboard */,
-				C3E6FD3B1D5C34D0003EE9AA /* Info.plist */,
+				C3C38A021D5D2268000540CD /* CellView.xib */,
 				C3E6FD331D5C34D0003EE9AA /* TDC.xcdatamodeld */,
 			);
 			path = TDC;
+			sourceTree = "<group>";
+		};
+		C3E6FD411D5C34E1003EE9AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C3C38A001D5D20A4000540CD /* Images.xcassets */,
+				C3E6FD2C1D5C34D0003EE9AA /* AppDelegate.swift */,
+				C3E6FD361D5C34D0003EE9AA /* Assets.xcassets */,
+				C3E6FD381D5C34D0003EE9AA /* LaunchScreen.storyboard */,
+				C3E6FD3B1D5C34D0003EE9AA /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3E6FD3E1D5C34D0003EE9AA /* Build configuration list for PBXNativeTarget "TDC" */;
 			buildPhases = (
+				936D62207A83A3CF1F45D4B3 /* [CP] Check Pods Manifest.lock */,
 				C3E6FD251D5C34D0003EE9AA /* Sources */,
 				C3E6FD261D5C34D0003EE9AA /* Frameworks */,
 				C3E6FD271D5C34D0003EE9AA /* Resources */,
+				45702D47408EAA84C51F5789 /* [CP] Embed Pods Frameworks */,
+				E6D319B280E244045EE09DB2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,7 +190,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C38A031D5D2268000540CD /* CellView.xib in Resources */,
 				C3E6FD3A1D5C34D0003EE9AA /* LaunchScreen.storyboard in Resources */,
+				C3C38A011D5D20A4000540CD /* Images.xcassets in Resources */,
 				C3E6FD371D5C34D0003EE9AA /* Assets.xcassets in Resources */,
 				C3E6FD321D5C34D0003EE9AA /* Main.storyboard in Resources */,
 			);
@@ -133,14 +200,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45702D47408EAA84C51F5789 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TDC/Pods-TDC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		936D62207A83A3CF1F45D4B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E6D319B280E244045EE09DB2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TDC/Pods-TDC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C3E6FD251D5C34D0003EE9AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C389D01D5C38E7000540CD /* CalendarViewController.swift in Sources */,
 				C3E6FD351D5C34D0003EE9AA /* TDC.xcdatamodeld in Sources */,
-				C3E6FD2F1D5C34D0003EE9AA /* ViewController.swift in Sources */,
+				C3C389D81D5C39FC000540CD /* TaskTableViewCell.swift in Sources */,
+				C3E6FD2F1D5C34D0003EE9AA /* TaskListViewController.swift in Sources */,
+				C3C389D41D5C3908000540CD /* AnimationClass.swift in Sources */,
+				C3C389CE1D5C389D000540CD /* Date.swift in Sources */,
+				C3C389CC1D5C389D000540CD /* Task.swift in Sources */,
+				C3C389CB1D5C389D000540CD /* Task+CoreDataProperties.swift in Sources */,
 				C3E6FD2D1D5C34D0003EE9AA /* AppDelegate.swift in Sources */,
+				C3C389CD1D5C389D000540CD /* Date+CoreDataProperties.swift in Sources */,
+				C3C389D21D5C38FE000540CD /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +376,7 @@
 		};
 		C3E6FD3F1D5C34D0003EE9AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EFDE80ED7B6832B9107995F /* Pods-TDC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TDC/Info.plist;
@@ -264,6 +388,7 @@
 		};
 		C3E6FD401D5C34D0003EE9AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1991F246573930F65A98649 /* Pods-TDC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TDC/Info.plist;
@@ -292,6 +417,7 @@
 				C3E6FD401D5C34D0003EE9AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
