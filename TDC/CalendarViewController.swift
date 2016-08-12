@@ -52,11 +52,8 @@ class CalendarViewController: UIViewController{
     
     func addAndSaveDate(dateToSave: NSDate) {
         let date = Date.saveDateWithId(dateToSave, withTaskId: task?.primaryId as! Int, inManagedObjectContext: managedContext)
-        dates?.append(date)
-        do {
-            try self.managedContext?.save()
-        } catch let error {
-            print("Core Data Error: \(error)")
+        if date != nil {
+            dates?.append(date!)
         }
     }
 }

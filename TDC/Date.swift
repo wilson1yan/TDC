@@ -23,12 +23,19 @@ class Date: NSManagedObject {
         return [Date]()
     }
     
-    class func saveDateWithId(dateToAdd: NSDate, withTaskId id: Int, inManagedObjectContext context: NSManagedObjectContext) -> Date{
+    class func saveDateWithId(dateToAdd: NSDate, withTaskId id: Int, inManagedObjectContext context: NSManagedObjectContext) -> Date? {
         let date = NSEntityDescription.insertNewObjectForEntityForName("Date", inManagedObjectContext: context) as! Date
         date.date = dateToAdd
         date.task = Task.getTaskWithId(id, inManagedObjectContext: context)
         
-        return date
+        do {
+            try context.save()
+            return date
+        } catch let error {
+            print("Core Data Error: \(error)")
+        }
+        
+        return nil
     }
     
 }
