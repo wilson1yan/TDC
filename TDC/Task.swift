@@ -17,6 +17,7 @@ class Task: NSManagedObject {
         task.name = taskName
         task.primaryId = maxPrimaryKey(managedObjectContext: context) + 1
         task.startDate = NSDate()
+        task.state = 0
         
         do {
             try context.save()
@@ -28,8 +29,9 @@ class Task: NSManagedObject {
         return nil
     }
     
-    class func getAllTasks(context: NSManagedObjectContext) -> [Task]{
+    class func getAllTasksWithState(state: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Task]{
         let request = NSFetchRequest(entityName: "Task")
+        request.predicate = NSPredicate(format: "state = %d", state)
         if let tasks = (try? context.executeFetchRequest(request)) as? [Task] {
             return tasks
         } else {

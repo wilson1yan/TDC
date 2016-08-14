@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  TDC
 //
-//  Created by Wilson Yan on 8/10/16.
+//  Created by Wilson Yan on 8/13/16.
 //  Copyright © 2016 Wilson Yan. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,6 +17,7 @@ extension Task {
     @NSManaged var name: String?
     @NSManaged var primaryId: NSNumber?
     @NSManaged var startDate: NSDate?
+    @NSManaged var state: NSNumber?
     @NSManaged var dates: NSSet?
 
 }

@@ -12,6 +12,5 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var taskTitle: UILabel!
     
-    @IBOutlet weak var alertIcon: UIImageView!
-    
+    @IBOutlet weak var alertIcon: CheckMarkView!
 }
