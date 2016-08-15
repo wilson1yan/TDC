@@ -12,12 +12,13 @@ import CoreData
 
 class Task: NSManagedObject {
     
-    class func saveTaskWithName(taskName: String, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
+    class func saveTask(taskName: String, duration: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
         let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: context) as! Task
         task.name = taskName
         task.primaryId = maxPrimaryKey(managedObjectContext: context) + 1
         task.startDate = NSDate()
         task.state = 0
+        task.duration = duration
         
         do {
             try context.save()
@@ -27,6 +28,28 @@ class Task: NSManagedObject {
         }
         
         return nil
+    }
+    
+    class func deleteTask(task: Task, inManagedObjectContext context: NSManagedObjectContext) {
+        context.deleteObject(task)
+        do{
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    class func updateEditedTask(primaryId: Int, withTaskName taskName: String, withDuration duration: Int, inManagedObjectContext context: NSManagedObjectContext) {
+        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
+        if let t = task {
+            t.name = taskName
+            t.duration = duration
+            do{
+                try context.save()
+            } catch let error as NSError {
+                print(error)
+            }
+        }
     }
     
     class func getAllTasksWithState(state: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Task]{

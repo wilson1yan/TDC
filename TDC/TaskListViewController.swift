@@ -30,14 +30,15 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     var taskSelected: Task?
+    var taskToEdit: Task?
     var taskName = ""
     
     var alertIcon = UIImage(named: "Alert Icon")
     
     var managedContext:NSManagedObjectContext!
-    
+    //let createTaskVC = CreateNewTaskViewController()
     @IBAction func addNewTask(sender: AnyObject) {
-        showAlert()
+        performSegueWithIdentifier("Create New Task", sender: self)
     }
     
     struct TaskWithStreak {
@@ -131,6 +132,15 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
                 destination.task = self.taskSelected
                 destination.hidesBottomBarWhenPushed = true
             }
+        } else if segue.identifier == "Create New Task" {
+            if let destination = segue.destinationViewController as? CreateNewTaskViewController {
+                destination.recentViewController = self
+            }
+        } else if segue.identifier == "Edit Task" {
+            if let destination = segue.destinationViewController as? CreateNewTaskViewController {
+                destination.recentViewController = self
+                destination.currentTask = taskToEdit
+            }
         }
     }
     
@@ -149,20 +159,8 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as! TaskTableViewCell
         cell.taskTitle.text = taskList[indexPath.row].task.name!
         cell.alertIcon.checked = taskBeenUpdatedToday(taskList[indexPath.row].task)
-        print(cell.alertIcon.checked)
-        //cell.streakLabel.text = "Streak: " + String(taskList[indexPath.row].streak)
         return cell
     }
-    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 && tasksInGroups[0].count > 0{
-//            return "Need to Update"
-//        } else if section == 1 && tasksInGroups[1].count > 0{
-//            return "Updated"
-//        } else {
-//            return nil
-//        }
-//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         taskSelected = taskList[indexPath.row].task
@@ -173,19 +171,22 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == .Delete) {
-            let toDelete = taskList[indexPath.row].task
-            managedContext!.deleteObject(toDelete)
-            do{
-                try managedContext.save()
-            } catch let error as NSError {
-                print(error)
-            }
-            
-            taskList.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .Normal, title: "Edit") { [unowned self] (rowAction, indexPath) in
+            self.taskToEdit = self.taskList[indexPath.row].task
+            self.performSegueWithIdentifier("Edit Task", sender: self)
         }
+        editAction.backgroundColor = UIColor.blueColor()
+        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete") { [unowned self] (rowAction, indexPath) in
+            let toDelete = self.taskList[indexPath.row].task
+            Task.deleteTask(toDelete, inManagedObjectContext: self.managedContext)
+            
+            self.taskList.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+
+        }
+        deleteAction.backgroundColor = UIColor.redColor()
+        return [editAction, deleteAction]
     }
     
     //MARK - Other Functions
@@ -226,41 +227,13 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-    func showAlert(){
-        let alertController = UIAlertController(title: "Add New Task", message: "", preferredStyle: .ActionSheet)
-        
-        let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: {
-            [unowned self] alert -> Void in
-            if let length = Int((alertController.textFields![1] as UITextField).text!) {
-                let textField = alertController.textFields![0] as UITextField
-                let task = Task.saveTaskWithName(textField.text!, inManagedObjectContext: self.managedContext)
-                
-                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-                    if task != nil {
-                        self.taskList.append(TaskWithStreak(task: task!,streak: 0))
-                        self.sortByCurrentMethod()
-                    }
-                }
-
+    func updateListWhenNewTask(task: Task?) {
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            if task != nil {
+                self.taskList.append(TaskWithStreak(task: task!,streak: 0))
+                self.sortByCurrentMethod()
             }
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
-        
-        alertController.addTextFieldWithConfigurationHandler { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Task Name"
-            textField.text = ""
         }
-        
-        alertController.addTextFieldWithConfigurationHandler { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Task Length"
-            textField.text = ""
-        }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
     }
 
     let calendar = NSCalendar.currentCalendar()
