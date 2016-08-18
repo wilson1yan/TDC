@@ -19,7 +19,7 @@ class Task: NSManagedObject {
         task.startDate = NSDate()
         task.state = 0
         task.duration = duration
-        
+
         do {
             try context.save()
             return task
@@ -39,16 +39,19 @@ class Task: NSManagedObject {
         }
     }
     
-    class func updateEditedTask(primaryId: Int, withTaskName taskName: String, withDuration duration: Int, inManagedObjectContext context: NSManagedObjectContext) {
+    class func updateEditedTask(primaryId: Int, withName taskName: String, inManagedObjectContext context: NSManagedObjectContext) {
         let task = getTaskWithId(primaryId, inManagedObjectContext: context)
         if let t = task {
             t.name = taskName
-            t.duration = duration
-            do{
-                try context.save()
-            } catch let error as NSError {
-                print(error)
-            }
+            do{ try context.save() } catch _ as NSError {}
+        }
+    }
+    
+    class func updateTaskState(primaryId: Int, withState state: Int, inManagedObjectContext context: NSManagedObjectContext) {
+        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
+        if let t = task {
+            t.state = state
+            do{ try context.save() } catch _ as NSError {}
         }
     }
     

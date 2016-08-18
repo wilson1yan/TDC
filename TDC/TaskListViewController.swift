@@ -172,27 +172,27 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         performSegueWithIdentifier("ToCalendar", sender: self)
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .Normal, title: "Edit") { [unowned self] (rowAction, indexPath) in
-            self.taskToEdit = self.taskList[indexPath.row].task
-            self.performSegueWithIdentifier("Edit Task", sender: self)
-        }
-        editAction.backgroundColor = UIColor.blueColor()
-        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete") { [unowned self] (rowAction, indexPath) in
-            let toDelete = self.taskList[indexPath.row].task
-            Task.deleteTask(toDelete, inManagedObjectContext: self.managedContext)
-            
-            self.taskList.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-
-        }
-        deleteAction.backgroundColor = UIColor.redColor()
-        return [editAction, deleteAction]
-    }
+//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return true
+//    }
+//    
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        let editAction = UITableViewRowAction(style: .Normal, title: "Edit") { [unowned self] (rowAction, indexPath) in
+//            self.taskToEdit = self.taskList[indexPath.row].task
+//            self.performSegueWithIdentifier("Edit Task", sender: self)
+//        }
+//        editAction.backgroundColor = UIColor.blueColor()
+//        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete") { [unowned self] (rowAction, indexPath) in
+//            let toDelete = self.taskList[indexPath.row].task
+//            Task.deleteTask(toDelete, inManagedObjectContext: self.managedContext)
+//            
+//            self.taskList.removeAtIndex(indexPath.row)
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+//
+//        }
+//        deleteAction.backgroundColor = UIColor.redColor()
+//        return [editAction, deleteAction]
+//    }
     
     //MARK - Other Functions
     

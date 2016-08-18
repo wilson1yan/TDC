@@ -20,8 +20,8 @@ class CalendarViewController: UIViewController{
     var appDelegate:AppDelegate!
     var managedContext:NSManagedObjectContext!
     
-    var task: Task?
-    var dates: [Date]?
+    var task: Task!
+    var dates: [Date]!
     var counter = 0
     
     override func viewDidLoad() {
@@ -43,15 +43,43 @@ class CalendarViewController: UIViewController{
         setupViewsOfCalendar(NSDate())
     }
     
+    func checkIfTaskCompleted() -> Bool {
+        return counter == task.primaryId!
+    }
+    
+    func taskCompleted() {
+        Task.updateTaskState(task.primaryId as! Int, withState: TaskStates.Complete, inManagedObjectContext: managedContext)
+        
+    }
+    
     @IBAction func moreOptions(sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Options", message: nil, preferredStyle: .ActionSheet)
         
         let editTask = UIAlertAction(title: "Edit Task", style: .Default) { [unowned self] (alertAction) in
             let editController = UIAlertController(title: "New Task Name", message: nil, preferredStyle: .Alert)
-            let textField = UITextField()
-        }
-        let endTask = UIAlertAction(title: "End Task", style: .Destructive) { (alertAction) in
+            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: {
+                alert -> Void in
+                let textField = editController.textFields![0] as UITextField
+                let newTaskName = textField.text != nil ? textField.text! : ""
+                Task.updateEditedTask(self.task!.primaryId as! Int, withName: newTaskName, inManagedObjectContext: self.managedContext)
+                self.title = newTaskName
+            })
             
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
+            
+            editController.addTextFieldWithConfigurationHandler { [unowned self] (textField : UITextField!) -> Void in
+                textField.text = self.task.name!
+                textField.placeholder = "New Task Name"
+            }
+            
+            editController.addAction(saveAction)
+            editController.addAction(cancelAction)
+            
+            self.presentViewController(editController, animated: true, completion: nil)
+        }
+        let endTask = UIAlertAction(title: "End Task", style: .Destructive) { [unowned self] (alertAction) in
+            let state = self.counter == self.task.duration ? TaskStates.Complete : TaskStates.Failed
+            Task.updateTaskState(self.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
