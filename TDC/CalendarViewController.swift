@@ -27,20 +27,39 @@ class CalendarViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext
         dates = Date.getDatesWithId(task?.primaryId as! Int, inManagedObjectContext: managedContext)
         
-        self.edgesForExtendedLayout = UIRectEdge.None
-        self.title = task?.name
-        self.calendarView.dataSource = self
-        self.calendarView.delegate = self
-        self.calendarView.registerCellViewXib(fileName: "CellView")
-        calendarView.cellInset = CGPoint(x: 1, y: 1)
-        //calendarView.reloadData()
+        edgesForExtendedLayout = UIRectEdge.None
+        title = task?.name
+        calendarView.dataSource = self
+        calendarView.delegate = self
+        calendarView.registerCellViewXib(fileName: "CellView")
+        calendarView.cellInset = CGPoint(x: 0, y: 0)
         
         calendarView.scrollToDate(NSDate())
         setupViewsOfCalendar(NSDate())
+    }
+    
+    @IBAction func moreOptions(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Options", message: nil, preferredStyle: .ActionSheet)
+        
+        let editTask = UIAlertAction(title: "Edit Task", style: .Default) { [unowned self] (alertAction) in
+            let editController = UIAlertController(title: "New Task Name", message: nil, preferredStyle: .Alert)
+            let textField = UITextField()
+        }
+        let endTask = UIAlertAction(title: "End Task", style: .Destructive) { (alertAction) in
+            
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        alertController.addAction(editTask)
+        alertController.addAction(endTask)
+        alertController.addAction(cancel)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func setupViewsOfCalendar(startDate: NSDate) {
@@ -81,6 +100,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         if !date.isInDateList(dates!, calendar: cal) {
+            print("selected")
             (cell as! CellView).selectedDate()
             addAndSaveDate(date)
         }

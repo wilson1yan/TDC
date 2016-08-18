@@ -19,6 +19,10 @@ class CreateNewTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let visuaEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        visuaEffectView.frame = self.view.bounds
+        self.view.insertSubview(visuaEffectView, atIndex: 0)
+        
         if let task = currentTask{
             taskNameTextField.text = task.name
             durationTextField.text = String(task.duration!)

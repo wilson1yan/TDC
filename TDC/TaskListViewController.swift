@@ -36,7 +36,6 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     var alertIcon = UIImage(named: "Alert Icon")
     
     var managedContext:NSManagedObjectContext!
-    //let createTaskVC = CreateNewTaskViewController()
     @IBAction func addNewTask(sender: AnyObject) {
         performSegueWithIdentifier("Create New Task", sender: self)
     }
@@ -113,15 +112,21 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .None
         
         managedContext = appDelegate.managedObjectContext
-        taskList = loadCurrentTasks()
-        sortByCurrentMethod()
+//        taskList = loadCurrentTasks()
+//        sortByCurrentMethod()
         
         self.title = "Current Tasks"
     }
     
     override func viewWillAppear(animated: Bool) {
+        if let navigationBar = self.navigationController?.navigationBar {
+            navigationBar.barTintColor = UIColor(red:0.00, green:0.60, blue:1.00, alpha:1.0)
+            navigationBar.tintColor = UIColor.whiteColor()
+        }
+        
         taskList = loadCurrentTasks()
         sortByCurrentMethod()
     }

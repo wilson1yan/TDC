@@ -51,7 +51,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcR-Rf-6gu">
                                                     <rect key="frame" x="10" y="0.0" width="511" height="79"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -96,7 +96,6 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="iNf-Y0-F6A">
-                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Sort By" id="3f5-Hx-SP2">
                             <connections>
                                 <action selector="sortByTapped" destination="TYN-Dr-Ayq" id="qAe-NN-HRd"/>
@@ -105,14 +104,14 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hb3-Rt-Bjk">
                             <connections>
                                 <action selector="addNewTask:" destination="TYN-Dr-Ayq" id="Zv4-qP-Aag"/>
-                                <segue destination="xNb-uk-E3f" kind="presentation" identifier="Create New Task" modalPresentationStyle="formSheet" id="04j-84-f2T"/>
+                                <segue destination="xNb-uk-E3f" kind="presentation" identifier="Create New Task" modalPresentationStyle="overCurrentContext" id="04j-84-f2T"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="cPt-Ee-iei" id="6U9-zE-gMj"/>
                         <segue destination="RnD-IN-lTB" kind="show" identifier="ToCalendar" id="Log-Cq-rHX"/>
-                        <segue destination="xNb-uk-E3f" kind="presentation" identifier="Edit Task" id="eXC-Kg-ly6"/>
+                        <segue destination="xNb-uk-E3f" kind="presentation" identifier="Edit Task" modalPresentationStyle="overCurrentContext" id="eXC-Kg-ly6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUl-5t-9Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fgJ-63-5gL">
-                                <rect key="frame" x="60" y="114" width="480" height="49"/>
+                                <rect key="frame" x="60" y="134" width="480" height="49"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="u8i-34-QEX">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
@@ -159,13 +158,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv9-dt-prC">
-                                <rect key="frame" x="235" y="8" width="130" height="21"/>
+                                <rect key="frame" x="235" y="28" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQg-nB-tQw">
-                                <rect key="frame" x="60" y="61" width="480" height="30"/>
+                                <rect key="frame" x="60" y="81" width="480" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd7-FM-LHK">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
@@ -181,7 +180,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="i27-m1-twi">
-                                <rect key="frame" x="237" y="207" width="126" height="30"/>
+                                <rect key="frame" x="237" y="227" width="126" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRN-ad-IB4">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
@@ -200,7 +199,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sQg-nB-tQw" firstAttribute="top" secondItem="rv9-dt-prC" secondAttribute="bottom" constant="32" id="0me-UP-wQH"/>
                             <constraint firstItem="fgJ-63-5gL" firstAttribute="width" secondItem="Cbe-X5-9el" secondAttribute="width" multiplier="0.8" id="2Nu-OM-XSD"/>
@@ -224,7 +223,7 @@
             </objects>
             <point key="canvasLocation" x="-1035" y="-667"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--Calendar-->
         <scene sceneID="t1m-B6-5Uf">
             <objects>
                 <viewController id="RnD-IN-lTB" customClass="CalendarViewController" customModule="TDC" customModuleProvider="target" sceneMemberID="viewController">
@@ -237,63 +236,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="umx-Av-LJh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="667"/>
+                                <rect key="frame" x="0.0" y="134" width="600" height="657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvc-Up-4Ba">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-Wc-41P">
-                                        <rect key="frame" x="0.0" y="41" width="600" height="21"/>
+                                        <rect key="frame" x="0.0" y="38" width="600" height="14"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-hB-seW">
-                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLd-fE-gce">
-                                                <rect key="frame" x="87" y="0.0" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbT-4v-i1G">
+                                                <rect key="frame" x="0.0" y="0.0" width="77" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wm-PP-jcz">
-                                                <rect key="frame" x="174" y="0.0" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="87" y="0.0" width="77" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbT-4v-i1G">
-                                                <rect key="frame" x="261" y="0.0" width="78" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLd-fE-gce">
+                                                <rect key="frame" x="174" y="0.0" width="77" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-hB-seW">
+                                                <rect key="frame" x="261" y="0.0" width="78" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqE-8Z-dkd">
-                                                <rect key="frame" x="349" y="0.0" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="349" y="0.0" width="77" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKK-jO-pcs">
-                                                <rect key="frame" x="436" y="0.0" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="436" y="0.0" width="77" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-Qu-x8r">
-                                                <rect key="frame" x="523" y="0.0" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="523" y="0.0" width="77" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHx-ph-VwV" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                        <rect key="frame" x="0.0" y="67" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="57" width="600" height="600"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="iHx-ph-VwV" secondAttribute="height" multiplier="1:1" id="cUo-TQ-s5m"/>
@@ -301,34 +300,60 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAA-Dq-4bv" customClass="CalendarHeaderView" customModule="TDC" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="umx-Av-LJh" firstAttribute="width" secondItem="vIV-co-2zC" secondAttribute="width" id="76c-Gf-qEi"/>
+                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="width" secondItem="vIV-co-2zC" secondAttribute="width" id="9lo-CW-w3N"/>
                             <constraint firstAttribute="trailing" secondItem="umx-Av-LJh" secondAttribute="trailing" id="K6j-xE-myp"/>
                             <constraint firstAttribute="bottomMargin" secondItem="umx-Av-LJh" secondAttribute="bottom" id="S26-op-Qy9"/>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="leading" secondItem="vIV-co-2zC" secondAttribute="leading" id="Ttn-Yq-17c"/>
+                            <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="EAA-Dq-4bv" secondAttribute="bottom" constant="10" id="bDm-40-EG5"/>
+                            <constraint firstItem="umx-Av-LJh" firstAttribute="centerX" secondItem="vIV-co-2zC" secondAttribute="centerX" id="c4J-a5-jo3"/>
+                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="centerX" secondItem="vIV-co-2zC" secondAttribute="centerX" id="dhs-eL-CPy"/>
+                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="height" secondItem="vIV-co-2zC" secondAttribute="height" multiplier="0.1" id="him-hM-icJ"/>
+                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="top" secondItem="caJ-nZ-Tmp" secondAttribute="bottom" id="rum-3d-upe"/>
+                            <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="caJ-nZ-Tmp" secondAttribute="bottom" id="woP-HE-k2r"/>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="vIV-co-2zC" secondAttribute="topMargin" id="wz6-7G-4rE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="K6j-xE-myp"/>
                                 <exclude reference="S26-op-Qy9"/>
+                                <exclude reference="Ttn-Yq-17c"/>
+                                <exclude reference="woP-HE-k2r"/>
+                                <exclude reference="wz6-7G-4rE"/>
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Calendar" id="rvS-Tn-bJT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="uGa-W3-ta0">
+                            <connections>
+                                <action selector="moreOptions:" destination="RnD-IN-lTB" id="Xn0-x3-PP4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendarView" destination="iHx-ph-VwV" id="Ul2-GX-Anz"/>
                         <outlet property="monthLabel" destination="Vvc-Up-4Ba" id="eZN-c0-Xt7"/>
+                        <segue destination="xNb-uk-E3f" kind="presentation" identifier="Edit Task" modalPresentationStyle="overCurrentContext" id="wrV-BN-13Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QrL-wx-E46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1035" y="147"/>
+            <point key="canvasLocation" x="-1121" y="159"/>
         </scene>
-        <!--Current Tasks-->
+        <!--Navigation Controller-->
         <scene sceneID="nkh-Ja-mm8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yM4-sF-WJn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Current Tasks" id="QnW-Mj-1oN"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="QnW-Mj-1oN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1RZ-6t-plw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -443,7 +468,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eXC-Kg-ly6"/>
         <segue reference="Log-Cq-rHX"/>
+        <segue reference="wrV-BN-13Y"/>
     </inferredMetricsTieBreakers>
 </document>

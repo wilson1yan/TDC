@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		737D15419C9BBF6036AE48C1 /* Pods_TDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9F885E76E5EE368AE10126 /* Pods_TDC.framework */; };
+		C33B79F41D617F9200452E0B /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B79F31D617F9200452E0B /* AnimationView.swift */; };
+		C33B79F61D654F3A00452E0B /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B79F51D654F3A00452E0B /* CalendarHeaderView.swift */; };
 		C3C389CC1D5C389D000540CD /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389C81D5C389D000540CD /* Task.swift */; };
 		C3C389CD1D5C389D000540CD /* Date+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */; };
 		C3C389CE1D5C389D000540CD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389CA1D5C389D000540CD /* Date.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		7EFDE80ED7B6832B9107995F /* Pods-TDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDC/Pods-TDC.debug.xcconfig"; sourceTree = "<group>"; };
+		C33B79F31D617F9200452E0B /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		C33B79F51D654F3A00452E0B /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		C3C389C81D5C389D000540CD /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C3C389CA1D5C389D000540CD /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -115,11 +119,13 @@
 				C3C389C81D5C389D000540CD /* Task.swift */,
 				C3C389CF1D5C38E7000540CD /* CalendarViewController.swift */,
 				C3C389D11D5C38FE000540CD /* CellView.swift */,
+				C33B79F31D617F9200452E0B /* AnimationView.swift */,
 				C3C389D31D5C3908000540CD /* AnimationClass.swift */,
 				C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */,
 				C3C389CA1D5C389D000540CD /* Date.swift */,
 				C3E6FD411D5C34E1003EE9AA /* Supporting Files */,
 				C3E6FD301D5C34D0003EE9AA /* Main.storyboard */,
+				C33B79F51D654F3A00452E0B /* CalendarHeaderView.swift */,
 				C3C38A021D5D2268000540CD /* CellView.xib */,
 				C3E6FD331D5C34D0003EE9AA /* TDC.xcdatamodeld */,
 			);
@@ -263,11 +269,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C389D01D5C38E7000540CD /* CalendarViewController.swift in Sources */,
+				C33B79F61D654F3A00452E0B /* CalendarHeaderView.swift in Sources */,
 				C3E6FD351D5C34D0003EE9AA /* TDC.xcdatamodeld in Sources */,
 				C3C38A0F1D612593000540CD /* CreateNewTaskViewController.swift in Sources */,
 				C3C389D81D5C39FC000540CD /* TaskTableViewCell.swift in Sources */,
 				C3E6FD2F1D5C34D0003EE9AA /* TaskListViewController.swift in Sources */,
 				C3C38A051D5F93DA000540CD /* Task+CoreDataProperties.swift in Sources */,
+				C33B79F41D617F9200452E0B /* AnimationView.swift in Sources */,
 				C3C389D41D5C3908000540CD /* AnimationClass.swift in Sources */,
 				C3C38A0D1D5FD5AC000540CD /* CheckMarkView.swift in Sources */,
 				C3C389CE1D5C389D000540CD /* Date.swift in Sources */,
