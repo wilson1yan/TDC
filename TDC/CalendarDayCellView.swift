@@ -8,7 +8,7 @@
 
 import JTAppleCalendar
 
-class CellView: JTAppleDayCellView {
+class CalendarDayCellView: JTAppleDayCellView {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!

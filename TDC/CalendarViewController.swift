@@ -13,6 +13,7 @@ import CoreData
 @IBDesignable
 class CalendarViewController: UIViewController{
     
+    @IBOutlet weak var calendarHeader: CalendarHeaderView!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
     let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
@@ -22,21 +23,23 @@ class CalendarViewController: UIViewController{
     
     var task: Task!
     var dates: [Date]!
-    var counter = 0
+    var streak = 0 { didSet { calendarHeader.daysLeft = task.duration as! Int - streak } }
+    var isPresentingHistory: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext
         dates = Date.getDatesWithId(task?.primaryId as! Int, inManagedObjectContext: managedContext)
         
+        calendarHeader.taskName = task.name!
+        calendarHeader.daysLeft = task.duration as! Int - streak
+        
         edgesForExtendedLayout = UIRectEdge.None
-        title = task?.name
         calendarView.dataSource = self
         calendarView.delegate = self
-        calendarView.registerCellViewXib(fileName: "CellView")
+        calendarView.registerCellViewXib(fileName: "CalendarDayCellView")
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
         calendarView.scrollToDate(NSDate())
@@ -44,12 +47,11 @@ class CalendarViewController: UIViewController{
     }
     
     func checkIfTaskCompleted() -> Bool {
-        return counter == task.primaryId!
+        return task.duration! != 0 && streak == task.duration!
     }
     
     func taskCompleted() {
         Task.updateTaskState(task.primaryId as! Int, withState: TaskStates.Complete, inManagedObjectContext: managedContext)
-        
     }
     
     @IBAction func moreOptions(sender: UIBarButtonItem) {
@@ -78,7 +80,7 @@ class CalendarViewController: UIViewController{
             self.presentViewController(editController, animated: true, completion: nil)
         }
         let endTask = UIAlertAction(title: "End Task", style: .Destructive) { [unowned self] (alertAction) in
-            let state = self.counter == self.task.duration ? TaskStates.Complete : TaskStates.Failed
+            let state = self.streak == self.task.duration ? TaskStates.Complete : TaskStates.Failed
             Task.updateTaskState(self.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -116,7 +118,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
-        if let cellView = cell as? CellView {
+        if let cellView = cell as? CalendarDayCellView {
             cellView.setupCellBeforeDisplay(cellState, date: date, cal: cal, dates: dates, task: task)
         }
     }
@@ -128,9 +130,9 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         if !date.isInDateList(dates!, calendar: cal) {
-            print("selected")
-            (cell as! CellView).selectedDate()
+            (cell as! CalendarDayCellView).selectedDate()
             addAndSaveDate(date)
+            streak = streak + 1
         }
     }
     

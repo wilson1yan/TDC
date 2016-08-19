@@ -17,7 +17,19 @@ struct TaskStates {
 
 struct DefaultsKeys {
     static let SortMethodKey = "Sort Method"
+    static let SortMethodHistoryKey = "Sort Method History"
 }
+
+struct TaskWithStreak {
+    var task: Task
+    var streak: Int
+    
+    init(task:Task, streak: Int) {
+        self.task = task
+        self.streak = streak
+    }
+}
+
 
 class TaskListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     let ADD_NEW = "Add New"
@@ -40,15 +52,6 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         performSegueWithIdentifier("Create New Task", sender: self)
     }
     
-    struct TaskWithStreak {
-        var task: Task
-        var streak: Int
-        
-        init(task:Task, streak: Int) {
-            self.task = task
-            self.streak = streak
-        }
-    }
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -115,8 +118,6 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.separatorStyle = .None
         
         managedContext = appDelegate.managedObjectContext
-//        taskList = loadCurrentTasks()
-//        sortByCurrentMethod()
         
         self.title = "Current Tasks"
     }
@@ -136,6 +137,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
             if let destination = segue.destinationViewController as? CalendarViewController {
                 destination.task = self.taskSelected
                 destination.hidesBottomBarWhenPushed = true
+                destination.isPresentingHistory = false
             }
         } else if segue.identifier == "Create New Task" {
             if let destination = segue.destinationViewController as? CreateNewTaskViewController {
