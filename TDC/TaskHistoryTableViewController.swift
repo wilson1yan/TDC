@@ -11,7 +11,7 @@ import CoreData
 
 class TaskHistoryTableViewController: UITableViewController {
     var taskList = [TaskWithStreak]() { didSet { reloadDataAsync() } }
-    var taskSelected: Task?
+    var taskSelected: TaskWithStreak?
     var taskName = ""
     
     var managedContext:NSManagedObjectContext!
@@ -39,7 +39,7 @@ class TaskHistoryTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToCalendarHistory" {
             if let destination = segue.destinationViewController as? CalendarViewController {
-                destination.task = self.taskSelected
+                destination.tws = self.taskSelected
                 destination.hidesBottomBarWhenPushed = true
                 destination.isPresentingHistory = true
             }
@@ -121,7 +121,7 @@ class TaskHistoryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        taskSelected = taskList[indexPath.row].task
+        taskSelected = taskList[indexPath.row]
         performSegueWithIdentifier("ToCalendarHistory", sender: self)
     }
     

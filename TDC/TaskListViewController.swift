@@ -41,7 +41,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
             self.reloadDataAsync()
         }
     }
-    var taskSelected: Task?
+    var taskSelected: TaskWithStreak?
     var taskToEdit: Task?
     var taskName = ""
     
@@ -135,7 +135,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToCalendar" {
             if let destination = segue.destinationViewController as? CalendarViewController {
-                destination.task = self.taskSelected
+                destination.tws = taskSelected
                 destination.hidesBottomBarWhenPushed = true
                 destination.isPresentingHistory = false
             }
@@ -170,7 +170,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        taskSelected = taskList[indexPath.row].task
+        taskSelected = taskList[indexPath.row]
         performSegueWithIdentifier("ToCalendar", sender: self)
     }
     

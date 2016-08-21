@@ -235,7 +235,7 @@
             </objects>
             <point key="canvasLocation" x="-1035" y="-667"/>
         </scene>
-        <!--Calendar-->
+        <!--Calendar View Controller-->
         <scene sceneID="t1m-B6-5Uf">
             <objects>
                 <viewController id="RnD-IN-lTB" customClass="CalendarViewController" customModule="TDC" customModuleProvider="target" sceneMemberID="viewController">
@@ -312,28 +312,42 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAA-Dq-4bv" customClass="CalendarHeaderView" customModule="TDC" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZj-lg-BQj">
                                 <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAA-Dq-4bv" customClass="CalendarHeaderView" customModule="TDC" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZn-w3-pkt" customClass="DaysLeftView" customModule="TDC" customModuleProvider="target">
+                                        <rect key="frame" x="540" y="0.0" width="60" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AZn-w3-pkt" secondAttribute="height" id="W2T-tw-xEs"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="width" secondItem="vIV-co-2zC" secondAttribute="width" id="76c-Gf-qEi"/>
-                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="width" secondItem="vIV-co-2zC" secondAttribute="width" id="9lo-CW-w3N"/>
                             <constraint firstAttribute="trailing" secondItem="umx-Av-LJh" secondAttribute="trailing" id="K6j-xE-myp"/>
+                            <constraint firstItem="SZj-lg-BQj" firstAttribute="centerX" secondItem="vIV-co-2zC" secondAttribute="centerX" id="MaP-La-Jeb"/>
+                            <constraint firstItem="SZj-lg-BQj" firstAttribute="centerX" secondItem="vIV-co-2zC" secondAttribute="centerX" id="NOL-Ah-NUv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="umx-Av-LJh" secondAttribute="bottom" id="S26-op-Qy9"/>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="leading" secondItem="vIV-co-2zC" secondAttribute="leading" id="Ttn-Yq-17c"/>
-                            <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="EAA-Dq-4bv" secondAttribute="bottom" constant="10" id="bDm-40-EG5"/>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="centerX" secondItem="vIV-co-2zC" secondAttribute="centerX" id="c4J-a5-jo3"/>
-                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="centerX" secondItem="vIV-co-2zC" secondAttribute="centerX" id="dhs-eL-CPy"/>
-                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="height" secondItem="vIV-co-2zC" secondAttribute="height" multiplier="0.1" id="him-hM-icJ"/>
-                            <constraint firstItem="EAA-Dq-4bv" firstAttribute="top" secondItem="caJ-nZ-Tmp" secondAttribute="bottom" id="rum-3d-upe"/>
+                            <constraint firstItem="SZj-lg-BQj" firstAttribute="height" secondItem="vIV-co-2zC" secondAttribute="height" multiplier="0.1" id="cFV-3Q-VfL"/>
+                            <constraint firstItem="SZj-lg-BQj" firstAttribute="width" secondItem="vIV-co-2zC" secondAttribute="width" id="nFR-CM-6LA"/>
+                            <constraint firstItem="SZj-lg-BQj" firstAttribute="top" secondItem="caJ-nZ-Tmp" secondAttribute="bottom" id="qZI-qZ-78h"/>
+                            <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="SZj-lg-BQj" secondAttribute="bottom" constant="10" id="tCd-qV-SAg"/>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="caJ-nZ-Tmp" secondAttribute="bottom" id="woP-HE-k2r"/>
                             <constraint firstItem="umx-Av-LJh" firstAttribute="top" secondItem="vIV-co-2zC" secondAttribute="topMargin" id="wz6-7G-4rE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="NOL-Ah-NUv"/>
                                 <exclude reference="K6j-xE-myp"/>
                                 <exclude reference="S26-op-Qy9"/>
                                 <exclude reference="Ttn-Yq-17c"/>
@@ -343,7 +357,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Calendar" id="rvS-Tn-bJT">
+                    <navigationItem key="navigationItem" id="rvS-Tn-bJT">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="uGa-W3-ta0">
                             <connections>
                                 <action selector="moreOptions:" destination="RnD-IN-lTB" id="Xn0-x3-PP4"/>
@@ -354,6 +368,7 @@
                     <connections>
                         <outlet property="calendarHeader" destination="EAA-Dq-4bv" id="BYc-gI-Gd9"/>
                         <outlet property="calendarView" destination="iHx-ph-VwV" id="Ul2-GX-Anz"/>
+                        <outlet property="daysLeftView" destination="AZn-w3-pkt" id="5JT-4N-uaK"/>
                         <outlet property="monthLabel" destination="Vvc-Up-4Ba" id="eZN-c0-Xt7"/>
                         <segue destination="xNb-uk-E3f" kind="presentation" identifier="Edit Task" modalPresentationStyle="overCurrentContext" id="wrV-BN-13Y"/>
                     </connections>
@@ -440,7 +455,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="taskLabel" destination="cEb-wa-7Su" id="8pe-ZV-jPM"/>
-                                    <segue destination="RnD-IN-lTB" kind="show" identifier="ToCalendarHistory" id="00M-Mp-xr5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -456,10 +470,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="RnD-IN-lTB" kind="show" identifier="ToCalendarHistory" id="hsh-Cg-Kir"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wid-h5-gxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1959" y="607"/>
+            <point key="canvasLocation" x="-1919" y="607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WTk-be-KiB">
@@ -501,7 +518,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="00M-Mp-xr5"/>
-        <segue reference="wrV-BN-13Y"/>
+        <segue reference="eXC-Kg-ly6"/>
+        <segue reference="hsh-Cg-Kir"/>
     </inferredMetricsTieBreakers>
 </document>

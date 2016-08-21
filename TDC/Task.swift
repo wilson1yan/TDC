@@ -55,6 +55,14 @@ class Task: NSManagedObject {
         }
     }
     
+    class func extendTaskDuration(primaryId: Int, withDuration duration: Int, inMananagedObjectContext context: NSManagedObjectContext) {
+        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
+        if let t = task {
+            t.duration = t.duration as! Int + duration
+            do{ try context.save() } catch _ as NSError {}
+        }
+    }
+    
     class func getAllTasksWithState(state: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Task]{
         let request = NSFetchRequest(entityName: "Task")
         request.predicate = NSPredicate(format: "state = %d", state)

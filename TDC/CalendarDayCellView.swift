@@ -16,15 +16,16 @@ class CalendarDayCellView: JTAppleDayCellView {
     var normalDayColor = UIColor.blackColor()
     var weekendDayColor = UIColor.grayColor()
     
-    func setupCellBeforeDisplay(cellState: CellState, date: NSDate, cal: NSCalendar, dates: [Date]?, task: Task?) {
+    func setupCellBeforeDisplay(cellState: CellState, date: NSDate, cal: NSCalendar, dates: [Date]?, task: Task?, isHistory: Bool) {
         dayLabel.text = cellState.text
         configureTextColor(cellState)
         animationView.backgroundColor = UIColor.whiteColor()
         self.backgroundColor = UIColor.whiteColor()
+        animationView.state = .Open
         if cellState.dateBelongsTo == .ThisMonth {
             if date.isInDateList(dates!, calendar: cal) {
                 animationView.state = .Marked
-            } else if cal.compareDate(date, toDate: NSDate(), toUnitGranularity: .Day) == .OrderedSame {
+            } else if cal.compareDate(date, toDate: NSDate(), toUnitGranularity: .Day) == .OrderedSame && !isHistory{
                 animationView.state = .Today
             } else if let start = task?.startDate{
                 let withStartDate = cal.compareDate(start, toDate: date, toUnitGranularity: .Day)
