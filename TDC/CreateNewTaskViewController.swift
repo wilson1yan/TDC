@@ -16,8 +16,18 @@ class CreateNewTaskViewController: UIViewController {
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var errorText: UILabel!
     
+    @IBOutlet weak var formView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        formView.layer.cornerRadius = 10
+        formView.layer.borderWidth = 1
+        formView.layer.borderColor = UIColor.blueColor().CGColor
+        
+        formView.layer.shadowOffset = CGSize(width: 5, height: -5)
+        formView.layer.shadowRadius = 2
+        formView.layer.shadowOpacity = 0.1
         
         let visuaEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         visuaEffectView.frame = self.view.bounds

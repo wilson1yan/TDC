@@ -13,6 +13,7 @@ import CoreData
 @IBDesignable
 class CalendarViewController: UIViewController{
     
+    @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var daysLeftView: DaysLeftView!
     @IBOutlet weak var calendarHeader: CalendarHeaderView!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -35,9 +36,14 @@ class CalendarViewController: UIViewController{
         dates = Date.getDatesWithId(tws.task.primaryId as! Int, inManagedObjectContext: managedContext)
         
         streak = tws.streak
-        calendarHeader.taskName = tws.task.name!
         daysLeftView.duration = Double(tws.task.duration!)
         daysLeftView.days = Double(streak!)
+        
+        taskNameLabel.text = tws.task.name!
+        taskNameLabel.textColor = UIColor.blueColor()
+        taskNameLabel.shadowOffset = CGSize(width: 5, height: 5)
+        taskNameLabel.textAlignment = .Center
+        adjustFontSize()
         
         edgesForExtendedLayout = UIRectEdge.None
         calendarView.dataSource = self
@@ -47,6 +53,22 @@ class CalendarViewController: UIViewController{
         
         calendarView.scrollToDate(NSDate())
         setupViewsOfCalendar(NSDate())
+    }
+    
+    func adjustFontSize() {
+        let text = NSString(string: tws.task.name!)
+        taskNameLabel.adjustsFontSizeToFitWidth = false
+        taskNameLabel.numberOfLines = 0
+        
+        let labelRect = CGRect(x: taskNameLabel.bounds.origin.x+5, y: taskNameLabel.bounds.origin.y+5, width: taskNameLabel.bounds.width-10, height: taskNameLabel.bounds.height-10)
+        var fontSize: CGFloat = 100
+        while fontSize > 5 {
+            let size = text.sizeWithAttributes([NSFontAttributeName: UIFont(name: "Arial", size: fontSize)!])
+            if size.height < labelRect.height && size.width < labelRect.width { break }
+            fontSize -= 1.0
+        }
+        
+        taskNameLabel.font = UIFont(name: "Arial", size: fontSize)
     }
     
     func checkIfTaskCompleted() -> Bool {
@@ -89,7 +111,7 @@ class CalendarViewController: UIViewController{
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         alertController.addAction(editTask)
-        alertController.addAction(endTask)
+        //alertController.addAction(endTask)
         alertController.addAction(cancel)
         
         presentViewController(alertController, animated: true, completion: nil)

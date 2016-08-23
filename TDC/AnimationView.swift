@@ -71,18 +71,10 @@ class AnimationView: UIView {
         return path
     }
 
-    var updatePath: [UIBezierPath] {
-        let line = UIBezierPath()
-        
-        line.moveToPoint(CGPoint(x: bounds.size.width*0.5, y: bounds.size.height*0.05))
-        line.addLineToPoint(CGPoint(x: bounds.size.width*0.5, y: bounds.size.height*0.6))
-        line.lineWidth = 5
-        
-        let circle = UIBezierPath()
-        circle.addArcWithCenter(CGPoint(x: bounds.size.width*0.5, y: bounds.size.height*0.8), radius: bounds.size.height*0.1, startAngle: 0, endAngle: CGFloat(2*M_PI), clockwise: true)
-        circle.fill()
-        
-        return [line,circle]
+    var updatePath: UIBezierPath {
+        let path = UIBezierPath(arcCenter: CGPoint(x: bounds.size.width/2, y: bounds.size.height/2), radius: min(bounds.size.width,bounds.size.height)/2*0.8, startAngle: 0, endAngle: CGFloat(2*M_PI), clockwise: true)
+        path.lineWidth = 5
+        return path
     }
     
     func animateSelected() {
@@ -129,9 +121,7 @@ class AnimationView: UIView {
     
     func drawNeedToUpdateIcon() {
         UIColor.blueColor().setStroke()
-        UIColor.blueColor().setFill()
-        updatePath[0].stroke()
-        updatePath[1].stroke()
+        updatePath.stroke()
     }
 
 }
