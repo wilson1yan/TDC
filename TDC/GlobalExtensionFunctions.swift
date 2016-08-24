@@ -17,7 +17,9 @@ extension UILabel {
         var fontSize: CGFloat = 25
         while fontSize > 5 {
             let size = text.sizeWithAttributes([NSFontAttributeName: UIFont(name: "Arial", size: fontSize)!])
-            if size.height < labelRect.height && size.width < labelRect.width { break }
+            if size.height < labelRect.height && size.width < labelRect.width {
+                break
+            }
             fontSize -= 1.0
         }
         

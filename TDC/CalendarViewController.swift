@@ -11,7 +11,7 @@ import JTAppleCalendar
 import CoreData
 
 @IBDesignable
-class CalendarViewController: UIViewController{
+class CalendarViewController: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var daysLeftView: DaysLeftView!
@@ -28,6 +28,8 @@ class CalendarViewController: UIViewController{
     var streak: Int?
     var isPresentingHistory: Bool = false
     
+    var fs: CGFloat = 5
+    var text: NSString { return NSString(string: tws.task.name!) }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,9 @@ class CalendarViewController: UIViewController{
         taskNameLabel.textColor = UIColor.blueColor()
         taskNameLabel.shadowOffset = CGSize(width: 5, height: 5)
         taskNameLabel.textAlignment = .Center
-        adjustFontSize()
+        taskNameLabel.numberOfLines = 0
+        taskNameLabel.font = UIFont(name: "Arial", size: 40)
+        taskNameLabel.adjustsFontSizeToFitWidth = true
         
         edgesForExtendedLayout = UIRectEdge.None
         calendarView.dataSource = self
@@ -53,22 +57,6 @@ class CalendarViewController: UIViewController{
         
         calendarView.scrollToDate(NSDate())
         setupViewsOfCalendar(NSDate())
-    }
-    
-    func adjustFontSize() {
-        let text = NSString(string: tws.task.name!)
-        taskNameLabel.adjustsFontSizeToFitWidth = false
-        taskNameLabel.numberOfLines = 0
-        
-        let labelRect = CGRect(x: taskNameLabel.bounds.origin.x+5, y: taskNameLabel.bounds.origin.y+5, width: taskNameLabel.bounds.width-10, height: taskNameLabel.bounds.height-10)
-        var fontSize: CGFloat = 100
-        while fontSize > 5 {
-            let size = text.sizeWithAttributes([NSFontAttributeName: UIFont(name: "Arial", size: fontSize)!])
-            if size.height < labelRect.height && size.width < labelRect.width { break }
-            fontSize -= 1.0
-        }
-        
-        taskNameLabel.font = UIFont(name: "Arial", size: fontSize)
     }
     
     func checkIfTaskCompleted() -> Bool {
