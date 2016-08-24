@@ -138,6 +138,8 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
                 destination.tws = taskSelected
                 destination.hidesBottomBarWhenPushed = true
                 destination.isPresentingHistory = false
+                
+                self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
             }
         } else if segue.identifier == "Create New Task" {
             if let destination = segue.destinationViewController as? CreateNewTaskViewController {

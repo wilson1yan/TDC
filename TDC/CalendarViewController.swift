@@ -11,11 +11,11 @@ import JTAppleCalendar
 import CoreData
 
 @IBDesignable
-class CalendarViewController: UIViewController, UIGestureRecognizerDelegate{
+class CalendarViewController: UIViewController{
     
-    @IBOutlet weak var taskNameLabel: UILabel!
+//    @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var daysLeftView: DaysLeftView!
-    @IBOutlet weak var calendarHeader: CalendarHeaderView!
+//    @IBOutlet weak var calendarHeader: CalendarHeaderView!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
     let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
@@ -41,13 +41,17 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate{
         daysLeftView.duration = Double(tws.task.duration!)
         daysLeftView.days = Double(streak!)
         
-        taskNameLabel.text = tws.task.name!
-        taskNameLabel.textColor = UIColor.blueColor()
-        taskNameLabel.shadowOffset = CGSize(width: 5, height: 5)
-        taskNameLabel.textAlignment = .Center
-        taskNameLabel.numberOfLines = 0
-        taskNameLabel.font = UIFont(name: "Arial", size: 40)
-        taskNameLabel.adjustsFontSizeToFitWidth = true
+        self.title = tws.task.name!
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        label.text = tws.task.name!
+        label.textColor = UIColor.blackColor()
+        label.shadowOffset = CGSize(width: 5, height: 5)
+        label.textAlignment = .Center
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Arial", size: 40)
+        label.adjustsFontSizeToFitWidth = true
+        self.navigationItem.titleView = label
         
         edgesForExtendedLayout = UIRectEdge.None
         calendarView.dataSource = self
@@ -92,10 +96,10 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate{
             
             self.presentViewController(editController, animated: true, completion: nil)
         }
-        let endTask = UIAlertAction(title: "End Task", style: .Destructive) { [unowned self] (alertAction) in
-            let state = self.streak == self.tws.task.duration ? TaskStates.Complete : TaskStates.Failed
-            Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
-        }
+//        let endTask = UIAlertAction(title: "End Task", style: .Destructive) { [unowned self] (alertAction) in
+//            let state = self.streak == self.tws.task.duration ? TaskStates.Complete : TaskStates.Failed
+//            Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
+//        }
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         alertController.addAction(editTask)
