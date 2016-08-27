@@ -24,7 +24,7 @@ class TaskHistoryTableViewController: UITableViewController {
         managedContext = appDelegate.managedObjectContext
         taskList = loadHistory()
         
-        self.title = "History"
+        self.navigationItem.titleView = UILabel.getFittedLabelWithTitle("History")
     }
     
     override func viewWillAppear(animated: Bool) {

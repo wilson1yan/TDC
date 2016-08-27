@@ -9,6 +9,18 @@
 import Foundation
 import CoreData
 
+struct DidDisplayMissingTodayStates {
+    static let YES = 1
+    static let NO = 0
+}
+
+struct TaskAttributes {
+    static let Name = "name"
+    static let State = "state"
+    static let Duration = "duration"
+    static let DidAlreadyDisplayMissingToday = "didAlready"
+    static let NumStrikes = "numStrikes"
+}
 
 class Task: NSManagedObject {
     
@@ -19,7 +31,9 @@ class Task: NSManagedObject {
         task.startDate = NSDate()
         task.state = 0
         task.duration = duration
-
+        task.didAlreadyDisplayMissingToday = DidDisplayMissingTodayStates.NO
+        task.numStrikes = 0
+        
         do {
             try context.save()
             return task
@@ -39,27 +53,44 @@ class Task: NSManagedObject {
         }
     }
     
-    class func updateEditedTask(primaryId: Int, withName taskName: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
-        if let t = task {
-            t.name = taskName
-            do{ try context.save() } catch _ as NSError {}
-        }
-    }
+//    class func updateEditedTask(primaryId: Int, withName taskName: String, inManagedObjectContext context: NSManagedObjectContext) {
+//        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
+//        if let t = task {
+//            t.name = taskName
+//            do{ try context.save() } catch _ as NSError {}
+//        }
+//    }
+//    
+//    class func updateTaskState(primaryId: Int, withState state: Int, inManagedObjectContext context: NSManagedObjectContext) {
+//        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
+//        if let t = task {
+//            t.state = state
+//            do{ try context.save() } catch _ as NSError {}
+//        }
+//    }
+//    
+//    class func extendTaskDuration(primaryId: Int, withDuration duration: Int, inMananagedObjectContext context: NSManagedObjectContext) {
+//        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
+//        if let t = task {
+//            t.duration = t.duration as! Int + duration
+//            do{ try context.save() } catch _ as NSError {}
+//        }
+//    }
     
-    class func updateTaskState(primaryId: Int, withState state: Int, inManagedObjectContext context: NSManagedObjectContext) {
+    class func updateTask(primaryId: Int, withInfo info: Dictionary<String, AnyObject>, inManagedObjectContext context: NSManagedObjectContext) {
         let task = getTaskWithId(primaryId, inManagedObjectContext: context)
-        if let t = task {
-            t.state = state
-            do{ try context.save() } catch _ as NSError {}
-        }
-    }
-    
-    class func extendTaskDuration(primaryId: Int, withDuration duration: Int, inMananagedObjectContext context: NSManagedObjectContext) {
-        let task = getTaskWithId(primaryId, inManagedObjectContext: context)
-        if let t = task {
-            t.duration = t.duration as! Int + duration
-            do{ try context.save() } catch _ as NSError {}
+        if task != nil {
+            for (key,value) in info {
+                switch key {
+                case TaskAttributes.Name: task!.name = (value as! String); print(value)
+                case TaskAttributes.Duration: task!.duration = (value as! NSNumber); print(value)
+                case TaskAttributes.State: task!.state = (value as! NSNumber); print(value)
+                case TaskAttributes.DidAlreadyDisplayMissingToday: task!.didAlreadyDisplayMissingToday = (value as! NSNumber); print(value)
+                case TaskAttributes.NumStrikes: task!.numStrikes = (value as! NSNumber); print(value)
+                default: break
+                }
+            }
+            do { try context.save() } catch _ as NSError {}
         }
     }
     

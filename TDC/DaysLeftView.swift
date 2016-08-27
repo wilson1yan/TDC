@@ -97,7 +97,7 @@ class DaysLeftView: UIView {
         gradientView.layer.addSublayer(gradientLayer)
     }
     
-    func createAnimatedCircleMask() {
+    private func createAnimatedCircleMask() {
         let alayer = CAShapeLayer()
         alayer.fillColor = nil
         alayer.lineWidth = 5.0

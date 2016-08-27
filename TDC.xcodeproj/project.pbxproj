@@ -10,6 +10,7 @@
 		737D15419C9BBF6036AE48C1 /* Pods_TDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9F885E76E5EE368AE10126 /* Pods_TDC.framework */; };
 		C33B79F41D617F9200452E0B /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B79F31D617F9200452E0B /* AnimationView.swift */; };
 		C35A878F1D77FAAB00ADA84A /* AdjustableCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A878E1D77FAAB00ADA84A /* AdjustableCalendarViewController.swift */; };
+		C35A87941DBAB7D700ADA84A /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A87931DBAB7D700ADA84A /* Task+CoreDataProperties.swift */; };
 		C37AB2E61D66316300A76458 /* HistoryTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AB2E51D66316300A76458 /* HistoryTaskTableViewCell.swift */; };
 		C37AB2E81D66AFAB00A76458 /* DaysLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AB2E71D66AFAB00A76458 /* DaysLeftView.swift */; };
 		C37AB2EA1D6ABA4600A76458 /* AchievmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AB2E91D6ABA4600A76458 /* AchievmentsViewController.swift */; };
@@ -23,7 +24,6 @@
 		C3C389D81D5C39FC000540CD /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */; };
 		C3C38A011D5D20A4000540CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C38A001D5D20A4000540CD /* Images.xcassets */; };
 		C3C38A031D5D2268000540CD /* CalendarDayCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C38A021D5D2268000540CD /* CalendarDayCellView.xib */; };
-		C3C38A051D5F93DA000540CD /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C38A041D5F93DA000540CD /* Task+CoreDataProperties.swift */; };
 		C3C38A071D5F9B6A000540CD /* TaskHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C38A061D5F9B6A000540CD /* TaskHistoryTableViewController.swift */; };
 		C3C38A0D1D5FD5AC000540CD /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C38A0C1D5FD5AC000540CD /* CheckMarkView.swift */; };
 		C3C38A0F1D612593000540CD /* CreateNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C38A0E1D612593000540CD /* CreateNewTaskViewController.swift */; };
@@ -39,6 +39,7 @@
 		7EFDE80ED7B6832B9107995F /* Pods-TDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDC/Pods-TDC.debug.xcconfig"; sourceTree = "<group>"; };
 		C33B79F31D617F9200452E0B /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		C35A878E1D77FAAB00ADA84A /* AdjustableCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableCalendarViewController.swift; sourceTree = "<group>"; };
+		C35A87931DBAB7D700ADA84A /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C37AB2E51D66316300A76458 /* HistoryTaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTaskTableViewCell.swift; sourceTree = "<group>"; };
 		C37AB2E71D66AFAB00A76458 /* DaysLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysLeftView.swift; sourceTree = "<group>"; };
 		C37AB2E91D6ABA4600A76458 /* AchievmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievmentsViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		C3C38A001D5D20A4000540CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3C38A021D5D2268000540CD /* CalendarDayCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDayCellView.xib; sourceTree = "<group>"; };
-		C3C38A041D5F93DA000540CD /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C3C38A061D5F9B6A000540CD /* TaskHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHistoryTableViewController.swift; sourceTree = "<group>"; };
 		C3C38A0C1D5FD5AC000540CD /* CheckMarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckMarkView.swift; sourceTree = "<group>"; };
 		C3C38A0E1D612593000540CD /* CreateNewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		C35A87901D7AA48E00ADA84A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				C3C38A041D5F93DA000540CD /* Task+CoreDataProperties.swift */,
+				C35A87931DBAB7D700ADA84A /* Task+CoreDataProperties.swift */,
 				C3C389C81D5C389D000540CD /* Task.swift */,
 				C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */,
 				C3C389CA1D5C389D000540CD /* Date.swift */,
@@ -312,7 +312,6 @@
 				C37AB2E81D66AFAB00A76458 /* DaysLeftView.swift in Sources */,
 				C3C389D81D5C39FC000540CD /* TaskTableViewCell.swift in Sources */,
 				C3E6FD2F1D5C34D0003EE9AA /* TaskListViewController.swift in Sources */,
-				C3C38A051D5F93DA000540CD /* Task+CoreDataProperties.swift in Sources */,
 				C33B79F41D617F9200452E0B /* AnimationView.swift in Sources */,
 				C3C389D41D5C3908000540CD /* AnimationClass.swift in Sources */,
 				C3C38A0D1D5FD5AC000540CD /* CheckMarkView.swift in Sources */,
@@ -323,6 +322,7 @@
 				C3C389D21D5C38FE000540CD /* CalendarDayCellView.swift in Sources */,
 				C37AB2E61D66316300A76458 /* HistoryTaskTableViewCell.swift in Sources */,
 				C37AB2EA1D6ABA4600A76458 /* AchievmentsViewController.swift in Sources */,
+				C35A87941DBAB7D700ADA84A /* Task+CoreDataProperties.swift in Sources */,
 				C3C38A071D5F9B6A000540CD /* TaskHistoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

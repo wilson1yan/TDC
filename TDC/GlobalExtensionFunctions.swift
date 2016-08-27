@@ -25,7 +25,18 @@ extension UILabel {
         
         return UIFont(name: "Arial", size: fontSize)
     }
-
+    
+    class func getFittedLabelWithTitle(text: String) -> UILabel{
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        label.text = text
+        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Arial", size: 20)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }
+    
 }
 
 extension NSDate {
@@ -48,6 +59,11 @@ extension NSDate {
             }
         }
         return false
+    }
+    
+    class func toMidnight(date: NSDate, calendar: NSCalendar) -> NSDate{
+        let comp = calendar.components([.Day, .Month, .Year], fromDate: date)
+        return calendar.dateFromComponents(comp)!
     }
 }
 

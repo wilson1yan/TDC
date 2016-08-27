@@ -119,14 +119,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         
         managedContext = appDelegate.managedObjectContext
         
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        label.text = "Current Tasks"
-        label.textColor = UIColor.blackColor()
-        label.textAlignment = .Center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "Arial", size: 20)
-        label.adjustsFontSizeToFitWidth = true
-        self.navigationItem.titleView = label
+        self.navigationItem.titleView = UILabel.getFittedLabelWithTitle("Current Tasks")
     }
     
     override func viewWillAppear(animated: Bool) {
