@@ -33,6 +33,8 @@ class CreateNewTaskViewController: UIViewController {
         visuaEffectView.frame = self.view.bounds
         self.view.insertSubview(visuaEffectView, atIndex: 0)
         
+        taskNameTextField.autocapitalizationType = .Sentences
+        
         if let task = currentTask{
             taskNameTextField.text = task.name
             durationTextField.text = String(task.duration!)

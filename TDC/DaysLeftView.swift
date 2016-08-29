@@ -10,7 +10,7 @@ import UIKit
 
 class DaysLeftView: UIView {
     
-    private let durationRatio = 1/(2*M_PI) // pi radians/second
+    private let durationRatio = 1/(M_PI) // pi radians/second
     private var alreadyAddedGradientView = false
     
     var days: Double? {
@@ -18,13 +18,24 @@ class DaysLeftView: UIView {
             numFont = adjustFontSizeToFitRect(rectForNum, text: String(Int(days!)))
             textFont = adjustFontSizeToFitRect(rectForDaysLeftText, text: days! == 1 ? "Day" : "Days")
             setNeedsDisplay()
-            
+        
+            totalRadians = days!/duration*M_PI*2
             if oldValue != nil {
-                radiansToAdd = (days!-oldValue!)/duration!*M_PI*2
+                changeInRadians = (days!-oldValue!)/duration*M_PI*2
             }
         }
     }
-    var duration: Double?
+    
+    private var changeInRadians: Double = 0.0
+    private var totalRadians: Double!
+    
+    var duration: Double! {
+        didSet {
+            if oldValue != nil && days != nil{
+                changeInRadians = (days!/duration - days!/oldValue)*M_PI*2
+            }
+        }
+    }
     
     private let ROOT_2: CGFloat = sqrt(2)
     
@@ -39,12 +50,10 @@ class DaysLeftView: UIView {
     private var numFont: UIFont?
     private var textFont: UIFont?
     private var gradentView: UIView!
-    var radiansToAdd: Double?
     
     override func layoutSubviews() {
         createGradient()
-        let totalRadians = (days!/duration!)*M_PI*2
-        createAnimatedCircleMask(totalRadians, radiansToAnimate:  totalRadians)
+        createAnimatedCircleMask()
     }
     
     override func drawRect(rect: CGRect) {
@@ -75,12 +84,12 @@ class DaysLeftView: UIView {
         }
     }
     
-    func animateAddRadians() {
-        if radiansToAdd != nil {
-            let totalRadians = (days!/duration!)*M_PI*2
-            createAnimatedCircleMask(totalRadians, radiansToAnimate: radiansToAdd!)
-        }
-    }
+//    func animateAddRadians() {
+//        if radiansToAdd != nil {
+//            let totalRadians = (days!/duration!)*M_PI*2
+//            createAnimatedCircleMask(totalRadians, changeInRadians: radiansToAdd!)
+//        }
+//    }
     
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
     private let colors: [CGFloat] = [
@@ -97,26 +106,29 @@ class DaysLeftView: UIView {
         gradentView.layer.addSublayer(gradientLayer)
     }
     
-    func createAnimatedCircleMask(totalRadians: Double, radiansToAnimate: Double) {
+    func createAnimatedCircleMask() {
         let alayer = CAShapeLayer()
-        alayer.frame = gradentView.bounds
-        alayer.backgroundColor = UIColor.clearColor().CGColor
         alayer.fillColor = nil
-        alayer.strokeStart = 0.0
-        alayer.strokeEnd = 1.0
         alayer.lineWidth = 5.0
+        alayer.strokeStart = 0.0
+        alayer.strokeEnd = CGFloat(changeInRadians >= 0 ? 1.0 : (totalRadians+changeInRadians)/totalRadians)
         alayer.strokeColor = UIColor.blueColor().CGColor
         alayer.path = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: CGFloat(-M_PI_2), endAngle: CGFloat(-M_PI_2+totalRadians), clockwise: true).CGPath
-        
         let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
-        animateStrokeEnd.duration = radiansToAnimate*durationRatio
-        animateStrokeEnd.fromValue = NSNumber(float: Float(1-radiansToAnimate/totalRadians))
-        animateStrokeEnd.toValue = NSNumber(float: 1.0)
+        if changeInRadians >= 0 {
+            animateStrokeEnd.fromValue = CGFloat(1-changeInRadians/totalRadians)
+            animateStrokeEnd.toValue = 1.0
+        } else {
+            animateStrokeEnd.fromValue = 1.0
+            animateStrokeEnd.toValue = CGFloat((totalRadians+changeInRadians)/totalRadians)
+        }
+        animateStrokeEnd.duration = abs(changeInRadians)*durationRatio
+
         alayer.addAnimation(animateStrokeEnd, forKey: "strokeEndAnimation")
         gradentView.layer.mask = alayer
 
     }
-
+    
     private func adjustFontSizeToFitRect(rect: CGRect, text: String) -> UIFont?{
         var font = UIFont(name: "Arial", size: 100)!
         let maxFontSize: CGFloat = 100.0

@@ -11,7 +11,7 @@ import JTAppleCalendar
 import CoreData
 
 @IBDesignable
-class CalendarViewController: UIViewController{
+class CalendarViewController: UIViewController, UIGestureRecognizerDelegate{
     
 //    @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var daysLeftView: DaysLeftView!
@@ -37,10 +37,6 @@ class CalendarViewController: UIViewController{
         managedContext = appDelegate.managedObjectContext
         dates = Date.getDatesWithId(tws.task.primaryId as! Int, inManagedObjectContext: managedContext)
         
-        streak = tws.streak
-        daysLeftView.duration = Double(tws.task.duration!)
-        daysLeftView.days = Double(streak!)
-        
         self.title = tws.task.name!
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
@@ -49,7 +45,7 @@ class CalendarViewController: UIViewController{
         label.shadowOffset = CGSize(width: 5, height: 5)
         label.textAlignment = .Center
         label.numberOfLines = 0
-        label.font = UIFont(name: "Arial", size: 40)
+        label.font = UIFont(name: "Arial", size: 30)
         label.adjustsFontSizeToFitWidth = true
         self.navigationItem.titleView = label
         
@@ -61,6 +57,44 @@ class CalendarViewController: UIViewController{
         
         calendarView.scrollToDate(NSDate())
         setupViewsOfCalendar(NSDate())
+        
+        streak = tws.streak
+        daysLeftView.duration = Double(tws.task.duration!)
+
+        let missedDates = getMissedDates()
+        if missedDates > 0 {
+            let consecDays = getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar:cal))
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
+            if missedDates == 1 && consecDays >= 5{
+                alertController.title = "You've missed a day. I'll trust it's just an honest mistake."
+                let fix = UIAlertAction(title: "Fix It", style: .Default, handler: { [unowned self](alertAction) in
+                    //update stuff
+                })
+                let startOver = UIAlertAction(title: "Start Over", style: .Default, handler: { [unowned self] (alertAction) in
+                    self.daysLeftView.days = Double(self.streak!)
+                })
+                
+                alertController.addAction(fix)
+                alertController.addAction(startOver)
+                
+                daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2,calendar:cal)))
+            } else {
+                alertController.title = "You've missed \(missedDates) " + (missedDates == 1 ? "day":"days") + " . Try again!"
+                daysLeftView.days = Double(streak!)
+            }
+                        
+            presentViewController(alertController, animated: true, completion: { [unowned self] in
+                alertController.view.superview?.userInteractionEnabled = true
+                alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose)))
+            })
+        } else {
+            daysLeftView.days = Double(streak!)
+        }
+        
+    }
+    
+    func alertClose(recongizer: UIGestureRecognizer) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func checkIfTaskCompleted() -> Bool {
@@ -122,6 +156,38 @@ class CalendarViewController: UIViewController{
             dates?.append(date!)
         }
     }
+    
+    func getMissedDates() -> Int {
+        // Case 1 today/yesterday -> no missed dates
+        // Case 2 yesterday no updaes -> check all
+        // Case 3 empty -> no missed dates
+        let dayComp = NSDateComponents()
+        dayComp.day = -1
+        let yesterday = cal.dateByAddingComponents(dayComp, toDate: NSDate(), options: [])!
+        
+        if dates.count == 0 || yesterday.isInDateList(dates, calendar: cal){
+            return 0
+        } else {
+            var n = 1
+            var dayBefore = cal.dateByAddingComponents(dayComp, toDate: yesterday, options: [])!
+            while dayBefore.isInDateList(dates, calendar: cal) {
+                dayBefore = cal.dateByAddingComponents(dayComp, toDate: dayBefore, options: [])!
+                n += 1
+            }
+            return n
+        }
+    }
+    
+    func getConsecutiveDaysStartingFrom(start: NSDate) -> Int {
+        var n = 0
+        var dayBefore = start
+        while dayBefore.isInDateList(dates, calendar: cal) {
+            dayBefore = dayBefore.getDaysBefore(1, calendar:cal)
+            n += 1
+        }
+        
+        return n
+    }
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate{
@@ -150,7 +216,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
             addAndSaveDate(date)
             streak = streak! + 1
             daysLeftView.days = Double(streak!)
-            daysLeftView.animateAddRadians()
+            daysLeftView.createAnimatedCircleMask()
             
             if streak! == tws.task.duration! {
                 let alertController = UIAlertController(title: "Congratulations! You've done your task for " + String(tws.task.duration!) + " consecutive days!", message: nil, preferredStyle: .Alert)
@@ -158,7 +224,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
                     Task.extendTaskDuration(self.tws.task.primaryId as! Int, withDuration: self.tws.task.duration as! Int, inMananagedObjectContext: self.managedContext)
                     self.tws.task = Task.getTaskWithId(self.tws.task.primaryId as! Int, inManagedObjectContext: self.managedContext)!
                     self.daysLeftView.duration = Double(self.tws.task.duration!)
-                    self.daysLeftView.createAnimatedCircleMask(M_PI, radiansToAnimate: M_PI)
+                    
+                    self.daysLeftView.createAnimatedCircleMask()
                 })
                 let endTask = UIAlertAction(title: "End Task", style: .Default, handler: { [unowned self] (alertAction) in
                     let state = TaskStates.Complete

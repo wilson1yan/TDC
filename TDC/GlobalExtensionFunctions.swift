@@ -27,3 +27,15 @@ extension UILabel {
     }
 
 }
+
+extension NSDate {
+    func getDaysBefore(n: Int, calendar: NSCalendar) -> NSDate {
+        let comp = NSDateComponents()
+        comp.day = -1
+        var day = self
+        for _ in 0..<n {
+            day = calendar.dateByAddingComponents(comp, toDate: day, options: [])!
+        }
+        return day
+    }
+}
