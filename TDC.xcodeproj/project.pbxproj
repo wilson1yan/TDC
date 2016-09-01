@@ -10,6 +10,7 @@
 		737D15419C9BBF6036AE48C1 /* Pods_TDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9F885E76E5EE368AE10126 /* Pods_TDC.framework */; };
 		C33B79F41D617F9200452E0B /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B79F31D617F9200452E0B /* AnimationView.swift */; };
 		C33B79F61D654F3A00452E0B /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B79F51D654F3A00452E0B /* CalendarHeaderView.swift */; };
+		C35A878F1D77FAAB00ADA84A /* InteractiveCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A878E1D77FAAB00ADA84A /* InteractiveCalendarViewController.swift */; };
 		C37AB2E61D66316300A76458 /* HistoryTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AB2E51D66316300A76458 /* HistoryTaskTableViewCell.swift */; };
 		C37AB2E81D66AFAB00A76458 /* DaysLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AB2E71D66AFAB00A76458 /* DaysLeftView.swift */; };
 		C37AB2EA1D6ABA4600A76458 /* AchievmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AB2E91D6ABA4600A76458 /* AchievmentsViewController.swift */; };
@@ -40,6 +41,7 @@
 		7EFDE80ED7B6832B9107995F /* Pods-TDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDC/Pods-TDC.debug.xcconfig"; sourceTree = "<group>"; };
 		C33B79F31D617F9200452E0B /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		C33B79F51D654F3A00452E0B /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		C35A878E1D77FAAB00ADA84A /* InteractiveCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveCalendarViewController.swift; sourceTree = "<group>"; };
 		C37AB2E51D66316300A76458 /* HistoryTaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTaskTableViewCell.swift; sourceTree = "<group>"; };
 		C37AB2E71D66AFAB00A76458 /* DaysLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysLeftView.swift; sourceTree = "<group>"; };
 		C37AB2E91D6ABA4600A76458 /* AchievmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievmentsViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */,
 				C3C389C81D5C389D000540CD /* Task.swift */,
 				C3C389CF1D5C38E7000540CD /* CalendarViewController.swift */,
+				C35A878E1D77FAAB00ADA84A /* InteractiveCalendarViewController.swift */,
 				C3C389D11D5C38FE000540CD /* CalendarDayCellView.swift */,
 				C33B79F31D617F9200452E0B /* AnimationView.swift */,
 				C3C389D31D5C3908000540CD /* AnimationClass.swift */,
@@ -286,6 +289,7 @@
 				C3C389D01D5C38E7000540CD /* CalendarViewController.swift in Sources */,
 				C37AB2EC1D6ABEF400A76458 /* TaskInfoViewController.swift in Sources */,
 				C33B79F61D654F3A00452E0B /* CalendarHeaderView.swift in Sources */,
+				C35A878F1D77FAAB00ADA84A /* InteractiveCalendarViewController.swift in Sources */,
 				C37AB2EE1D6C0B6000A76458 /* GlobalExtensionFunctions.swift in Sources */,
 				C3E6FD351D5C34D0003EE9AA /* TDC.xcdatamodeld in Sources */,
 				C3C38A0F1D612593000540CD /* CreateNewTaskViewController.swift in Sources */,
