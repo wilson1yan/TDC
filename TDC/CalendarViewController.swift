@@ -168,9 +168,10 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate{
         if dates.count == 0 || yesterday.isInDateList(dates, calendar: cal){
             return 0
         } else {
-            var n = 1
-            var dayBefore = cal.dateByAddingComponents(dayComp, toDate: yesterday, options: [])!
-            while dayBefore.isInDateList(dates, calendar: cal) {
+            var n = 0
+            var dayBefore = yesterday
+                //cal.dateByAddingComponents(dayComp, toDate: yesterday, options: [])!
+            while !dayBefore.isInDateList(dates, calendar: cal) && (cal.compareDate(dayBefore, toDate: tws.task.startDate!, toUnitGranularity: .Day) == .OrderedDescending || cal.compareDate(dayBefore, toDate: tws.task.startDate!, toUnitGranularity: .Day) == .OrderedSame){
                 dayBefore = cal.dateByAddingComponents(dayComp, toDate: dayBefore, options: [])!
                 n += 1
             }

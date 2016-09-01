@@ -17,6 +17,7 @@ extension Task {
     @NSManaged var name: String?
     @NSManaged var primaryId: NSNumber?
     @NSManaged var startDate: NSDate?
+    @NSManaged var endDate: NSDate?
     @NSManaged var state: NSNumber?
     @NSManaged var duration: NSNumber?
     @NSManaged var dates: NSSet?
