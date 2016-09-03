@@ -141,7 +141,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToCalendar" {
-            if let destination = segue.destinationViewController as? CalendarViewController {
+            if let destination = segue.destinationViewController as? AdjustableCalendarViewController {
                 destination.tws = taskSelected
                 destination.hidesBottomBarWhenPushed = true
                 destination.isPresentingHistory = false

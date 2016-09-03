@@ -392,9 +392,9 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="calendarView" destination="iHx-ph-VwV" id="Ul2-GX-Anz"/>
-                        <outlet property="daysLeftView" destination="oXN-B4-GlJ" id="EW8-hn-atn"/>
-                        <outlet property="monthLabel" destination="Vvc-Up-4Ba" id="eZN-c0-Xt7"/>
+                        <outlet property="calendarView" destination="iHx-ph-VwV" id="tbS-Y3-4w4"/>
+                        <outlet property="daysLeftView" destination="oXN-B4-GlJ" id="OLA-U7-yu0"/>
+                        <outlet property="monthLabel" destination="Vvc-Up-4Ba" id="7RR-LS-Lbu"/>
                         <outlet property="updateButton" destination="uGa-W3-ta0" id="Jga-Hx-mGQ"/>
                         <segue destination="xNb-uk-E3f" kind="presentation" identifier="Edit Task" modalPresentationStyle="overCurrentContext" id="wrV-BN-13Y"/>
                     </connections>

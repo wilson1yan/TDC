@@ -307,5 +307,53 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TDC/CalendarViewController.swift"
+            timestampString = "494576112.988938"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "CalendarViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TDC.CalendarViewController.configureCalendar (JTAppleCalendar.JTAppleCalendarView) -&gt; (startDate : __ObjC.NSDate, endDate : __ObjC.NSDate, numberOfRows : Swift.Int, calendar : __ObjC.NSCalendar)"
+                  moduleName = "TDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wilsonyan/Documents/Programming/iOS%20Apps/TDC/TDC/CalendarViewController.swift"
+                  timestampString = "494576113.155857"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for JTAppleCalendar.JTAppleCalendarViewDataSource.configureCalendar (JTAppleCalendar.JTAppleCalendarView) -&gt; (startDate : __ObjC.NSDate, endDate : __ObjC.NSDate, numberOfRows : Swift.Int, calendar : __ObjC.NSCalendar) in conformance TDC.CalendarViewController : JTAppleCalendar.JTAppleCalendarViewDataSource in TDC"
+                  moduleName = "TDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wilsonyan/Documents/Programming/iOS%20Apps/TDC/TDC/CalendarViewController.swift"
+                  timestampString = "494576113.156019"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "11">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
