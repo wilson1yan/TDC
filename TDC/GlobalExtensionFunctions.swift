@@ -38,4 +38,17 @@ extension NSDate {
         }
         return day
     }
+    
+    func isInDateList(dates: [Date], calendar: NSCalendar) -> Bool {
+        for date in dates {
+            if let d = date.date {
+                if calendar.compareDate(d, toDate: self, toUnitGranularity: .Day) == .OrderedSame {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }
+
+

@@ -49,6 +49,12 @@ class AnimationView: UIView {
         }
     }
     
+    var blankPath: UIBezierPath {
+        let path = UIBezierPath(rect: bounds)
+        path.lineWidth = 5
+        return path
+    }
+    
     var checkMarkPath: UIBezierPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.5))
@@ -122,6 +128,11 @@ class AnimationView: UIView {
     func drawNeedToUpdateIcon() {
         UIColor.blueColor().setStroke()
         updatePath.stroke()
+    }
+    
+    func drawBlank() {
+        UIColor.whiteColor().setFill()
+        blankPath.fill()
     }
 
 }
