@@ -13,26 +13,29 @@ class DaysLeftView: UIView {
     private let durationRatio = 1/(M_PI) // pi radians/second
     private var alreadyAddedGradientView = false
     
-    var days: Double? {
+    var days: Double = 0 {
         didSet {
-            numFont = adjustFontSizeToFitRect(rectForNum, text: String(Int(days!)))
-            textFont = adjustFontSizeToFitRect(rectForDaysLeftText, text: days! == 1 ? "Day" : "Days")
+            numFont = adjustFontSizeToFitRect(rectForNum, text: String(Int(days)))
+            textFont = adjustFontSizeToFitRect(rectForDaysLeftText, text: days == 1 ? "Day" : "Days")
             setNeedsDisplay()
         
-            totalRadians = days!/duration*M_PI*2
-            if oldValue != nil {
-                changeInRadians = (days!-oldValue!)/duration*M_PI*2
-            }
+            changeInRadians = (days-oldValue)/duration*M_PI*2
         }
     }
     
-    private var changeInRadians: Double = 0.0
-    private var totalRadians: Double!
+    private var changeInRadians: Double = 0.0 {
+        didSet {
+            createAnimatedCircleMask()
+            totalRadians += changeInRadians
+        }
+    }
+    private var totalRadians: Double = 0.0
     
     var duration: Double! {
         didSet {
-            if oldValue != nil && days != nil{
-                changeInRadians = (days!/duration - days!/oldValue)*M_PI*2
+            if oldValue != nil{
+                changeInRadians = (days/duration - days/oldValue)*M_PI*2
+                totalRadians = days/duration*M_PI*2
             }
         }
     }
@@ -49,12 +52,7 @@ class DaysLeftView: UIView {
     private var rectForDaysLeftText: CGRect { return CGRect(origin: CGPoint(x: largestRectInCircle.origin.x, y: largestRectInCircle.origin.y + largestRectInCircle.height*0.75), size: CGSize(width: largestRectInCircle.width, height: largestRectInCircle.height*0.25)) }
     private var numFont: UIFont?
     private var textFont: UIFont?
-    private var gradentView: UIView!
-    
-    override func layoutSubviews() {
-        createGradient()
-        createAnimatedCircleMask()
-    }
+    private var gradientView: UIView!
     
     override func drawRect(rect: CGRect) {
         UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0).setStroke()
@@ -62,7 +60,7 @@ class DaysLeftView: UIView {
         circle.lineWidth = 5
         circle.stroke()
         
-        if days != nil && duration != nil{
+        if duration != nil{
             let paraStyle = NSMutableParagraphStyle()
             paraStyle.alignment = NSTextAlignment.Center
             let f1 = numFont != nil ? numFont! : UIFont(name: "Arial", size: rectForNum.height*0.9)!
@@ -79,17 +77,10 @@ class DaysLeftView: UIView {
                 NSParagraphStyleAttributeName: paraStyle
             ]
             
-            NSString(string: String(Int(days!))).drawInRect(rectForNum, withAttributes: attributesForNum)
-            NSString(string: days! == 1 ? "Day" : "Days").drawInRect(rectForDaysLeftText, withAttributes: attributesForText)
+            NSString(string: String(Int(days))).drawInRect(rectForNum, withAttributes: attributesForNum)
+            NSString(string: days == 1 ? "Day" : "Days").drawInRect(rectForDaysLeftText, withAttributes: attributesForText)
         }
     }
-    
-//    func animateAddRadians() {
-//        if radiansToAdd != nil {
-//            let totalRadians = (days!/duration!)*M_PI*2
-//            createAnimatedCircleMask(totalRadians, changeInRadians: radiansToAdd!)
-//        }
-//    }
     
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
     private let colors: [CGFloat] = [
@@ -97,13 +88,13 @@ class DaysLeftView: UIView {
         0.0, 1.0, 0.0, 1.0
     ]
 
-    private func createGradient() {
-        gradentView = UIView(frame: bounds)
-        insertSubview(gradentView, atIndex: 0)
+    func createGradient() {
+        gradientView = UIView(frame: bounds)
+        insertSubview(gradientView, atIndex: 0)
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = gradentView.bounds
+        gradientLayer.frame = gradientView.bounds
         gradientLayer.colors = [UIColor.blueColor().CGColor, UIColor.greenColor().CGColor]
-        gradentView.layer.addSublayer(gradientLayer)
+        gradientView.layer.addSublayer(gradientLayer)
     }
     
     func createAnimatedCircleMask() {
@@ -113,10 +104,11 @@ class DaysLeftView: UIView {
         alayer.strokeStart = 0.0
         alayer.strokeEnd = CGFloat(changeInRadians >= 0 ? 1.0 : (totalRadians+changeInRadians)/totalRadians)
         alayer.strokeColor = UIColor.blueColor().CGColor
-        alayer.path = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: CGFloat(-M_PI_2), endAngle: CGFloat(-M_PI_2+totalRadians), clockwise: true).CGPath
+        let endAngle = changeInRadians >= 0 ? -M_PI_2+totalRadians+changeInRadians : -M_PI_2+totalRadians
+        alayer.path = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: CGFloat(-M_PI_2), endAngle: CGFloat(endAngle), clockwise: true).CGPath
         let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
         if changeInRadians >= 0 {
-            animateStrokeEnd.fromValue = CGFloat(1-changeInRadians/totalRadians)
+            animateStrokeEnd.fromValue = CGFloat(totalRadians/(totalRadians+changeInRadians))
             animateStrokeEnd.toValue = 1.0
         } else {
             animateStrokeEnd.fromValue = 1.0
@@ -125,7 +117,7 @@ class DaysLeftView: UIView {
         animateStrokeEnd.duration = abs(changeInRadians)*durationRatio
 
         alayer.addAnimation(animateStrokeEnd, forKey: "strokeEndAnimation")
-        gradentView.layer.mask = alayer
+        gradientView.layer.mask = alayer
 
     }
     

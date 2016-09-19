@@ -38,7 +38,7 @@ class TaskHistoryTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToCalendarHistory" {
-            if let destination = segue.destinationViewController as? CalendarViewController {
+            if let destination = segue.destinationViewController as? AdjustableCalendarViewController {
                 destination.tws = self.taskSelected
                 destination.hidesBottomBarWhenPushed = true
                 destination.isPresentingHistory = true

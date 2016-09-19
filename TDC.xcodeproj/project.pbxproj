@@ -97,6 +97,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C35A87901D7AA48E00ADA84A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				C3C38A041D5F93DA000540CD /* Task+CoreDataProperties.swift */,
+				C3C389C81D5C389D000540CD /* Task.swift */,
+				C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */,
+				C3C389CA1D5C389D000540CD /* Date.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		C35A87911D7AA49E00ADA84A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C37AB2E91D6ABA4600A76458 /* AchievmentsViewController.swift */,
+				C37AB2EB1D6ABEF400A76458 /* TaskInfoViewController.swift */,
+				C3E6FD2E1D5C34D0003EE9AA /* TaskListViewController.swift */,
+				C3C38A0E1D612593000540CD /* CreateNewTaskViewController.swift */,
+				C3C38A061D5F9B6A000540CD /* TaskHistoryTableViewController.swift */,
+				C35A878E1D77FAAB00ADA84A /* AdjustableCalendarViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C35A87921D7AA4B700ADA84A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3C38A0C1D5FD5AC000540CD /* CheckMarkView.swift */,
+				C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */,
+				C3C389D11D5C38FE000540CD /* CalendarDayCellView.swift */,
+				C33B79F31D617F9200452E0B /* AnimationView.swift */,
+				C3C389D31D5C3908000540CD /* AnimationClass.swift */,
+				C37AB2E51D66316300A76458 /* HistoryTaskTableViewCell.swift */,
+				C37AB2E71D66AFAB00A76458 /* DaysLeftView.swift */,
+				C3C38A021D5D2268000540CD /* CalendarDayCellView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C3E6FD201D5C34D0003EE9AA = {
 			isa = PBXGroup;
 			children = (
@@ -118,27 +157,12 @@
 		C3E6FD2B1D5C34D0003EE9AA /* TDC */ = {
 			isa = PBXGroup;
 			children = (
-				C3C38A041D5F93DA000540CD /* Task+CoreDataProperties.swift */,
-				C3E6FD2E1D5C34D0003EE9AA /* TaskListViewController.swift */,
-				C3C38A0E1D612593000540CD /* CreateNewTaskViewController.swift */,
-				C3C38A0C1D5FD5AC000540CD /* CheckMarkView.swift */,
-				C3C38A061D5F9B6A000540CD /* TaskHistoryTableViewController.swift */,
-				C3C389D71D5C39FC000540CD /* TaskTableViewCell.swift */,
-				C3C389C81D5C389D000540CD /* Task.swift */,
-				C35A878E1D77FAAB00ADA84A /* AdjustableCalendarViewController.swift */,
-				C3C389D11D5C38FE000540CD /* CalendarDayCellView.swift */,
-				C33B79F31D617F9200452E0B /* AnimationView.swift */,
-				C3C389D31D5C3908000540CD /* AnimationClass.swift */,
-				C3C389C91D5C389D000540CD /* Date+CoreDataProperties.swift */,
-				C3C389CA1D5C389D000540CD /* Date.swift */,
+				C35A87901D7AA48E00ADA84A /* Core Data */,
+				C35A87911D7AA49E00ADA84A /* View Controllers */,
+				C35A87921D7AA4B700ADA84A /* Views */,
 				C3E6FD411D5C34E1003EE9AA /* Supporting Files */,
 				C3E6FD301D5C34D0003EE9AA /* Main.storyboard */,
-				C37AB2E91D6ABA4600A76458 /* AchievmentsViewController.swift */,
-				C37AB2EB1D6ABEF400A76458 /* TaskInfoViewController.swift */,
-				C37AB2E51D66316300A76458 /* HistoryTaskTableViewCell.swift */,
 				C37AB2ED1D6C0B6000A76458 /* GlobalExtensionFunctions.swift */,
-				C37AB2E71D66AFAB00A76458 /* DaysLeftView.swift */,
-				C3C38A021D5D2268000540CD /* CalendarDayCellView.xib */,
 				C3E6FD331D5C34D0003EE9AA /* TDC.xcdatamodeld */,
 			);
 			path = TDC;

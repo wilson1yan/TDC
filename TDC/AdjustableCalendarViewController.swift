@@ -27,7 +27,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     // API
     var tws: TaskWithStreak!
     var dates: [Date]!
-    var streak: Int?
+    var streak: Int!
     var isPresentingHistory: Bool = false
     
     var fs: CGFloat = 5
@@ -74,10 +74,11 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
         daysLeftView.duration = Double(tws.task.duration!)
         
         updateButton.enabled = !isPresentingHistory
+        daysLeftView.createGradient()
         if !isPresentingHistory {
-            updateButton.tintColor = UIColor.clearColor()
             configueViewsIfMissedDates()
         } else {
+            updateButton.tintColor = UIColor.clearColor()
             daysLeftView.days = Double(tws.streak)
         }
     }
@@ -125,8 +126,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     // MARK - Custom API
     private func configueViewsIfMissedDates() {
         let missedDates = getMissedDates()
-        print(missedDates)
-        if missedDates > 0 {
+        if missedDates > 0 && !NSDate().isInDateList(dates, calendar: cal){
             let consecDays = getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar:cal))
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
             if missedDates == 1 && consecDays >= 5{
@@ -135,7 +135,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
                     //update stuff
                     })
                 let startOver = UIAlertAction(title: "Start Over", style: .Default, handler: { [unowned self] (alertAction) in
-                    self.daysLeftView.days = Double(self.streak!)
+                    self.daysLeftView.days = Double(self.streak)
                     })
                 
                 alertController.addAction(fix)
@@ -144,7 +144,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
                 daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2,calendar:cal)))
             } else {
                 alertController.title = "You've missed \(missedDates) " + (missedDates == 1 ? "day":"days") + " . Try again!"
-                daysLeftView.days = Double(streak!)
+                daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar: cal)))
             }
             
             presentViewController(alertController, animated: true, completion: { [unowned self] in
@@ -152,7 +152,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
                 alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose)))
                 })
         } else {
-            daysLeftView.days = Double(streak!)
+            daysLeftView.days = Double(streak)
         }
 
     }
@@ -160,6 +160,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     @objc
     private func alertClose(recongizer: UIGestureRecognizer) {
         dismissViewControllerAnimated(true, completion: nil)
+        daysLeftView.days = Double(streak)
     }
     
     private func checkIfTaskCompleted() -> Bool {
@@ -225,18 +226,18 @@ extension AdjustableCalendarViewController: JTAppleCalendarViewDataSource, JTApp
         if !date.isInDateList(dates!, calendar: cal) {
             (cell as! CalendarDayCellView).selectedDate()
             addAndSaveDate(date)
-            streak = streak! + 1
-            daysLeftView.days = Double(streak!)
-            daysLeftView.createAnimatedCircleMask()
+            streak  = streak + 1
+            daysLeftView.days = Double(streak)
+            //daysLeftView.createAnimatedCircleMask()
             
-            if streak! == tws.task.duration! {
+            if streak == tws.task.duration! {
                 let alertController = UIAlertController(title: "Congratulations! You've done your task for " + String(tws.task.duration!) + " consecutive days!", message: nil, preferredStyle: .Alert)
                 let extend = UIAlertAction(title: "Extend " + String(tws.task.duration!) + " days", style: .Default, handler: { [unowned self] (alertAction) in
                     Task.extendTaskDuration(self.tws.task.primaryId as! Int, withDuration: self.tws.task.duration as! Int, inMananagedObjectContext: self.managedContext)
                     self.tws.task = Task.getTaskWithId(self.tws.task.primaryId as! Int, inManagedObjectContext: self.managedContext)!
                     self.daysLeftView.duration = Double(self.tws.task.duration!)
                     
-                    self.daysLeftView.createAnimatedCircleMask()
+                    //self.daysLeftView.createAnimatedCircleMask()
                     })
                 let endTask = UIAlertAction(title: "End Task", style: .Default, handler: { [unowned self] (alertAction) in
                     let state = TaskStates.Complete
