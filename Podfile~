@@ -6,5 +6,5 @@ target 'TDC' do
   use_frameworks!
 
   # Pods for TDC
-  pod 'JTAppleCalendar', :git=> 'https://github.com/patchthecode/JTAppleCalendar.git', :branch => 'Swift3'
+  pod 'JTAppleCalendar', :git=> 'https://github.com/patchthecode/JTAppleCalendar.git'
 end

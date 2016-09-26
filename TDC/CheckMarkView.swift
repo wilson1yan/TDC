@@ -16,14 +16,14 @@ class CheckMarkView: UIView {
     }
     let scale: CGFloat = 0.50
     
-    private var sideLength: CGFloat {
+    fileprivate var sideLength: CGFloat {
         return min(bounds.size.width, bounds.size.height) * scale
     }
-    private var origin: CGPoint{
+    fileprivate var origin: CGPoint{
         return CGPoint(x: bounds.size.width/2 - sideLength/2, y: bounds.size.height/2 - sideLength/2)
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if checked {
             drawCheck()
         } else {
@@ -31,26 +31,26 @@ class CheckMarkView: UIView {
         }
     }
     
-    private func drawHiddenCheck() {
-        UIColor.lightGrayColor().setStroke()
+    fileprivate func drawHiddenCheck() {
+        UIColor.lightGray.setStroke()
         let border = UIBezierPath(rect: CGRect(origin: origin, size: CGSize(width: sideLength, height: sideLength)))
         border.lineWidth = 1.0
         border.stroke()
     }
     
-    private func drawCheck() {
-        UIColor.blackColor().setStroke()
+    fileprivate func drawCheck() {
+        UIColor.black.setStroke()
         let border = UIBezierPath(rect: CGRect(origin: origin, size: CGSize(width: sideLength, height: sideLength)))
         border.lineWidth = 1.0
         border.stroke()
         
         let check = UIBezierPath()
-        check.moveToPoint(CGPoint(x: 0.1*sideLength+origin.x, y: 0.5*sideLength+origin.y))
-        check.addLineToPoint(CGPoint(x: 0.4*sideLength+origin.x, y: 0.7*sideLength+origin.y))
-        check.addLineToPoint(CGPoint(x: 1.2*sideLength+origin.x, y: -0.2*sideLength+origin.y))
+        check.move(to: CGPoint(x: 0.1*sideLength+origin.x, y: 0.5*sideLength+origin.y))
+        check.addLine(to: CGPoint(x: 0.4*sideLength+origin.x, y: 0.7*sideLength+origin.y))
+        check.addLine(to: CGPoint(x: 1.2*sideLength+origin.x, y: -0.2*sideLength+origin.y))
         check.lineWidth = 5
         
-        UIColor.greenColor().setStroke()
+        UIColor.green.setStroke()
         check.stroke()
 
     }

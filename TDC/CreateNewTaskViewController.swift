@@ -24,27 +24,27 @@ class CreateNewTaskViewController: UIViewController {
         
         formView.layer.cornerRadius = 10
         formView.layer.borderWidth = 1
-        formView.layer.borderColor = UIColor.blueColor().CGColor
+        formView.layer.borderColor = UIColor.blue.cgColor
         
         formView.layer.shadowOffset = CGSize(width: 5, height: -5)
         formView.layer.shadowRadius = 2
         formView.layer.shadowOpacity = 0.1
         
-        let visuaEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        let visuaEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         visuaEffectView.frame = self.view.bounds
-        self.view.insertSubview(visuaEffectView, atIndex: 0)
+        self.view.insertSubview(visuaEffectView, at: 0)
         
-        taskNameTextField.autocapitalizationType = .Sentences
+        taskNameTextField.autocapitalizationType = .sentences
         
         if let task = currentTask{
             taskNameTextField.text = task.name
-            durationTextField.text = String(task.duration!)
+            durationTextField.text = String(describing: task.duration!)
         }
     }
     
     @IBAction func save() {
         if let tlvc = recentViewController as? TaskListViewController{
-            if let duration = Int(durationTextField.text!), let taskName = taskNameTextField.text where duration >= 0{
+            if let duration = Int(durationTextField.text!), let taskName = taskNameTextField.text , duration >= 0{
                 if currentTask != nil {
 //                    Task.updateEditedTask(currentTask!.primaryId! as Int, withName: taskName, inManagedObjectContext: tlvc.managedContext)
                     Task.updateTask(currentTask!.primaryId as! Int, withInfo: [TaskAttributes.Name:taskName], inManagedObjectContext: tlvc.managedContext)
@@ -53,17 +53,17 @@ class CreateNewTaskViewController: UIViewController {
                     let task = Task.saveTask(taskName, duration: duration, inManagedObjectContext: tlvc.managedContext)
                     tlvc.updateListWhenNewTask(task)
                 }
-                dismissViewControllerAnimated(true, completion: nil)
+                dismiss(animated: true, completion: nil)
             } else {
                 errorText.text = "Invalid duration. Must be a whole number"
             }
         } else {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func cancel() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }
