@@ -17,8 +17,8 @@ class TaskInfoViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    func onTapView(recognizer: UIGestureRecognizer) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func onTapView(_ recognizer: UIGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

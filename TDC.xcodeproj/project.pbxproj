@@ -216,6 +216,7 @@
 					C3E6FD281D5C34D0003EE9AA = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = R65TFV997M;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -447,6 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.berkeley.wilson.TDC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -463,6 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.berkeley.wilson.TDC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

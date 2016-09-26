@@ -8,6 +8,17 @@
 
 import UIKit
 import CoreData
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 struct TaskStates {
     static let Current = 0
@@ -48,12 +59,12 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     var alertIcon = UIImage(named: "Alert Icon")
     
     var managedContext:NSManagedObjectContext!
-    @IBAction func addNewTask(sender: AnyObject) {
-        performSegueWithIdentifier("Create New Task", sender: self)
+    @IBAction func addNewTask(_ sender: AnyObject) {
+        performSegue(withIdentifier: "Create New Task", sender: self)
     }
     
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     struct SortByMethods {
         static let Alphabetical = "A-Z"
@@ -63,21 +74,21 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func sortByTapped() {
-        let alertController = UIAlertController(title: "Sort By", message: nil, preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Sort By", message: nil, preferredStyle: .actionSheet)
         
-        let alphabetical = UIAlertAction(title: "A-Z", style: .Default) { [unowned self] (action: UIAlertAction) in
+        let alphabetical = UIAlertAction(title: "A-Z", style: .default) { [unowned self] (action: UIAlertAction) in
             self.defaults.setValue(SortByMethods.Alphabetical, forKey: DefaultsKeys.SortMethodKey)
-            self.taskList.sortInPlace {$0.task.name!.localizedCompare($1.task.name!) == NSComparisonResult.OrderedAscending}
+            self.taskList.sort {$0.task.name!.localizedCompare($1.task.name!) == ComparisonResult.orderedAscending}
         }
-        let time = UIAlertAction(title: "Time", style: .Default) { [unowned self] (action: UIAlertAction) in
+        let time = UIAlertAction(title: "Time", style: .default) { [unowned self] (action: UIAlertAction) in
             self.defaults.setValue(SortByMethods.Time, forKey: DefaultsKeys.SortMethodKey)
-            self.taskList.sortInPlace {$0.task.startDate! < $1.task.startDate!}
+            self.taskList.sort {$0.task.startDate! < $1.task.startDate!}
         }
-        let streak = UIAlertAction(title: "Streak Length", style: .Default) { [unowned self] (action: UIAlertAction) in
+        let streak = UIAlertAction(title: "Streak Length", style: .default) { [unowned self] (action: UIAlertAction) in
             self.defaults.setValue(SortByMethods.Streak, forKey: DefaultsKeys.SortMethodKey)
-            self.taskList.sortInPlace {$0.streak > $1.streak}
+            self.taskList.sort {$0.streak > $1.streak}
         }
-        let needToUpdate = UIAlertAction(title: "Need To Update", style: .Default) { [unowned self] (action: UIAlertAction) in
+        let needToUpdate = UIAlertAction(title: "Need To Update", style: .default) { [unowned self] (action: UIAlertAction) in
             self.defaults.setValue(SortByMethods.ToUpdate, forKey: DefaultsKeys.SortMethodKey)
             var toUpdate = [TaskWithStreak]()
             var updated = [TaskWithStreak]()
@@ -92,7 +103,7 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.taskList = toUpdate + updated
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler:  nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler:  nil)
         
         alertController.addAction(alphabetical)
         alertController.addAction(time)
@@ -100,11 +111,11 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         alertController.addAction(needToUpdate)
         alertController.addAction(cancel)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func reloadDataAsync() {
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+        DispatchQueue.main.async { [unowned self] in
             self.tableView.reloadData()
         }
     }
@@ -112,37 +123,37 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         
         managedContext = appDelegate.managedObjectContext
         
         self.navigationItem.titleView = UILabel.getFittedLabelWithTitle("Current Tasks")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red:0.00, green:0.60, blue:1.00, alpha:1.0)
-            navigationBar.tintColor = UIColor.whiteColor()
+            navigationBar.tintColor = UIColor.white
         }
         
         taskList = loadCurrentTasks()
         sortByCurrentMethod()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToCalendar" {
-            if let destination = segue.destinationViewController as? AdjustableCalendarViewController {
+            if let destination = segue.destination as? AdjustableCalendarViewController {
                 destination.tws = taskSelected
                 destination.hidesBottomBarWhenPushed = true
                 destination.isPresentingHistory = false
                 
-                self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+                self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             }
         } else if segue.identifier == "Create New Task" {
-            if let destination = segue.destinationViewController as? CreateNewTaskViewController {
+            if let destination = segue.destination as? CreateNewTaskViewController {
                 destination.recentViewController = self
             }
         }
@@ -156,48 +167,48 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskList.count
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as! TaskTableViewCell
-        cell.taskTitle.text = taskList[indexPath.row].task.name!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
+        cell.taskTitle.text = taskList[(indexPath as NSIndexPath).row].task.name!
         cell.taskTitle.numberOfLines = 0
         cell.taskTitle.font = UIFont(name: "Arial", size: 25)
-        cell.alertIcon.checked = taskBeenUpdatedToday(taskList[indexPath.row].task)
+        cell.alertIcon.checked = taskBeenUpdatedToday(taskList[(indexPath as NSIndexPath).row].task)
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        taskSelected = taskList[indexPath.row]
-        performSegueWithIdentifier("ToCalendar", sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        taskSelected = taskList[(indexPath as NSIndexPath).row]
+        performSegue(withIdentifier: "ToCalendar", sender: self)
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        let editAction = UITableViewRowAction(style: .Normal, title: "Edit") { [unowned self] (rowAction, indexPath) in
 //            self.taskToEdit = self.taskList[indexPath.row].task
 //            self.performSegueWithIdentifier("Edit Task", sender: self)
 //        }
 //        editAction.backgroundColor = UIColor.blueColor()
-        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete") { [unowned self] (rowAction, indexPath) in
-            let toDelete = self.taskList[indexPath.row].task
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { [unowned self] (rowAction, indexPath) in
+            let toDelete = self.taskList[(indexPath as NSIndexPath).row].task
             Task.deleteTask(toDelete, inManagedObjectContext: self.managedContext)
             
-            self.taskList.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.taskList.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
 
         }
-        deleteAction.backgroundColor = UIColor.redColor()
+        deleteAction.backgroundColor = UIColor.red
         return [deleteAction]
     }
     
@@ -214,11 +225,11 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func sortByCurrentMethod() {
-        if let method = defaults.valueForKey(DefaultsKeys.SortMethodKey) as? String {
+        if let method = defaults.value(forKey: DefaultsKeys.SortMethodKey) as? String {
             switch method {
-            case SortByMethods.Alphabetical: taskList.sortInPlace {$0.task.name! < $1.task.name!}
-            case SortByMethods.Time: taskList.sortInPlace {$0.task.startDate! < $1.task.startDate!}
-            case SortByMethods.Streak: taskList.sortInPlace {$0.streak > $1.streak}
+            case SortByMethods.Alphabetical: taskList.sort {$0.task.name! < $1.task.name!}
+            case SortByMethods.Time: taskList.sort {$0.task.startDate! < $1.task.startDate!}
+            case SortByMethods.Streak: taskList.sort {$0.streak > $1.streak}
             case SortByMethods.ToUpdate:
                 var toUpdate = [TaskWithStreak]()
                 var updated = [TaskWithStreak]()
@@ -239,8 +250,8 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-    func updateListWhenNewTask(task: Task?) {
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+    func updateListWhenNewTask(_ task: Task?) {
+        DispatchQueue.main.async { [unowned self] in
             if task != nil {
                 self.taskList.append(TaskWithStreak(task: task!,streak: 0))
                 self.sortByCurrentMethod()
@@ -248,15 +259,15 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    let calendar = NSCalendar.currentCalendar()
+    let calendar = Calendar.current
     
-    func taskBeenUpdatedToday(task: Task) -> Bool {
-        let today = NSDate()
+    func taskBeenUpdatedToday(_ task: Task) -> Bool {
+        let today = Foundation.Date()
         let datesUpdated = Date.getDatesWithId(task.primaryId as! Int, inManagedObjectContext: managedContext)
         
         for storedDate in datesUpdated {
             if let date = storedDate.date {
-                if calendar.compareDate(date, toDate: today, toUnitGranularity: .Day) == .OrderedSame {
+                if (calendar as NSCalendar).compare(date, to: today, toUnitGranularity: .day) == .orderedSame {
                     return true
                 }
             }
@@ -264,18 +275,18 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         return false
     }
     
-    func getStreak(task: Task) -> Int {
+    func getStreak(_ task: Task) -> Int {
         var taskDates = Date.getDatesWithId(task.primaryId as! Int, inManagedObjectContext: managedContext)
-        taskDates.sortInPlace {$0.date! > $1.date!}
-        var currentDate: NSDate?
+        taskDates.sort {$0.date! > $1.date!}
+        var currentDate: Foundation.Date?
         
-        let dayComponents = NSDateComponents()
+        var dayComponents = DateComponents()
         dayComponents.day = -1
-        let dayBeforeToday = calendar.dateByAddingComponents(dayComponents, toDate: NSDate(), options: [])
+        let dayBeforeToday = (calendar as NSCalendar).date(byAdding: dayComponents, to: Foundation.Date(), options: [])
         
-        if taskDates.count > 0 && calendar.compareDate(taskDates[0].date!, toDate: NSDate(), toUnitGranularity: .Day) == .OrderedSame {
-            currentDate = NSDate()
-        } else if taskDates.count > 0 && calendar.compareDate(taskDates[0].date!, toDate: dayBeforeToday!, toUnitGranularity: .Day) == .OrderedSame {
+        if taskDates.count > 0 && (calendar as NSCalendar).compare(taskDates[0].date!, to: Foundation.Date(), toUnitGranularity: .day) == .orderedSame {
+            currentDate = Foundation.Date()
+        } else if taskDates.count > 0 && (calendar as NSCalendar).compare(taskDates[0].date!, to: dayBeforeToday!, toUnitGranularity: .day) == .orderedSame {
             currentDate = dayBeforeToday
         } else {
             return 0
@@ -283,9 +294,9 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         
         var streak = 0
         for date in taskDates {
-            if calendar.compareDate(date.date!, toDate: currentDate!, toUnitGranularity: .Day) == .OrderedSame {
+            if (calendar as NSCalendar).compare(date.date!, to: currentDate!, toUnitGranularity: .day) == .orderedSame {
                 streak += 1
-                currentDate = calendar.dateByAddingComponents(dayComponents, toDate: currentDate!, options: [])
+                currentDate = (calendar as NSCalendar).date(byAdding: dayComponents, to: currentDate!, options: [])
             } else {
                 break
             }
