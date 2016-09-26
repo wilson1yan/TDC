@@ -87,7 +87,7 @@ class TaskHistoryTableViewController: UITableViewController {
             var failed = [TaskWithStreak]()
             
             self.taskList.forEach({ (tws) in
-                if tws.task.state! == TaskStates.Complete {
+                if tws.task.state as! Int == TaskStates.Complete {
                     completed.append(tws)
                 } else {
                     failed.append(tws)
@@ -124,7 +124,7 @@ class TaskHistoryTableViewController: UITableViewController {
         if let historyCell = cell as? HistoryTaskTableViewCell {
             let task = taskList[(indexPath as NSIndexPath).row].task
             historyCell.taskLabel.text = taskList[(indexPath as NSIndexPath).row].task.name!
-            historyCell.isComplete = task.state == TaskStates.Complete
+            historyCell.isComplete = task.state as! Int == TaskStates.Complete
             return historyCell
         }
         

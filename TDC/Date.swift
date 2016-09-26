@@ -14,7 +14,7 @@ class Date: NSManagedObject {
     
     class func getDatesWithId(_ taskId: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Date] {
         if let task = Task.getTaskWithId(taskId, inManagedObjectContext: context) {
-            let request = NSFetchRequest(entityName: "Date")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Date")
             request.predicate = NSPredicate(format: "task = %@", task)
             if let dates = (try? context.fetch(request)) as? [Date] {
                 return dates

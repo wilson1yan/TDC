@@ -1,7 +1,7 @@
 import UIKit
 class AnimationClass {
     
-    class func BounceEffect() -> (UIView, (Bool) -> Void) -> () {
+    class func BounceEffect() -> (UIView, @escaping (Bool) -> Void) -> () {
         return {
             view, completion in
             view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
@@ -12,7 +12,7 @@ class AnimationClass {
         }
     }
     
-    class func FadeOutEffect() -> (UIView, (Bool) -> Void) -> () {
+    class func FadeOutEffect() -> (UIView, @escaping (Bool) -> Void) -> () {
         return {
             view, completion in
             

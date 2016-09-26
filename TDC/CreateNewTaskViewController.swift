@@ -47,7 +47,7 @@ class CreateNewTaskViewController: UIViewController {
             if let duration = Int(durationTextField.text!), let taskName = taskNameTextField.text , duration >= 0{
                 if currentTask != nil {
 //                    Task.updateEditedTask(currentTask!.primaryId! as Int, withName: taskName, inManagedObjectContext: tlvc.managedContext)
-                    Task.updateTask(currentTask!.primaryId as! Int, withInfo: [TaskAttributes.Name:taskName], inManagedObjectContext: tlvc.managedContext)
+                    Task.updateTask(currentTask!.primaryId as! Int, withInfo: [TaskAttributes.Name:taskName as AnyObject], inManagedObjectContext: tlvc.managedContext)
                     tlvc.loadCurrentTasks()
                 } else {
                     let task = Task.saveTask(taskName, duration: duration, inManagedObjectContext: tlvc.managedContext)

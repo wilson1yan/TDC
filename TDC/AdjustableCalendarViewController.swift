@@ -86,7 +86,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
                 let textField = editController.textFields![0] as UITextField
                 let newTaskName = textField.text != nil ? textField.text! : ""
 //                Task.updateEditedTask(self.tws.task.primaryId as! Int, withName: newTaskName, inManagedObjectContext: self.managedContext)
-                Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.Name:newTaskName], inManagedObjectContext: self.managedContext)
+                Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.Name:newTaskName as AnyObject], inManagedObjectContext: self.managedContext)
                 self.navigationItem.titleView = UILabel.getFittedLabelWithTitle(newTaskName)
             })
             
@@ -117,7 +117,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     
     // MARK - Custom API
     fileprivate func configueViewsIfMissedDates() {
-        if tws.task.didAlreadyDisplayMissingToday! == DidDisplayMissingTodayStates.NO {
+        if tws.task.didAlreadyDisplayMissingToday as! Int == DidDisplayMissingTodayStates.NO {
             let missedDates = getMissedDates()
             if missedDates > 0 && !Foundation.Date().isInDateList(dates, calendar: cal){
                 var canDismissWithTap = true
@@ -168,7 +168,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     }
     
     fileprivate func checkIfTaskCompleted() -> Bool {
-        return tws.task.duration! != 0 && streak == tws.task.duration!
+        return tws.task.duration! != 0 && streak == tws.task.duration as! Int
     }
     
     fileprivate func addAndSaveDate(_ dateToSave: Foundation.Date) {
@@ -212,7 +212,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     }
     
     fileprivate func setupViewsOfCalendar(_ startDate: Foundation.Date) {
-        let month = (cal as NSCalendar).component(NSCalendar.Unit.month, from: calendarView.currentCalendarDateSegment().startDate)
+        let month = (cal as NSCalendar).component(NSCalendar.Unit.month, from: calendarView.currentCalendarDateSegment().dateRange.start)
         let monthName = DateFormatter().monthSymbols[(month-1) % 12]
         monthLabel.text = monthName
         
@@ -228,14 +228,14 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
             let extend = UIAlertAction(title: "Extend " + String(describing: tws.task.duration!) + " days", style: .default, handler: { [unowned self] (alertAction) in
 //                Task.extendTaskDuration(self.tws.task.primaryId as! Int, withDuration: self.tws.task.duration as! Int, inMananagedObjectContext: self.managedContext)
                 let extendedDuration = self.tws.task.duration as! Int * 2
-                Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.Duration:extendedDuration], inManagedObjectContext: self.managedContext)
+                Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.Duration:extendedDuration as AnyObject], inManagedObjectContext: self.managedContext)
                 self.tws.task = Task.getTaskWithId(self.tws.task.primaryId as! Int, inManagedObjectContext: self.managedContext)!
                 self.daysLeftView.duration = Double(self.tws.task.duration!)
             })
             let endTask = UIAlertAction(title: "End Task", style: .default, handler: { [unowned self] (alertAction) in
                 let state = TaskStates.Complete
 //                Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
-                Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.State:state], inManagedObjectContext: self.managedContext)
+                Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.State:state as AnyObject], inManagedObjectContext: self.managedContext)
                 if self.navigationController != nil {
                     self.navigationController!.popViewController(animated: true)
                 }

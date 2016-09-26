@@ -27,7 +27,7 @@ class Task: NSManagedObject {
     class func saveTask(_ taskName: String, duration: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
         let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as! Task
         task.name = taskName
-        task.primaryId = maxPrimaryKey(managedObjectContext: context) + 1
+        task.primaryId = (maxPrimaryKey(managedObjectContext: context) + 1) as NSNumber
         task.startDate = Foundation.Date()
         task.state = 0
         task.duration = duration as NSNumber?
@@ -95,7 +95,7 @@ class Task: NSManagedObject {
     }
     
     class func getAllTasksWithState(_ state: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Task]{
-        let request = NSFetchRequest(entityName: "Task")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         request.predicate = NSPredicate(format: "state = %d", state)
         if let tasks = (try? context.fetch(request)) as? [Task] {
             return tasks
@@ -105,13 +105,13 @@ class Task: NSManagedObject {
     }
     
     class func getTaskWithId(_ primaryId: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
-        let request = NSFetchRequest(entityName: "Task")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         request.predicate = NSPredicate(format: "primaryId = %d", primaryId)
         return (try? context.fetch(request))?.first as? Task
     }
     
     class func maxPrimaryKey(managedObjectContext context: NSManagedObjectContext) -> Int {
-        let request = NSFetchRequest(entityName: "Task")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         request.fetchLimit = 1
         request.sortDescriptors = [NSSortDescriptor(key: "primaryId", ascending: false)]
         if let task = (try? context.fetch(request))?.first as? Task {

@@ -53,7 +53,7 @@ extension Foundation.Date {
     func isInDateList(_ dates: [Date], calendar: Calendar) -> Bool {
         for date in dates {
             if let d = date.date {
-                if (calendar as NSCalendar).compare(d as Date, to: self, toUnitGranularity: .day) == .orderedSame {
+                if (calendar as NSCalendar).compare(d, to: self, toUnitGranularity: .day) == .orderedSame {
                     return true
                 }
             }
