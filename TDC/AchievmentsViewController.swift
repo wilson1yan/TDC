@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievmentsViewController: UIViewController {
+class AchievmentsViewController: UITableViewController {
 
     
 }
