@@ -9,43 +9,43 @@
 import UIKit
 
 class AnimationView: UIView {
-    var state = CellType.open {
+    var state = CellType.Open {
         didSet {
             setNeedsDisplay()
         }
     }
     enum CellType {
-        case open
-        case marked
-        case skipped
-        case today
+        case Open
+        case Marked
+        case Skipped
+        case Today
     }
     
     var outlineRect: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: bounds.size.width, y: 0))
-        path.addLine(to: CGPoint(x: bounds.size.width, y: bounds.size.height))
-        path.addLine(to: CGPoint(x: 0, y: bounds.size.height))
-        path.close()
+        path.moveToPoint(CGPoint(x: 0, y: 0))
+        path.addLineToPoint(CGPoint(x: bounds.size.width, y: 0))
+        path.addLineToPoint(CGPoint(x: bounds.size.width, y: bounds.size.height))
+        path.addLineToPoint(CGPoint(x: 0, y: bounds.size.height))
+        path.closePath()
         
         path.lineWidth = 1
         
         return path
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
         
 //        UIColor.lightGrayColor().setStroke()
 //        UIColor.clearColor().setFill()
 //        outlineRect.stroke()
         
         switch state {
-        case .marked: drawCheckMark()
-        case .skipped: drawX()
-        case .today: drawNeedToUpdateIcon()
-        case .open: break
+        case .Marked: drawCheckMark()
+        case .Skipped: drawX()
+        case .Today: drawNeedToUpdateIcon()
+        case .Open: break
         }
     }
     
@@ -57,9 +57,9 @@ class AnimationView: UIView {
     
     var checkMarkPath: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.5))
-        path.addLine(to: CGPoint(x: bounds.size.width*0.4, y: bounds.size.height*0.8))
-        path.addLine(to: CGPoint(x: bounds.size.width*0.9, y: bounds.size.height*0.1))
+        path.moveToPoint(CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.5))
+        path.addLineToPoint(CGPoint(x: bounds.size.width*0.4, y: bounds.size.height*0.8))
+        path.addLineToPoint(CGPoint(x: bounds.size.width*0.9, y: bounds.size.height*0.1))
         
         path.lineWidth = 5
         return path
@@ -67,11 +67,11 @@ class AnimationView: UIView {
     
     var xPath: UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.1))
-        path.addLine(to: CGPoint(x: bounds.size.width*0.9, y: bounds.size.height*0.9))
+        path.moveToPoint(CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.1))
+        path.addLineToPoint(CGPoint(x: bounds.size.width*0.9, y: bounds.size.height*0.9))
         
-        path.move(to: CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.9))
-        path.addLine(to: CGPoint(x: bounds.size.width*0.9, y: bounds.size.height*0.1))
+        path.moveToPoint(CGPoint(x: bounds.size.width*0.1, y: bounds.size.height*0.9))
+        path.addLineToPoint(CGPoint(x: bounds.size.width*0.9, y: bounds.size.height*0.1))
         
         path.lineWidth = 5
         return path
@@ -84,24 +84,24 @@ class AnimationView: UIView {
     }
     
     func animateSelected() {
-        state = .open
-        animateBezierPath(checkMarkPath, withColor: UIColor.green.cgColor, withDuration: 0.3)
+        state = .Open
+        animateBezierPath(checkMarkPath, withColor: UIColor.greenColor().CGColor, withDuration: 0.3)
         animateBounceEffect()
     }
     
-    fileprivate func animateBounceEffect() {
+    private func animateBounceEffect() {
         let bounceAnimation = AnimationClass.BounceEffect()
         bounceAnimation(self) { [unowned self] (completed) in
-            self.state = .marked
+            self.state = .Marked
         }
     }
     
-    fileprivate func animateBezierPath(_ bezierPath: UIBezierPath, withColor color: CGColor, withDuration duration: CFTimeInterval) {
+    private func animateBezierPath(bezierPath: UIBezierPath, withColor color: CGColor, withDuration duration: CFTimeInterval) {
         let bezierLayer = CAShapeLayer()
-        bezierLayer.backgroundColor = UIColor.white.cgColor
+        bezierLayer.backgroundColor = UIColor.whiteColor().CGColor
         bezierLayer.fillColor = nil
         
-        bezierLayer.path = bezierPath.cgPath
+        bezierLayer.path = bezierPath.CGPath
         bezierLayer.lineWidth = 5.0
         bezierLayer.strokeColor = color
         bezierLayer.strokeStart = 0.0
@@ -110,28 +110,28 @@ class AnimationView: UIView {
         self.layer.addSublayer(bezierLayer)
         let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
         animateStrokeEnd.duration = duration
-        animateStrokeEnd.fromValue = NSNumber(value: 0.0 as Float)
-        animateStrokeEnd.toValue = NSNumber(value: 1.0 as Float)
-        bezierLayer.add(animateStrokeEnd, forKey: "strokeEndAnimation")
+        animateStrokeEnd.fromValue = NSNumber(float: 0.0)
+        animateStrokeEnd.toValue = NSNumber(float: 1.0)
+        bezierLayer.addAnimation(animateStrokeEnd, forKey: "strokeEndAnimation")
     }
     
     func drawCheckMark() {
-        UIColor.green.setStroke()
+        UIColor.greenColor().setStroke()
         checkMarkPath.stroke()
     }
     
     func drawX() {
-        UIColor.red.setStroke()
+        UIColor.redColor().setStroke()
         xPath.stroke()
     }
     
     func drawNeedToUpdateIcon() {
-        UIColor.blue.setStroke()
+        UIColor.blueColor().setStroke()
         updatePath.stroke()
     }
     
     func drawBlank() {
-        UIColor.white.setFill()
+        UIColor.whiteColor().setFill()
         blankPath.fill()
     }
 

@@ -34,7 +34,7 @@ public struct CellState {
     /// Describes which month owns the date
     public enum DateOwner: Int {
         /// Describes which month owns the date
-        case thisMonth = 0, previousMonthWithinBoundary, previousMonthOutsideBoundary, followingMonthWithinBoundary, followingMonthOutsideBoundary
+        case ThisMonth = 0, PreviousMonthWithinBoundary, PreviousMonthOutsideBoundary, FollowingMonthWithinBoundary, FollowingMonthOutsideBoundary
     }
     /// returns true if a cell is selected
     public let isSelected: Bool
@@ -43,7 +43,7 @@ public struct CellState {
     /// returns the a description of which month owns the date
     public let dateBelongsTo: DateOwner
     /// returns the date
-    public let date: Date
+    public let date: NSDate
     /// returns the day
     public let day: DaysOfWeek
     /// returns the row in which the date cell appears visually
@@ -51,7 +51,7 @@ public struct CellState {
     /// returns the column in which the date cell appears visually
     public let column: ()->Int
     /// returns the section the date cell belongs to
-    public let dateSection: ()->(startDate: Date, endDate: Date)
+    public let dateSection: ()->(startDate: NSDate, endDate: NSDate)
     /// returns the position of a selection in the event you wish to do range selection
     public let selectedPosition: ()->SelectionRangePosition
     /// returns the cell frame. Useful if you wish to display something at the cell's frame/position
@@ -61,28 +61,28 @@ public struct CellState {
 /// Selection position of a range-selected date cell
 public enum SelectionRangePosition: Int {
     /// Selection position
-    case left = 1, middle, right, full, none
+    case Left = 1, Middle, Right, Full, None
 }
 
 /// Days of the week. By setting you calandar's first day of week, you can change which day is the first for the week. Sunday is by default.
 public enum DaysOfWeek: Int {
     /// Days of the week.
-    case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+    case Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 }
 
 /// An instance of JTAppleCalendarView (or simply, a calendar view) is a means for displaying and interacting with a gridstyle layout of date-cells
-open class JTAppleCalendarView: UIView {
+public class JTAppleCalendarView: UIView {
     /// The amount of buffer space before the first row of date-cells
-    open var bufferTop: CGFloat    = 0.0
+    public var bufferTop: CGFloat    = 0.0
     /// The amount of buffer space after the last row of date-cells
-    open var bufferBottom: CGFloat = 0.0
+    public var bufferBottom: CGFloat = 0.0
     /// Configures the size of your date cells
-    open var itemSize: CGFloat?
+    public var itemSize: CGFloat?
     
     /// Enables and disables animations when scrolling to and from date-cells
-    open var animationsEnabled = true
+    public var animationsEnabled = true
     /// The scroll direction of the sections in JTAppleCalendar.
-    open var direction : UICollectionViewScrollDirection = .horizontal {
+    public var direction : UICollectionViewScrollDirection = .Horizontal {
         didSet {
             if oldValue == direction { return }
             let layout = generateNewLayout()
@@ -90,13 +90,13 @@ open class JTAppleCalendarView: UIView {
         }
     }
     /// Enables/Disables multiple selection on JTAppleCalendar
-    open var allowsMultipleSelection: Bool = false {
+    public var allowsMultipleSelection: Bool = false {
         didSet {
             self.calendarView.allowsMultipleSelection = allowsMultipleSelection
         }
     }
     /// First day of the week value for JTApleCalendar. You can set this to anyday. After changing this value you must reload your calendar view to show the change.
-    open var firstDayOfWeek = DaysOfWeek.sunday {
+    public var firstDayOfWeek = DaysOfWeek.Sunday {
         didSet {
             if firstDayOfWeek != oldValue { layoutNeedsUpdating = true }
         }
@@ -110,10 +110,10 @@ open class JTAppleCalendarView: UIView {
     
     // Keeps track of item size for a section. This is an optimization
     var scrollInProgress = false
-    fileprivate var layoutNeedsUpdating = false
+    private var layoutNeedsUpdating = false
     
     /// The object that acts as the data source of the calendar view.
-    weak open var dataSource : JTAppleCalendarViewDataSource? {
+    weak public var dataSource : JTAppleCalendarViewDataSource? {
         didSet {
             monthInfo = setupMonthInfoDataForStartAndEndDate()
             updateLayoutItemSize(calendarView.collectionViewLayout as! JTAppleCalendarLayout)
@@ -121,9 +121,9 @@ open class JTAppleCalendarView: UIView {
         }
     }
     /// The object that acts as the delegate of the calendar view.
-    weak open var delegate: JTAppleCalendarViewDelegate?
+    weak public var delegate: JTAppleCalendarViewDelegate?
 
-    var dateComponents = DateComponents()
+    var dateComponents = NSDateComponents()
     var delayedExecutionClosure: [(()->Void)] = []
     
     #if os(iOS)
@@ -134,54 +134,54 @@ open class JTAppleCalendarView: UIView {
         return (calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol).sectionFromRectOffset(calendarView.contentOffset)
     }
   
-    var startDateCache: Date {
+    var startDateCache: NSDate {
         get { return cachedConfiguration.startDate }
     }
     
-    var endDateCache: Date {
+    var endDateCache: NSDate {
         get { return cachedConfiguration.endDate }
     }
     
-    var calendar: Calendar {
+    var calendar: NSCalendar {
         get { return cachedConfiguration.calendar }
     }
     
-    lazy var cachedConfiguration: (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) = {
+    lazy var cachedConfiguration: (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) = {
         [weak self] in
         
         guard let  config = self!.dataSource?.configureCalendar(self!) else {
             assert(false, "DataSource is not set")
-            return (startDate: Date(), endDate: Date(), 0, Calendar(identifier: "nil")!)
+            return (startDate: NSDate(), endDate: NSDate(), 0, NSCalendar(calendarIdentifier: "nil")!)
         }
         
         return (startDate: config.startDate, endDate: config.endDate, numberOfRows: config.numberOfRows, calendar: config.calendar)
         }()
     
     // Set the start of the month
-    lazy var startOfMonthCache: Date = {
+    lazy var startOfMonthCache: NSDate = {
         [weak self] in
-        if let startDate = Date.startOfMonthForDate(self!.startDateCache, usingCalendar: self!.calendar) { return startDate }
-        assert(false, "Error: StartDate was not correctly generated for start of month. current date was used: \(Date())")
-        return Date()
+        if let startDate = NSDate.startOfMonthForDate(self!.startDateCache, usingCalendar: self!.calendar) { return startDate }
+        assert(false, "Error: StartDate was not correctly generated for start of month. current date was used: \(NSDate())")
+        return NSDate()
         }()
     
     // Set the end of month
-    lazy var endOfMonthCache: Date = {
+    lazy var endOfMonthCache: NSDate = {
         [weak self] in
-        if let endDate = Date.endOfMonthForDate(self!.endDateCache, usingCalendar: self!.calendar) { return endDate }
-        assert(false, "Error: Date was not correctly generated for end of month. current date was used: \(Date())")
-        return Date()
+        if let endDate = NSDate.endOfMonthForDate(self!.endDateCache, usingCalendar: self!.calendar) { return endDate }
+        assert(false, "Error: Date was not correctly generated for end of month. current date was used: \(NSDate())")
+        return NSDate()
         }()
     
     
-    var theSelectedIndexPaths: [IndexPath] = []
-    var theSelectedDates:      [Date]      = []
+    var theSelectedIndexPaths: [NSIndexPath] = []
+    var theSelectedDates:      [NSDate]      = []
     
     /// Returns all selected dates
-    open var selectedDates: [Date] {
+    public var selectedDates: [NSDate] {
         get {
             // Array may contain duplicate dates in case where out-dates are selected. So clean it up here
-            return Array(Set(theSelectedDates)).sorted()
+            return Array(Set(theSelectedDates)).sort()
         }
     }
     
@@ -196,72 +196,72 @@ open class JTAppleCalendarView: UIView {
     var numberOfItemsPerSection: Int {return MAX_NUMBER_OF_DAYS_IN_WEEK * cachedConfiguration.numberOfRows}
     
     /// Cell inset padding for the x and y axis of every date-cell on the calendar view.
-    open var cellInset: CGPoint = CGPoint(x: 3, y: 3)
+    public var cellInset: CGPoint = CGPoint(x: 3, y: 3)
     var cellViewSource: JTAppleCalendarViewSource!
     var registeredHeaderViews: [JTAppleCalendarViewSource] = []
     
     
-    @available(*, deprecated: 4.1.5, renamed: "scrollingMode = .NonStopToSection(withResistance: <#CGFloat#>)")
+    @available(*, deprecated=4.1.5, renamed="scrollingMode = .NonStopToSection(withResistance: <#CGFloat#>)")
     /// Enable or disable paging when the calendar view is scrolled
-    open var pagingEnabled: Bool = true {
+    public var pagingEnabled: Bool = true {
         didSet {
             if pagingEnabled == true {
-                self.scrollingMode = .stopAtEachCalendarFrameWidth
+                self.scrollingMode = .StopAtEachCalendarFrameWidth
             } else {
-                self.scrollingMode = .nonStopToCell(withResistance: 0.75)
+                self.scrollingMode = .NonStopToCell(withResistance: 0.75)
             }
         }
     }
     /// Enable or disable snapping to cells when the calendar view is scrolled
-    @available(*, deprecated: 4.1.5, renamed: "calendarView.scrollingMode = NonStopToCell(withResistance: value)")
-    open var cellSnapsToEdge: Bool = false {
+    @available(*, deprecated=4.1.5, renamed="calendarView.scrollingMode = NonStopToCell(withResistance: value)")
+    public var cellSnapsToEdge: Bool = false {
         didSet {
             if cellSnapsToEdge == true {
-                self.scrollingMode = .nonStopToCell(withResistance: 0.75)
+                self.scrollingMode = .NonStopToCell(withResistance: 0.75)
             } else {
-                self.scrollingMode = .stopAtEachCalendarFrameWidth
+                self.scrollingMode = .StopAtEachCalendarFrameWidth
             }
         }
     }
     
     
     /// Enable or disable swipe scrolling of the calendar with this variable
-    open var scrollEnabled: Bool = true {
-        didSet { calendarView.isScrollEnabled = scrollEnabled }
+    public var scrollEnabled: Bool = true {
+        didSet { calendarView.scrollEnabled = scrollEnabled }
     }
         
-    open var scrollingMode: ScrollingMode = .stopAtEachCalendarFrameWidth {
+    public var scrollingMode: ScrollingMode = .StopAtEachCalendarFrameWidth {
         didSet {
             switch scrollingMode {
-            case .stopAtEachCalendarFrameWidth, .stopAtEach,.stopAtEachSection:
+            case .StopAtEachCalendarFrameWidth, .StopAtEach,.StopAtEachSection:
                 calendarView.decelerationRate = UIScrollViewDecelerationRateFast
-            case .nonStopToSection, .nonStopToCell, .nonStopTo, .none:
+            case .NonStopToSection, .NonStopToCell, .NonStopTo, .None:
                 calendarView.decelerationRate = UIScrollViewDecelerationRateNormal
             }
         }
     }
     
     /// This is only applicable when calendar view paging is not enabled. Use this variable to decelerate the scroll movement to make it more 'sticky' or more fluid scrolling
-    @available(*, deprecated: 4.1.5, message: "This variable does nothing.")
-    open var scrollResistance: CGFloat = 0.75
+    @available(*, deprecated=4.1.5, message="This variable does nothing.")
+    public var scrollResistance: CGFloat = 0.75
     
     lazy var calendarView : UICollectionView = {
         
         let layout = JTAppleCalendarLayout(withDelegate: self)
         layout.scrollDirection = self.direction
         
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         cv.dataSource = self
         cv.delegate = self
         cv.decelerationRate = UIScrollViewDecelerationRateFast
-        cv.backgroundColor = UIColor.clear
+        cv.backgroundColor = UIColor.clearColor()
         cv.showsHorizontalScrollIndicator = false
         cv.showsVerticalScrollIndicator = false
         cv.allowsMultipleSelection = false
         return cv
     }()
     
-    fileprivate func updateLayoutItemSize (_ layout: JTAppleCalendarLayoutProtocol) {
+    private func updateLayoutItemSize (layout: JTAppleCalendarLayoutProtocol) {
         if dataSource == nil { return } // If the delegate is not set yet, then return
         // Default Item height
         var height: CGFloat = (self.calendarView.bounds.size.height - layout.headerReferenceSize.height) / CGFloat(cachedConfiguration.numberOfRows)
@@ -269,20 +269,20 @@ open class JTAppleCalendarView: UIView {
         var width: CGFloat = self.calendarView.bounds.size.width / CGFloat(MAX_NUMBER_OF_DAYS_IN_WEEK)
 
         if let userSetItemSize = self.itemSize {
-            if direction == .vertical { height = userSetItemSize }
-            if direction == .horizontal { width = userSetItemSize }
+            if direction == .Vertical { height = userSetItemSize }
+            if direction == .Horizontal { width = userSetItemSize }
         }
 
         layout.itemSize = CGSize(width: width, height: height)
     }
     
     /// The frame rectangle which defines the view's location and size in its superview coordinate system.
-    override open var frame: CGRect {
+    override public var frame: CGRect {
         didSet {
             calendarView.frame = CGRect(x:0.0, y:/*bufferTop*/0.0, width: self.frame.size.width, height:self.frame.size.height/* - bufferBottom*/)
             #if os(iOS)
-                let orientation = UIApplication.shared.statusBarOrientation
-                if orientation == .unknown { return }
+                let orientation = UIApplication.sharedApplication().statusBarOrientation
+                if orientation == .Unknown { return }
                 if lastOrientation != orientation {
                     calendarView.collectionViewLayout.invalidateLayout()
                     let layout = calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol
@@ -314,47 +314,47 @@ open class JTAppleCalendarView: UIView {
     required public init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
     
     /// Prepares the receiver for service after it has been loaded from an Interface Builder archive, or nib file.
-    override open func awakeFromNib() { self.initialSetup() }
+    override public func awakeFromNib() { self.initialSetup() }
     
     /// Lays out subviews.
-    override open func layoutSubviews() { self.frame = super.frame }
+    override public func layoutSubviews() { self.frame = super.frame }
     
     // MARK: Setup
     func initialSetup() {
         self.clipsToBounds = true
-        self.calendarView.register(JTAppleDayCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        self.calendarView.registerClass(JTAppleDayCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         self.addSubview(self.calendarView)
     }
     
-    func restoreSelectionStateForCellAtIndexPath(_ indexPath: IndexPath) {
+    func restoreSelectionStateForCellAtIndexPath(indexPath: NSIndexPath) {
         if theSelectedIndexPaths.contains(indexPath) {
-            calendarView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
+            calendarView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
         }
     }
     
-    func dateFromSection(_ section: Int) -> (startDate: Date, endDate: Date)? {
+    func dateFromSection(section: Int) -> (startDate: NSDate, endDate: NSDate)? {
         if !monthInfo.indices.contains(section) {return nil}
         let monthData = monthInfo[section]
         let itemLength = monthData[NUMBER_OF_DAYS_INDEX]
         let fdIndex = monthData[FIRST_DAY_INDEX]
-        let startIndex = IndexPath(item: fdIndex, section: section)
-        let endIndex = IndexPath(item: fdIndex + itemLength - 1, section: section)
+        let startIndex = NSIndexPath(forItem: fdIndex, inSection: section)
+        let endIndex = NSIndexPath(forItem: fdIndex + itemLength - 1, inSection: section)
         
-        if let theStartDate = dateFromPath(startIndex), let theEndDate = dateFromPath(endIndex) {
+        if let theStartDate = dateFromPath(startIndex), theEndDate = dateFromPath(endIndex) {
             return (theStartDate, theEndDate)
         }
         return nil
     }
     
-    func calendarOffsetIsAlreadyAtScrollPosition(forIndexPath indexPath:IndexPath) -> Bool? {
+    func calendarOffsetIsAlreadyAtScrollPosition(forIndexPath indexPath:NSIndexPath) -> Bool? {
         var retval: Bool?
         
         // If the scroll is set to animate, and the target content offset is already on the screen, then the didFinishScrollingAnimation
         // delegate will not get called. Once animation is on let's force a scroll so the delegate MUST get caalled
-        if let attributes = self.calendarView.layoutAttributesForItem(at: indexPath) {
+        if let attributes = self.calendarView.layoutAttributesForItemAtIndexPath(indexPath) {
             let origin = attributes.frame.origin
-            let offset = direction == .horizontal ? origin.x : origin.y
-            if  self.calendarView.contentOffset.x == offset || (scrollingMode.pagingIsEnabled() && ((indexPath as NSIndexPath).section ==  currentSectionPage)) {
+            let offset = direction == .Horizontal ? origin.x : origin.y
+            if  self.calendarView.contentOffset.x == offset || (scrollingMode.pagingIsEnabled() && (indexPath.section ==  currentSectionPage)) {
                 retval = true
             } else {
                 retval = false
@@ -369,10 +369,10 @@ open class JTAppleCalendarView: UIView {
         // If the scroll is set to animate, and the target content offset is already on the screen, then the didFinishScrollingAnimation
         // delegate will not get called. Once animation is on let's force a scroll so the delegate MUST get caalled
         
-        let theOffset = direction == .horizontal ? offset.x : offset.y
-        let divValue = direction == .horizontal ? calendarView.frame.width : calendarView.frame.height
+        let theOffset = direction == .Horizontal ? offset.x : offset.y
+        let divValue = direction == .Horizontal ? calendarView.frame.width : calendarView.frame.height
         let sectionForOffset = Int(theOffset / divValue)
-        let calendarCurrentOffset = direction == .horizontal ? calendarView.contentOffset.x : calendarView.contentOffset.y
+        let calendarCurrentOffset = direction == .Horizontal ? calendarView.contentOffset.x : calendarView.contentOffset.y
         if
             calendarCurrentOffset == theOffset ||
                 (scrollingMode.pagingIsEnabled() && (sectionForOffset ==  currentSectionPage)){
@@ -383,19 +383,19 @@ open class JTAppleCalendarView: UIView {
         return retval
     }
     
-    func scrollToHeaderInSection(_ section:Int, triggerScrollToDateDelegate: Bool = false, withAnimation animation: Bool = true, completionHandler: (()->Void)? = nil)  {
+    func scrollToHeaderInSection(section:Int, triggerScrollToDateDelegate: Bool = false, withAnimation animation: Bool = true, completionHandler: (()->Void)? = nil)  {
         if registeredHeaderViews.count < 1 { return }
         
         self.triggerScrollToDateDelegate = triggerScrollToDateDelegate
         
-        let indexPath = IndexPath(item: 0, section: section)
+        let indexPath = NSIndexPath(forItem: 0, inSection: section)
         calendarView.layoutIfNeeded()
-        if let attributes =  calendarView.layoutAttributesForSupplementaryElement(ofKind: UICollectionElementKindSectionHeader, at: indexPath) {
+        if let attributes =  calendarView.layoutAttributesForSupplementaryElementOfKind(UICollectionElementKindSectionHeader, atIndexPath: indexPath) {
             if let validHandler = completionHandler {
                 delayedExecutionClosure.append(validHandler)
             }
             
-            let topOfHeader = CGPoint(x: attributes.frame.origin.x, y: attributes.frame.origin.y)
+            let topOfHeader = CGPointMake(attributes.frame.origin.x, attributes.frame.origin.y)
             self.scrollInProgress = true
             delayRunOnMainThread(0.0, closure: {
                 self.calendarView.setContentOffset(topOfHeader, animated:animation)
@@ -405,7 +405,7 @@ open class JTAppleCalendarView: UIView {
                 } else {
                     // If the scroll is set to animate, and the target content offset is already on the screen, then the didFinishScrollingAnimation
                     // delegate will not get called. Once animation is on let's force a scroll so the delegate MUST get caalled
-                    if let check = self.calendarOffsetIsAlreadyAtScrollPosition(forOffset: topOfHeader) , check == true {
+                    if let check = self.calendarOffsetIsAlreadyAtScrollPosition(forOffset: topOfHeader) where check == true {
                         self.scrollViewDidEndScrollingAnimation(self.calendarView)
                         self.scrollInProgress = false
                     }
@@ -414,7 +414,7 @@ open class JTAppleCalendarView: UIView {
         }
     }
         
-    func reloadData(checkDelegateDataSource check: Bool, withAnchorDate anchorDate: Date? = nil, withAnimation animation: Bool = false, completionHandler:(()->Void)? = nil) {
+    func reloadData(checkDelegateDataSource check: Bool, withAnchorDate anchorDate: NSDate? = nil, withAnimation animation: Bool = false, completionHandler:(()->Void)? = nil) {
         // Reload the datasource
         if check { reloadDelegateDataSource() }
         var layoutWasUpdated: Bool?
@@ -430,7 +430,7 @@ open class JTAppleCalendarView: UIView {
         for indexPath in theSelectedIndexPaths { restoreSelectionStateForCellAtIndexPath(indexPath) }
         
         delayRunOnMainThread(0.0) {
-            let scrollToDate = {(date: Date) -> Void in
+            let scrollToDate = {(date: NSDate) -> Void in
                 if self.registeredHeaderViews.count < 1 {
                     self.scrollToDate(date, triggerScrollToDateDelegate: false, animateScroll: animation, completionHandler: completionHandler)
                 } else {
@@ -468,14 +468,14 @@ open class JTAppleCalendarView: UIView {
         delayedExecutionClosure.removeAll()
     }
     
-    fileprivate func reloadDelegateDataSource() {
+    private func reloadDelegateDataSource() {
         if let
             newDateBoundary = dataSource?.configureCalendar(self) {
             // Jt101 do a check in each var to see if user has bad star/end dates
-            let newStartOfMonth = Date.startOfMonthForDate(newDateBoundary.startDate, usingCalendar: cachedConfiguration.calendar)
-            let newEndOfMonth = Date.endOfMonthForDate(newDateBoundary.startDate, usingCalendar: cachedConfiguration.calendar)
-            let oldStartOfMonth = Date.startOfMonthForDate(cachedConfiguration.startDate, usingCalendar: cachedConfiguration.calendar)
-            let oldEndOfMonth = Date.endOfMonthForDate(cachedConfiguration.startDate, usingCalendar: cachedConfiguration.calendar)
+            let newStartOfMonth = NSDate.startOfMonthForDate(newDateBoundary.startDate, usingCalendar: cachedConfiguration.calendar)
+            let newEndOfMonth = NSDate.endOfMonthForDate(newDateBoundary.startDate, usingCalendar: cachedConfiguration.calendar)
+            let oldStartOfMonth = NSDate.startOfMonthForDate(cachedConfiguration.startDate, usingCalendar: cachedConfiguration.calendar)
+            let oldEndOfMonth = NSDate.endOfMonthForDate(cachedConfiguration.startDate, usingCalendar: cachedConfiguration.calendar)
 
             
             if
@@ -494,16 +494,16 @@ open class JTAppleCalendarView: UIView {
         monthInfo = setupMonthInfoDataForStartAndEndDate()
         
         // the selected dates and paths will be retained. Ones that are not available on the new layout will be removed.
-        var indexPathsToReselect = [IndexPath]()
-        var newDates = [Date]()
+        var indexPathsToReselect = [NSIndexPath]()
+        var newDates = [NSDate]()
         for date in selectedDates {
             // add the index paths of the new layout
             let path = pathsFromDates([date])
-            indexPathsToReselect.append(contentsOf: path)
+            indexPathsToReselect.appendContentsOf(path)
             
             if
                 path.count > 0,
-                let possibleCounterPartDateIndex = indexPathOfdateCellCounterPart(date, indexPath: path[0], dateOwner: CellState.DateOwner.thisMonth) {
+                let possibleCounterPartDateIndex = indexPathOfdateCellCounterPart(date, indexPath: path[0], dateOwner: CellState.DateOwner.ThisMonth) {
                 indexPathsToReselect.append(possibleCounterPartDateIndex)
             }
         }
@@ -516,17 +516,17 @@ open class JTAppleCalendarView: UIView {
         theSelectedIndexPaths = indexPathsToReselect
     }
     
-    func calendarViewHeaderSizeForSection(_ section: Int) -> CGSize {
-        var retval = CGSize.zero
+    func calendarViewHeaderSizeForSection(section: Int) -> CGSize {
+        var retval = CGSizeZero
         if registeredHeaderViews.count > 0 {
-            if let date = dateFromSection(section), let size = delegate?.calendar(self, sectionHeaderSizeForDate: date){ retval = size }
+            if let date = dateFromSection(section), size = delegate?.calendar(self, sectionHeaderSizeForDate: date){ retval = size }
         }
         return retval
     }
     
-    func indexPathOfdateCellCounterPart(_ date: Date, indexPath: IndexPath, dateOwner: CellState.DateOwner) -> IndexPath? {
-        var retval: IndexPath?
-        if dateOwner != .thisMonth { // If the cell is anything but this month, then the cell belongs to either a previous of following month
+    func indexPathOfdateCellCounterPart(date: NSDate, indexPath: NSIndexPath, dateOwner: CellState.DateOwner) -> NSIndexPath? {
+        var retval: NSIndexPath?
+        if dateOwner != .ThisMonth { // If the cell is anything but this month, then the cell belongs to either a previous of following month
             // Get the indexPath of the counterpartCell
             let counterPathIndex = pathsFromDates([date])
             if counterPathIndex.count > 0 {
@@ -534,51 +534,51 @@ open class JTAppleCalendarView: UIView {
             }
         } else { // If the date does belong to this month, then lets find out if it has a counterpart date
             if date >= startOfMonthCache && date <= endOfMonthCache {
-                let dayIndex = (calendar as NSCalendar).components(.day, from: date).day
+                let dayIndex = calendar.components(.Day, fromDate: date).day
                 if case 1...13 = dayIndex  { // then check the previous month
                     // get the index path of the last day of the previous month
                     
-                    guard let prevMonth = (calendar as NSCalendar).date(byAdding: .month, value: -1, to: date, options: []) , prevMonth >= startOfMonthCache && prevMonth <= endOfMonthCache else {
+                    guard let prevMonth = calendar.dateByAddingUnit(.Month, value: -1, toDate: date, options: []) where prevMonth >= startOfMonthCache && prevMonth <= endOfMonthCache else {
                         return retval
                     }
                     
-                    guard let lastDayOfPrevMonth = Date.endOfMonthForDate(prevMonth, usingCalendar: calendar) else {
+                    guard let lastDayOfPrevMonth = NSDate.endOfMonthForDate(prevMonth, usingCalendar: calendar) else {
                         print("Error generating date in indexPathOfdateCellCounterPart(). Contact the developer on github")
                         return retval
                     }
                     let indexPathOfLastDayOfPreviousMonth = pathsFromDates([lastDayOfPrevMonth])
                     if indexPathOfLastDayOfPreviousMonth.count > 0 {
-                        let lastDayIndex = (indexPathOfLastDayOfPreviousMonth[0] as NSIndexPath).item
+                        let lastDayIndex = indexPathOfLastDayOfPreviousMonth[0].item
                         
-                        let indexPathItemToBeFound = lastDayIndex + dayIndex!
+                        let indexPathItemToBeFound = lastDayIndex + dayIndex
                         if indexPathItemToBeFound < 42 { // then it is valid
-                            retval = IndexPath(item: indexPathItemToBeFound, section: (indexPathOfLastDayOfPreviousMonth[0] as NSIndexPath).section)
+                            retval = NSIndexPath(forItem: indexPathItemToBeFound, inSection: indexPathOfLastDayOfPreviousMonth[0].section)
                         }
                     } else {
                         print("out of range error in indexPathOfdateCellCounterPart() upper. This should not happen. Contact developer on github")
                     }
                 } else if case 26...31 = dayIndex  { // check the following month
-                    guard let followingMonth = (calendar as NSCalendar).date(byAdding: .month, value: 1, to: date, options: []) , followingMonth >= startOfMonthCache && followingMonth <= endOfMonthCache else {
+                    guard let followingMonth = calendar.dateByAddingUnit(.Month, value: 1, toDate: date, options: []) where followingMonth >= startOfMonthCache && followingMonth <= endOfMonthCache else {
                         return retval
                     }
                     
-                    guard let firstDayOfFollowingMonth = Date.startOfMonthForDate(followingMonth, usingCalendar: calendar) else {
+                    guard let firstDayOfFollowingMonth = NSDate.startOfMonthForDate(followingMonth, usingCalendar: calendar) else {
                         print("Error generating date in indexPathOfdateCellCounterPart(). Contact the developer on github")
                         return retval
                     }
                     let indexPathOfFirstDayOfFollowingMonth = pathsFromDates([firstDayOfFollowingMonth])
                     if indexPathOfFirstDayOfFollowingMonth.count > 0 {
-                        let firstDayIndex = (indexPathOfFirstDayOfFollowingMonth[0] as NSIndexPath).item
+                        let firstDayIndex = indexPathOfFirstDayOfFollowingMonth[0].item
                         
                         
-                        let lastDay = Date.endOfMonthForDate(date, usingCalendar: calendar)!
-                        let lastDayIndex = (calendar as NSCalendar).components(.day, from: lastDay).day
+                        let lastDay = NSDate.endOfMonthForDate(date, usingCalendar: calendar)!
+                        let lastDayIndex = calendar.components(.Day, fromDate: lastDay).day
                         
-                        let x = lastDayIndex! - dayIndex!
+                        let x = lastDayIndex - dayIndex
                         let y = firstDayIndex - x - 1
                         
                         if y > -1 {
-                            return IndexPath(item: y, section: (indexPathOfFirstDayOfFollowingMonth[0] as NSIndexPath).section)
+                            return NSIndexPath(forItem: y, inSection: indexPathOfFirstDayOfFollowingMonth[0].section)
                         }
                     } else {
                         print("out of range error in indexPathOfdateCellCounterPart() lower. This should not happen. Contact developer on github")
@@ -590,10 +590,10 @@ open class JTAppleCalendarView: UIView {
         return retval
     }
     
-    func scrollToSection(_ section: Int, triggerScrollToDateDelegate: Bool = false, animateScroll: Bool = true, completionHandler: (()->Void)?) {
+    func scrollToSection(section: Int, triggerScrollToDateDelegate: Bool = false, animateScroll: Bool = true, completionHandler: (()->Void)?) {
         if scrollInProgress { return }
-        if let date = dateFromPath(IndexPath(item: MAX_NUMBER_OF_DAYS_IN_WEEK - 1, section:section)) {
-            let recalcDate = Date.startOfMonthForDate(date, usingCalendar: calendar)!
+        if let date = dateFromPath(NSIndexPath(forItem: MAX_NUMBER_OF_DAYS_IN_WEEK - 1, inSection:section)) {
+            let recalcDate = NSDate.startOfMonthForDate(date, usingCalendar: calendar)!
             self.scrollToDate(recalcDate, triggerScrollToDateDelegate: triggerScrollToDateDelegate, animateScroll: animateScroll, preferredScrollPosition: nil, completionHandler: completionHandler)
         }
     }
@@ -606,11 +606,11 @@ open class JTAppleCalendarView: UIView {
         return layout
     }
     
-    fileprivate func setupMonthInfoDataForStartAndEndDate()-> [[Int]] {
+    private func setupMonthInfoDataForStartAndEndDate()-> [[Int]] {
         var retval: [[Int]] = []
         if var validConfig = dataSource?.configureCalendar(self) {
             // check if the dates are in correct order
-            if (validConfig.calendar as NSCalendar).compare(validConfig.startDate, to: validConfig.endDate, toUnitGranularity: NSCalendar.Unit.nanosecond) == ComparisonResult.orderedDescending {
+            if validConfig.calendar.compareDate(validConfig.startDate, toDate: validConfig.endDate, toUnitGranularity: NSCalendarUnit.Nanosecond) == NSComparisonResult.OrderedDescending {
                 assert(false, "Error, your start date cannot be greater than your end date\n")
                 return retval
             }
@@ -627,44 +627,44 @@ open class JTAppleCalendarView: UIView {
             cachedConfiguration = validConfig
             
             if let
-                startMonth = Date.startOfMonthForDate(validConfig.startDate, usingCalendar: validConfig.calendar),
-                let endMonth = Date.endOfMonthForDate(validConfig.endDate, usingCalendar: validConfig.calendar) {
+                startMonth = NSDate.startOfMonthForDate(validConfig.startDate, usingCalendar: validConfig.calendar),
+                endMonth = NSDate.endOfMonthForDate(validConfig.endDate, usingCalendar: validConfig.calendar) {
                 
                 startOfMonthCache = startMonth
                 endOfMonthCache = endMonth
                 
-                let differenceComponents = (validConfig.calendar as NSCalendar).components(
-                    NSCalendar.Unit.month,
-                    from: startOfMonthCache,
-                    to: endOfMonthCache,
+                let differenceComponents = validConfig.calendar.components(
+                    NSCalendarUnit.Month,
+                    fromDate: startOfMonthCache,
+                    toDate: endOfMonthCache,
                     options: []
                 )
                 
                 // Create boundary date
-                let leftDate = (validConfig.calendar as NSCalendar).date(byAdding: .weekday, value: -1, to: startOfMonthCache, options: [])!
-                let leftDateInt = (validConfig.calendar as NSCalendar).component(.day, from: leftDate)
+                let leftDate = validConfig.calendar.dateByAddingUnit(.Weekday, value: -1, toDate: startOfMonthCache, options: [])!
+                let leftDateInt = validConfig.calendar.component(.Day, fromDate: leftDate)
                 
                 // Number of months
-                numberOfMonths = differenceComponents.month! + 1 // if we are for example on the same month and the difference is 0 we still need 1 to display it
+                numberOfMonths = differenceComponents.month + 1 // if we are for example on the same month and the difference is 0 we still need 1 to display it
                 
                 // Number of sections in each month
                 numberOfSectionsPerMonth = Int(ceil(Float(MAX_NUMBER_OF_ROWS_PER_MONTH)  / Float(cachedConfiguration.numberOfRows)))
 
                 // Section represents # of months. section is used as an offset to determine which month to calculate
                 for numberOfMonthsIndex in 0 ... numberOfMonths - 1 {
-                    if let correctMonthForSectionDate = (validConfig.calendar as NSCalendar).date(byAdding: .month, value: numberOfMonthsIndex, to: startOfMonthCache, options: []) {
+                    if let correctMonthForSectionDate = validConfig.calendar.dateByAddingUnit(.Month, value: numberOfMonthsIndex, toDate: startOfMonthCache, options: []) {
                         
-                        let numberOfDaysInMonth = (validConfig.calendar as NSCalendar).range(of: NSCalendar.Unit.day, in: NSCalendar.Unit.month, for: correctMonthForSectionDate).length
+                        let numberOfDaysInMonth = validConfig.calendar.rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: correctMonthForSectionDate).length
                         
-                        var firstWeekdayOfMonthIndex = (validConfig.calendar as NSCalendar).component(.weekday, from: correctMonthForSectionDate)
+                        var firstWeekdayOfMonthIndex = validConfig.calendar.component(.Weekday, fromDate: correctMonthForSectionDate)
                         firstWeekdayOfMonthIndex -= 1 // firstWeekdayOfMonthIndex should be 0-Indexed
                         
 
                         var firstDayCalValue = 0
                         switch firstDayOfWeek {
-                            case .monday: firstDayCalValue = 6 case .tuesday: firstDayCalValue = 5 case .wednesday: firstDayCalValue = 4
-                            case .thursday: firstDayCalValue = 10 case .friday: firstDayCalValue = 9
-                            case .saturday: firstDayCalValue = 8 default: firstDayCalValue = 7
+                            case .Monday: firstDayCalValue = 6 case .Tuesday: firstDayCalValue = 5 case .Wednesday: firstDayCalValue = 4
+                            case .Thursday: firstDayCalValue = 10 case .Friday: firstDayCalValue = 9
+                            case .Saturday: firstDayCalValue = 8 default: firstDayCalValue = 7
                         }
                         
                         firstWeekdayOfMonthIndex = (firstWeekdayOfMonthIndex + firstDayCalValue) % 7 // push it modularly so that we take it back one day so that the first day is Monday instead of Sunday which is the default
@@ -710,26 +710,26 @@ open class JTAppleCalendarView: UIView {
         return retval
     }
     
-    func pathsFromDates(_ dates:[Date])-> [IndexPath] {
-        var returnPaths: [IndexPath] = []
+    func pathsFromDates(dates:[NSDate])-> [NSIndexPath] {
+        var returnPaths: [NSIndexPath] = []
         for date in dates {
-            if  calendar.startOfDay(for: date) >= startOfMonthCache && calendar.startOfDay(for: date) <= endOfMonthCache {
-                let periodApart = (calendar as NSCalendar).components(.month, from: startOfMonthCache, to: date, options: [])
+            if  calendar.startOfDayForDate(date) >= startOfMonthCache && calendar.startOfDayForDate(date) <= endOfMonthCache {
+                let periodApart = calendar.components(.Month, fromDate: startOfMonthCache, toDate: date, options: [])
                 let monthSectionIndex = periodApart.month
-                let startSectionIndex = monthSectionIndex! * numberOfSectionsPerMonth
+                let startSectionIndex = monthSectionIndex * numberOfSectionsPerMonth
                 let sectionIndex = startMonthSectionForSection(startSectionIndex) // Get the section within the month
                 
                 // Get the section Information
                 let currentMonthInfo = monthInfo[sectionIndex]
-                let dayIndex = (calendar as NSCalendar).components(.day, from: date).day
+                let dayIndex = calendar.components(.Day, fromDate: date).day
                 
                 // Given the following, find the index Path
                 let fdIndex = currentMonthInfo[FIRST_DAY_INDEX]
-                let cellIndex = dayIndex! + fdIndex - 1
+                let cellIndex = dayIndex + fdIndex - 1
                 let updatedSection = cellIndex / numberOfItemsPerSection
                 let adjustedSection = sectionIndex + updatedSection
                 let adjustedCellIndex = cellIndex - (numberOfItemsPerSection * (cellIndex / numberOfItemsPerSection))
-                returnPaths.append(IndexPath(item: adjustedCellIndex, section: adjustedSection))
+                returnPaths.append(NSIndexPath(forItem: adjustedCellIndex, inSection: adjustedSection))
             }
         }
         return returnPaths
@@ -737,42 +737,42 @@ open class JTAppleCalendarView: UIView {
 }
 
 extension JTAppleCalendarView {
-    func cellStateFromIndexPath(_ indexPath: IndexPath, withDate date: Date, cell: JTAppleDayCell? = nil)->CellState {
-        let itemIndex = (indexPath as NSIndexPath).item
-        let itemSection = (indexPath as NSIndexPath).section
+    func cellStateFromIndexPath(indexPath: NSIndexPath, withDate date: NSDate, cell: JTAppleDayCell? = nil)->CellState {
+        let itemIndex = indexPath.item
+        let itemSection = indexPath.section
         let currentMonthInfo = monthInfo[itemSection]
         let fdIndex = currentMonthInfo[FIRST_DAY_INDEX]
         let nDays = currentMonthInfo[NUMBER_OF_DAYS_INDEX]
-        let componentDay = (calendar as NSCalendar).component(.day, from: date)
-        let componentWeekDay = (calendar as NSCalendar).component(.weekday, from: date)
+        let componentDay = calendar.component(.Day, fromDate: date)
+        let componentWeekDay = calendar.component(.Weekday, fromDate: date)
         let cellText = String(componentDay)
         let dateBelongsTo: CellState.DateOwner
         
         if itemIndex >= fdIndex && itemIndex < fdIndex + nDays {
-            dateBelongsTo = .thisMonth
+            dateBelongsTo = .ThisMonth
         } else if itemIndex < fdIndex  && itemSection - 1 > -1  { // Prior month is available
-            dateBelongsTo = .previousMonthWithinBoundary
+            dateBelongsTo = .PreviousMonthWithinBoundary
         } else if itemIndex >= fdIndex + nDays && itemSection + 1 < monthInfo.count { // Following months
-            dateBelongsTo = .followingMonthWithinBoundary
+            dateBelongsTo = .FollowingMonthWithinBoundary
         } else if itemIndex < fdIndex { // Pre from the start
-            dateBelongsTo = .previousMonthOutsideBoundary
+            dateBelongsTo = .PreviousMonthOutsideBoundary
         } else { // Post from the end
-            dateBelongsTo = .followingMonthOutsideBoundary
+            dateBelongsTo = .FollowingMonthOutsideBoundary
         }
         
         let dayOfWeek = DaysOfWeek(rawValue: componentWeekDay)!
         let rangePosition = {()->SelectionRangePosition in
             if self.theSelectedIndexPaths.contains(indexPath) {
-                if self.selectedDates.count == 1 { return .full}
-                let left = self.theSelectedIndexPaths.contains(IndexPath(item: (indexPath as NSIndexPath).item - 1, section: (indexPath as NSIndexPath).section))
-                let right = self.theSelectedIndexPaths.contains(IndexPath(item: (indexPath as NSIndexPath).item + 1, section: (indexPath as NSIndexPath).section))
+                if self.selectedDates.count == 1 { return .Full}
+                let left = self.theSelectedIndexPaths.contains(NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section))
+                let right = self.theSelectedIndexPaths.contains(NSIndexPath(forItem: indexPath.item + 1, inSection: indexPath.section))
                 if (left == right) {
-                    if left == false { return .full } else { return .middle }
+                    if left == false { return .Full } else { return .Middle }
                 } else {
-                    if left == false { return .left } else { return .right }
+                    if left == false { return .Left } else { return .Right }
                 }
             }
-            return .none
+            return .None
         }
         
 
@@ -784,41 +784,41 @@ extension JTAppleCalendarView {
             day: dayOfWeek,
             row: {()->Int in return itemIndex / MAX_NUMBER_OF_DAYS_IN_WEEK },
             column: {()->Int in return itemIndex % MAX_NUMBER_OF_DAYS_IN_WEEK },
-            dateSection: {()->(startDate: Date, endDate: Date) in return self.dateFromSection(itemSection)! },
+            dateSection: {()->(startDate: NSDate, endDate: NSDate) in return self.dateFromSection(itemSection)! },
             selectedPosition: rangePosition,
             cell: {()->JTAppleDayCell? in return cell}
         )
         return cellState
     }
     
-    func startMonthSectionForSection(_ aSection: Int)->Int {
+    func startMonthSectionForSection(aSection: Int)->Int {
         let monthIndexWeAreOn = aSection / numberOfSectionsPerMonth
         let nextSection = numberOfSectionsPerMonth * monthIndexWeAreOn
         return nextSection
     }
     
-    func batchReloadIndexPaths(_ indexPaths: [IndexPath]) {
+    func batchReloadIndexPaths(indexPaths: [NSIndexPath]) {
         if indexPaths.count < 1 { return }
         UICollectionView.performWithoutAnimation({
             self.calendarView.performBatchUpdates({
-                self.calendarView.reloadItems(at: indexPaths)
+                self.calendarView.reloadItemsAtIndexPaths(indexPaths)
                 }, completion: nil)  
         })
     }
     
-    func addCellToSelectedSetIfUnselected(_ indexPath: IndexPath, date: Date) {
+    func addCellToSelectedSetIfUnselected(indexPath: NSIndexPath, date: NSDate) {
         if self.theSelectedIndexPaths.contains(indexPath) == false {
             self.theSelectedIndexPaths.append(indexPath)
             self.theSelectedDates.append(date)
         }
     }
-    func deleteCellFromSelectedSetIfSelected(_ indexPath: IndexPath) {
-        if let index = self.theSelectedIndexPaths.index(of: indexPath) {
-            self.theSelectedIndexPaths.remove(at: index)
-            self.theSelectedDates.remove(at: index)
+    func deleteCellFromSelectedSetIfSelected(indexPath: NSIndexPath) {
+        if let index = self.theSelectedIndexPaths.indexOf(indexPath) {
+            self.theSelectedIndexPaths.removeAtIndex(index)
+            self.theSelectedDates.removeAtIndex(index)
         }
     }
-    func deselectCounterPartCellIndexPath(_ indexPath: IndexPath, date: Date, dateOwner: CellState.DateOwner) -> IndexPath? {
+    func deselectCounterPartCellIndexPath(indexPath: NSIndexPath, date: NSDate, dateOwner: CellState.DateOwner) -> NSIndexPath? {
         if let
             counterPartCellIndexPath = indexPathOfdateCellCounterPart(date, indexPath: indexPath, dateOwner: dateOwner) {
             deleteCellFromSelectedSetIfSelected(counterPartCellIndexPath)
@@ -827,19 +827,19 @@ extension JTAppleCalendarView {
         return nil
     }
     
-    func selectCounterPartCellIndexPathIfExists(_ indexPath: IndexPath, date: Date, dateOwner: CellState.DateOwner) -> IndexPath? {
+    func selectCounterPartCellIndexPathIfExists(indexPath: NSIndexPath, date: NSDate, dateOwner: CellState.DateOwner) -> NSIndexPath? {
         if let counterPartCellIndexPath = indexPathOfdateCellCounterPart(date, indexPath: indexPath, dateOwner: dateOwner) {
-            let dateComps = (calendar as NSCalendar).components([.month, .day, .year], from: date)
-            guard let counterpartDate = calendar.date(from: dateComps) else { return nil }
+            let dateComps = calendar.components([.Month, .Day, .Year], fromDate: date)
+            guard let counterpartDate = calendar.dateFromComponents(dateComps) else { return nil }
             addCellToSelectedSetIfUnselected(counterPartCellIndexPath, date:counterpartDate)
             return counterPartCellIndexPath
         }
         return nil
     }
     
-    func dateFromPath(_ indexPath: IndexPath)-> Date? { // Returns nil if date is out of scope
-        let itemIndex = (indexPath as NSIndexPath).item
-        let itemSection = (indexPath as NSIndexPath).section
+    func dateFromPath(indexPath: NSIndexPath)-> NSDate? { // Returns nil if date is out of scope
+        let itemIndex = indexPath.item
+        let itemSection = indexPath.section
         let monthIndexWeAreOn = itemSection / numberOfSectionsPerMonth
         let currentMonthInfo = monthInfo[itemSection]
         let fdIndex = currentMonthInfo[FIRST_DAY_INDEX]
@@ -849,7 +849,7 @@ extension JTAppleCalendarView {
         dateComponents.month = monthIndexWeAreOn
         dateComponents.weekday = cellDate - 1
         
-        return (calendar as NSCalendar).date(byAdding: dateComponents, to: startOfMonthCache, options: [])
+        return calendar.dateByAddingComponents(dateComponents, toDate: startOfMonthCache, options: [])
     }
 }
 
@@ -860,8 +860,8 @@ extension JTAppleCalendarView: JTAppleCalendarDelegateProtocol {
     func numberOfMonthsInCalendar() -> Int { return numberOfMonths }
     func numberOfDaysPerSection() -> Int { return numberOfItemsPerSection }
     
-    func referenceSizeForHeaderInSection(_ section: Int) -> CGSize {
-        if registeredHeaderViews.count < 1 { return CGSize.zero }
+    func referenceSizeForHeaderInSection(section: Int) -> CGSize {
+        if registeredHeaderViews.count < 1 { return CGSizeZero }
         return calendarViewHeaderSizeForSection(section)
     }
     

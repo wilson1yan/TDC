@@ -18,22 +18,22 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var updateButton: UIBarButtonItem!
 
-    fileprivate let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+    private let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
     
     // Core Data
-    fileprivate var appDelegate:AppDelegate!
-    fileprivate var managedContext:NSManagedObjectContext!
+    private var appDelegate:AppDelegate!
+    private var managedContext:NSManagedObjectContext!
     
     // API
     var tws: TaskWithStreak!
     var isPresentingHistory: Bool = false
 
-    fileprivate var dates: [Date]!
-    fileprivate var streak: Int!
+    private var dates: [Date]!
+    private var streak: Int!
     
-    fileprivate var fs: CGFloat = 5
-    fileprivate var text: NSString { return NSString(string: tws.task.name!) }
-    fileprivate var calendarCellViewDict: Dictionary<Foundation.Date,CalendarDayCellView> = [:]
+    private var fs: CGFloat = 5
+    private var text: NSString { return NSString(string: tws.task.name!) }
+    private var calendarCellViewDict: Dictionary<NSDate,CalendarDayCellView> = [:]
 
     // MARK - View Controller lifecycle
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
         super.viewDidLoad()
         
         // Core Data - load data
-        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext
         dates = Date.getDatesWithId(tws.task.primaryId as! Int, inManagedObjectContext: managedContext)
         
@@ -50,38 +50,38 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
         self.navigationItem.titleView = UILabel.getFittedLabelWithTitle(tws.task.name!)
         
         // Configure CalendarView
-        edgesForExtendedLayout = UIRectEdge()
+        edgesForExtendedLayout = UIRectEdge.None
         calendarView.dataSource = self
         calendarView.delegate = self
         calendarView.registerCellViewXib(fileName: "CalendarDayCellView")
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
-        calendarView.scrollToDate(Foundation.Date())
-        setupViewsOfCalendar(Foundation.Date())
+        calendarView.scrollToDate(NSDate())
+        setupViewsOfCalendar(NSDate())
         
         // Initialize values
         
         streak = tws.streak
         daysLeftView.duration = Double(tws.task.duration!)
         
-        updateButton.isEnabled = !isPresentingHistory
+        updateButton.enabled = !isPresentingHistory
         daysLeftView.createGradient()
         if !isPresentingHistory {
             configueViewsIfMissedDates()
         } else {
-            updateButton.tintColor = UIColor.clear
+            updateButton.tintColor = UIColor.clearColor()
             daysLeftView.days = Double(tws.streak)
         }
     }
     
     
     // MARK - IBAction
-    @IBAction func moreOptions(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
+    @IBAction func moreOptions(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Options", message: nil, preferredStyle: .ActionSheet)
         
-        let editTask = UIAlertAction(title: "Edit Task", style: .default) { [unowned self] (alertAction) in
-            let editController = UIAlertController(title: "New Task Name", message: nil, preferredStyle: .alert)
-            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: {
+        let editTask = UIAlertAction(title: "Edit Task", style: .Default) { [unowned self] (alertAction) in
+            let editController = UIAlertController(title: "New Task Name", message: nil, preferredStyle: .Alert)
+            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: {
                 alert -> Void in
                 let textField = editController.textFields![0] as UITextField
                 let newTaskName = textField.text != nil ? textField.text! : ""
@@ -90,9 +90,9 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
                 self.navigationItem.titleView = UILabel.getFittedLabelWithTitle(newTaskName)
             })
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
             
-            editController.addTextField { [unowned self] (textField : UITextField!) -> Void in
+            editController.addTextFieldWithConfigurationHandler { [unowned self] (textField : UITextField!) -> Void in
                 textField.text = self.tws.task.name!
                 textField.placeholder = "New Task Name"
             }
@@ -100,54 +100,54 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
             editController.addAction(saveAction)
             editController.addAction(cancelAction)
             
-            self.present(editController, animated: true, completion: nil)
+            self.presentViewController(editController, animated: true, completion: nil)
         }
         //        let endTask = UIAlertAction(title: "End Task", style: .Destructive) { [unowned self] (alertAction) in
         //            let state = self.streak == self.tws.task.duration ? TaskStates.Complete : TaskStates.Failed
         //            Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
         //        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         alertController.addAction(editTask)
         //alertController.addAction(endTask)
         alertController.addAction(cancel)
         
-        present(alertController, animated: true, completion: nil)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     // MARK - Custom API
-    fileprivate func configueViewsIfMissedDates() {
+    private func configueViewsIfMissedDates() {
         if tws.task.didAlreadyDisplayMissingToday! == DidDisplayMissingTodayStates.NO {
             let missedDates = getMissedDates()
-            if missedDates > 0 && !Foundation.Date().isInDateList(dates, calendar: cal){
+            if missedDates > 0 && !NSDate().isInDateList(dates, calendar: cal){
                 var canDismissWithTap = true
-                let consecDays = getConsecutiveDaysStartingFrom(Foundation.Date().getDaysBefore(2, calendar:cal))
-                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+                let consecDays = getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar:cal))
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
                 if missedDates == 1 && consecDays >= 5{
                     alertController.title = "You've missed a day after \(consecDays) consecutive days. I'll trust it was just an honest mistake."
-                    let fix = UIAlertAction(title: "Fix It", style: .default, handler: { [unowned self](alertAction) in
+                    let fix = UIAlertAction(title: "Fix It", style: .Default, handler: { [unowned self](alertAction) in
                         self.streak = consecDays
-                        let day = Foundation.Date().getDaysBefore(1, calendar: self.cal)
+                        let day = NSDate().getDaysBefore(1, calendar: self.cal)
                         self.setDatetoCheck(day)
-                        self.calendarCellViewDict[Foundation.Date.toMidnight(day, calendar: self.cal)]?.selectedDate()
+                        self.calendarCellViewDict[NSDate.toMidnight(day, calendar: self.cal)]?.selectedDate()
                     })
-                    let startOver = UIAlertAction(title: "Start Over", style: .default, handler: { [unowned self] (alertAction) in
+                    let startOver = UIAlertAction(title: "Start Over", style: .Default, handler: { [unowned self] (alertAction) in
                         self.daysLeftView.days = Double(self.streak)
                     })
                     
                     alertController.addAction(fix)
                     alertController.addAction(startOver)
                     
-                    daysLeftView.days = Double(getConsecutiveDaysStartingFrom(Foundation.Date().getDaysBefore(2,calendar:cal)))
+                    daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2,calendar:cal)))
                     canDismissWithTap = false
                 } else {
                     alertController.title = "You've missed \(missedDates) " + (missedDates == 1 ? "day":"days") + " . Try again!"
-                    daysLeftView.days = Double(getConsecutiveDaysStartingFrom(Foundation.Date().getDaysBefore(2, calendar: cal)))
+                    daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar: cal)))
                 }
                 
-                present(alertController, animated: true) { [unowned self] in
+                presentViewController(alertController, animated: true) { [unowned self] in
                     if canDismissWithTap {
-                        alertController.view.superview?.isUserInteractionEnabled = true
+                        alertController.view.superview?.userInteractionEnabled = true
                         alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose)))
                     }
                 }
@@ -162,29 +162,29 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     }
     
     @objc
-    fileprivate func alertClose(_ recongizer: UIGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
+    private func alertClose(recongizer: UIGestureRecognizer) {
+        dismissViewControllerAnimated(true, completion: nil)
         daysLeftView.days = Double(streak)
     }
     
-    fileprivate func checkIfTaskCompleted() -> Bool {
+    private func checkIfTaskCompleted() -> Bool {
         return tws.task.duration! != 0 && streak == tws.task.duration!
     }
     
-    fileprivate func addAndSaveDate(_ dateToSave: Foundation.Date) {
+    private func addAndSaveDate(dateToSave: NSDate) {
         let date = Date.saveDateWithId(dateToSave, withTaskId: tws.task.primaryId as! Int, inManagedObjectContext: managedContext)
         if date != nil {
             dates?.append(date!)
         }
     }
     
-    fileprivate func getMissedDates() -> Int {
+    private func getMissedDates() -> Int {
         // Case 1 today/yesterday -> no missed dates
         // Case 2 yesterday no updaes -> check all
         // Case 3 empty -> no missed dates
-        var dayComp = DateComponents()
+        let dayComp = NSDateComponents()
         dayComp.day = -1
-        let yesterday = (cal as NSCalendar).date(byAdding: dayComp, to: Foundation.Date(), options: [])!
+        let yesterday = cal.dateByAddingComponents(dayComp, toDate: NSDate(), options: [])!
         
         if dates.count == 0 || yesterday.isInDateList(dates, calendar: cal){
             return 0
@@ -192,15 +192,15 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
             var n = 0
             var dayBefore = yesterday
             //cal.dateByAddingComponents(dayComp, toDate: yesterday, options: [])!
-            while !dayBefore.isInDateList(dates, calendar: cal) && ((cal as NSCalendar).compare(dayBefore, to: tws.task.startDate!, toUnitGranularity: .day) == .orderedDescending || (cal as NSCalendar).compare(dayBefore, to: tws.task.startDate!, toUnitGranularity: .day) == .orderedSame){
-                dayBefore = (cal as NSCalendar).date(byAdding: dayComp, to: dayBefore, options: [])!
+            while !dayBefore.isInDateList(dates, calendar: cal) && (cal.compareDate(dayBefore, toDate: tws.task.startDate!, toUnitGranularity: .Day) == .OrderedDescending || cal.compareDate(dayBefore, toDate: tws.task.startDate!, toUnitGranularity: .Day) == .OrderedSame){
+                dayBefore = cal.dateByAddingComponents(dayComp, toDate: dayBefore, options: [])!
                 n += 1
             }
             return n
         }
     }
     
-    fileprivate func getConsecutiveDaysStartingFrom(_ start: Foundation.Date) -> Int {
+    private func getConsecutiveDaysStartingFrom(start: NSDate) -> Int {
         var n = 0
         var dayBefore = start
         while dayBefore.isInDateList(dates, calendar: cal) {
@@ -211,40 +211,40 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
         return n
     }
     
-    fileprivate func setupViewsOfCalendar(_ startDate: Foundation.Date) {
-        let month = (cal as NSCalendar).component(NSCalendar.Unit.month, from: calendarView.currentCalendarDateSegment().startDate)
-        let monthName = DateFormatter().monthSymbols[(month-1) % 12]
+    private func setupViewsOfCalendar(startDate: NSDate) {
+        let month = cal.component(NSCalendarUnit.Month, fromDate: calendarView.currentCalendarDateSegment().startDate)
+        let monthName = NSDateFormatter().monthSymbols[(month-1) % 12]
         monthLabel.text = monthName
         
     }
     
-    fileprivate func setDatetoCheck(_ date: Foundation.Date) {
+    private func setDatetoCheck(date: NSDate) {
         addAndSaveDate(date)
         streak  = streak + 1
         daysLeftView.days = Double(streak)
         
         if streak >= tws.task.duration as! Int {
-            let alertController = UIAlertController(title: "Congratulations! You've done your task for " + String(describing: tws.task.duration!) + " consecutive days!", message: nil, preferredStyle: .alert)
-            let extend = UIAlertAction(title: "Extend " + String(describing: tws.task.duration!) + " days", style: .default, handler: { [unowned self] (alertAction) in
+            let alertController = UIAlertController(title: "Congratulations! You've done your task for " + String(tws.task.duration!) + " consecutive days!", message: nil, preferredStyle: .Alert)
+            let extend = UIAlertAction(title: "Extend " + String(tws.task.duration!) + " days", style: .Default, handler: { [unowned self] (alertAction) in
 //                Task.extendTaskDuration(self.tws.task.primaryId as! Int, withDuration: self.tws.task.duration as! Int, inMananagedObjectContext: self.managedContext)
                 let extendedDuration = self.tws.task.duration as! Int * 2
                 Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.Duration:extendedDuration], inManagedObjectContext: self.managedContext)
                 self.tws.task = Task.getTaskWithId(self.tws.task.primaryId as! Int, inManagedObjectContext: self.managedContext)!
                 self.daysLeftView.duration = Double(self.tws.task.duration!)
             })
-            let endTask = UIAlertAction(title: "End Task", style: .default, handler: { [unowned self] (alertAction) in
+            let endTask = UIAlertAction(title: "End Task", style: .Default, handler: { [unowned self] (alertAction) in
                 let state = TaskStates.Complete
 //                Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
                 Task.updateTask(self.tws.task.primaryId as! Int, withInfo: [TaskAttributes.State:state], inManagedObjectContext: self.managedContext)
                 if self.navigationController != nil {
-                    self.navigationController!.popViewController(animated: true)
+                    self.navigationController!.popViewControllerAnimated(true)
                 }
                 })
             
             alertController.addAction(extend)
             alertController.addAction(endTask)
             
-            present(alertController, animated: true, completion: nil)
+            presentViewController(alertController, animated: true, completion: nil)
         }
 
     }
@@ -253,35 +253,35 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
 extension AdjustableCalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     
     // MARK - Overriden CalendarView delegate function
-    func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Foundation.Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
-        return isPresentingHistory ? false : (cal as NSCalendar).compare(date, to: Foundation.Date(), toUnitGranularity: .day) == .orderedSame
+    func calendar(calendar: JTAppleCalendarView, canSelectDate date: NSDate, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
+        return isPresentingHistory ? false : cal.compareDate(date, toDate: NSDate(), toUnitGranularity: .Day) == .OrderedSame
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Foundation.Date, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         if !date.isInDateList(dates!, calendar: cal) {
             //(cell as! CalendarDayCellView).selectedDate()
-            calendarCellViewDict[Foundation.Date.toMidnight(date, calendar: cal)]?.selectedDate()
+            calendarCellViewDict[NSDate.toMidnight(date, calendar: cal)]?.selectedDate()
             setDatetoCheck(date)
         }
     }
     
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Foundation.Date, endDate: Foundation.Date, numberOfRows: Int, calendar: Calendar) {
+    func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
         let firstDate = tws.task.startDate
-        let secondDate = Foundation.Date()
+        let secondDate = NSDate()
         let numberOfRows = 6
-        let aCalendar = Calendar.current
+        let aCalendar = NSCalendar.currentCalendar()
         
         return (startDate: firstDate!, endDate: secondDate, numberOfRows: numberOfRows, calendar: aCalendar)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Foundation.Date, cellState: CellState) {
+    func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
         if let cellView = cell as? CalendarDayCellView {
             cellView.setupCellBeforeDisplay(cellState, date: date, cal: cal, dates: dates, task: tws.task, isHistory: isPresentingHistory)
-            calendarCellViewDict[Foundation.Date.toMidnight(date, calendar: cal)] = cell as? CalendarDayCellView
+            calendarCellViewDict[NSDate.toMidnight(date, calendar: cal)] = cell as? CalendarDayCellView
         }
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Foundation.Date, endingWithDate endDate: Foundation.Date) {
+    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
         setupViewsOfCalendar(startDate)
     }
 

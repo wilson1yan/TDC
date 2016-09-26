@@ -12,7 +12,7 @@ class HistoryTaskTableViewCell: UITableViewCell {
 
     @IBOutlet weak var taskLabel: UILabel!
 
-    fileprivate struct CellBackgroundColor {
+    private struct CellBackgroundColor {
         static let Complete = UIColor(red:0.60, green:1.00, blue:0.60, alpha:1.0)
         static let Fail = UIColor(red:1.00, green:0.80, blue:0.80, alpha:1.0)
     }
@@ -27,7 +27,7 @@ class HistoryTaskTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }

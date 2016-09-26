@@ -24,14 +24,14 @@ struct TaskAttributes {
 
 class Task: NSManagedObject {
     
-    class func saveTask(_ taskName: String, duration: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
-        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as! Task
+    class func saveTask(taskName: String, duration: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
+        let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: context) as! Task
         task.name = taskName
         task.primaryId = maxPrimaryKey(managedObjectContext: context) + 1
-        task.startDate = Foundation.Date()
+        task.startDate = NSDate()
         task.state = 0
-        task.duration = duration as NSNumber?
-        task.didAlreadyDisplayMissingToday = DidDisplayMissingTodayStates.NO as NSNumber?
+        task.duration = duration
+        task.didAlreadyDisplayMissingToday = DidDisplayMissingTodayStates.NO
         task.numStrikes = 0
         
         do {
@@ -44,8 +44,8 @@ class Task: NSManagedObject {
         return nil
     }
     
-    class func deleteTask(_ task: Task, inManagedObjectContext context: NSManagedObjectContext) {
-        context.delete(task)
+    class func deleteTask(task: Task, inManagedObjectContext context: NSManagedObjectContext) {
+        context.deleteObject(task)
         do{
             try context.save()
         } catch let error as NSError {
@@ -77,7 +77,7 @@ class Task: NSManagedObject {
 //        }
 //    }
     
-    class func updateTask(_ primaryId: Int, withInfo info: Dictionary<String, AnyObject>, inManagedObjectContext context: NSManagedObjectContext) {
+    class func updateTask(primaryId: Int, withInfo info: Dictionary<String, AnyObject>, inManagedObjectContext context: NSManagedObjectContext) {
         let task = getTaskWithId(primaryId, inManagedObjectContext: context)
         if task != nil {
             for (key,value) in info {
@@ -94,27 +94,27 @@ class Task: NSManagedObject {
         }
     }
     
-    class func getAllTasksWithState(_ state: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Task]{
+    class func getAllTasksWithState(state: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Task]{
         let request = NSFetchRequest(entityName: "Task")
         request.predicate = NSPredicate(format: "state = %d", state)
-        if let tasks = (try? context.fetch(request)) as? [Task] {
+        if let tasks = (try? context.executeFetchRequest(request)) as? [Task] {
             return tasks
         } else {
             return [Task]()
         }
     }
     
-    class func getTaskWithId(_ primaryId: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
+    class func getTaskWithId(primaryId: Int, inManagedObjectContext context: NSManagedObjectContext) -> Task? {
         let request = NSFetchRequest(entityName: "Task")
         request.predicate = NSPredicate(format: "primaryId = %d", primaryId)
-        return (try? context.fetch(request))?.first as? Task
+        return (try? context.executeFetchRequest(request))?.first as? Task
     }
     
     class func maxPrimaryKey(managedObjectContext context: NSManagedObjectContext) -> Int {
         let request = NSFetchRequest(entityName: "Task")
         request.fetchLimit = 1
         request.sortDescriptors = [NSSortDescriptor(key: "primaryId", ascending: false)]
-        if let task = (try? context.fetch(request))?.first as? Task {
+        if let task = (try? context.executeFetchRequest(request))?.first as? Task {
             return task.primaryId! as Int
         } else {
             return 0

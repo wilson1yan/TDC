@@ -14,7 +14,7 @@ import CoreData
 
 extension Date {
 
-    @NSManaged var date: Foundation.Date?
+    @NSManaged var date: NSDate?
     @NSManaged var task: Task?
 
 }

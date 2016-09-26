@@ -12,19 +12,19 @@ import CoreData
 
 class Date: NSManagedObject {
     
-    class func getDatesWithId(_ taskId: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Date] {
+    class func getDatesWithId(taskId: Int, inManagedObjectContext context: NSManagedObjectContext) -> [Date] {
         if let task = Task.getTaskWithId(taskId, inManagedObjectContext: context) {
             let request = NSFetchRequest(entityName: "Date")
             request.predicate = NSPredicate(format: "task = %@", task)
-            if let dates = (try? context.fetch(request)) as? [Date] {
+            if let dates = (try? context.executeFetchRequest(request)) as? [Date] {
                 return dates
             }
         }
         return [Date]()
     }
     
-    class func saveDateWithId(_ dateToAdd: Foundation.Date, withTaskId id: Int, inManagedObjectContext context: NSManagedObjectContext) -> Date? {
-        let date = NSEntityDescription.insertNewObject(forEntityName: "Date", into: context) as! Date
+    class func saveDateWithId(dateToAdd: NSDate, withTaskId id: Int, inManagedObjectContext context: NSManagedObjectContext) -> Date? {
+        let date = NSEntityDescription.insertNewObjectForEntityForName("Date", inManagedObjectContext: context) as! Date
         date.date = dateToAdd
         date.task = Task.getTaskWithId(id, inManagedObjectContext: context)
         
