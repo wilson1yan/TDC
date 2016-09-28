@@ -1,0 +1,6 @@
+framework module CheckboxList {
+  umbrella header "CheckboxList-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -18,6 +18,11 @@ class CreateNewTaskViewController: UIViewController {
     @IBOutlet weak var errorText: UILabel!
     
     @IBOutlet weak var formView: UIView!
+    @IBOutlet weak var checkBoxButton: CheckBoxButton!
+    
+    @IBAction func onSelect(_ sender: CheckBoxButton) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

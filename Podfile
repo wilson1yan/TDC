@@ -7,4 +7,5 @@ target 'TDC' do
 
   # Pods for TDC
   pod 'JTAppleCalendar', :git=> 'https://github.com/patchthecode/JTAppleCalendar.git', :branch => 'Swift3'
+  pod 'CheckboxList'
 end

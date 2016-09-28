@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CheckboxList.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JTAppleCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>081990DC4FE3C5E0F354695A2B692904</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2E2ED75B03CF4A2D0719664A48C0B27E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D382BAF1A2595D73C9D2325C1FE5E98A</key>
+		<key>F21CA7051299DC3E1C18D9A866D572D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

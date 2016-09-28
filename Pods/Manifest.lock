@@ -1,7 +1,9 @@
 PODS:
+  - CheckboxList (1.0.1)
   - JTAppleCalendar (5.0.1)
 
 DEPENDENCIES:
+  - CheckboxList
   - JTAppleCalendar (from `https://github.com/patchthecode/JTAppleCalendar.git`, branch `Swift3`)
 
 EXTERNAL SOURCES:
@@ -15,8 +17,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/patchthecode/JTAppleCalendar.git
 
 SPEC CHECKSUMS:
+  CheckboxList: 1474dd365a9b98b8b80e2dcb4f3eccb7b86ac724
   JTAppleCalendar: cb2417b1f3367d1993e31720a663646742139a5c
 
-PODFILE CHECKSUM: c9ba9fb25816d81eeb9aea73ad191a2608b9ec94
+PODFILE CHECKSUM: 49438631fe22781ebf5fc901dbee0ec4af62b47f
 
 COCOAPODS: 1.0.1
