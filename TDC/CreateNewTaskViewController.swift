@@ -13,15 +13,22 @@ class CreateNewTaskViewController: UIViewController {
     weak var recentViewController: UIViewController?
     var currentTask: Task?
     
+    private var isChecked: Bool = false {
+        didSet {
+            checkButton.setImage(UIImage(named: isChecked ? "CheckedBox" : "UncheckedBox"), for: .normal)
+        }
+    }
+    
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var errorText: UILabel!
     
     @IBOutlet weak var formView: UIView!
-    @IBOutlet weak var checkBoxButton: CheckBoxButton!
-    
-    @IBAction func onSelect(_ sender: CheckBoxButton) {
-        
+    @IBOutlet weak var checkButton: UIButton!
+
+    @IBAction func onSelected(_ sender: UIButton) {
+        isChecked = !isChecked
+        durationTextField.isUserInteractionEnabled = !isChecked
     }
     
     override func viewDidLoad() {
@@ -45,6 +52,7 @@ class CreateNewTaskViewController: UIViewController {
             taskNameTextField.text = task.name
             durationTextField.text = String(describing: task.duration!)
         }
+        checkButton.setImage(UIImage(named: "UncheckedBox"), for: .normal)
     }
     
     @IBAction func save() {

@@ -1,1905 +1,563 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>00215AD22B0803568FEC7811A3589A3A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A2A6FF208CEC4C2861F1E9D42D651453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>081990DC4FE3C5E0F354695A2B692904</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>9E67D0AD5361FD20F559392631CC84E6</string>
-			<key>buildPhases</key>
-			<array>
-				<string>62231F557CC0FDF918FDEEFE3FCD0816</string>
-				<string>44D73420F127322691CE63DF65D6D928</string>
-				<string>1E8E53441A5DBFA9EE1476E83D328F4D</string>
-				<string>8C1FD869EC23D9FF0A3D4F417106F947</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>CheckboxList</string>
-			<key>productName</key>
-			<string>CheckboxList</string>
-			<key>productReference</key>
-			<string>300DD0192FD64A6BB0FBBDDB9EEB21F8</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>156804EDB4795107792EC2F968AB19E2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A66717964358BE4444F1BBE461C90BB1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>1606776D6587AB1F27CEF549A4C021CC</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>300DD0192FD64A6BB0FBBDDB9EEB21F8</string>
-				<string>67A0D7E1DE17C93A2AF9E03C54B5EEBE</string>
-				<string>2CA0762D8FEF027934338B3850579444</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1E8E53441A5DBFA9EE1476E83D328F4D</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>BB0FBA95E6B290FF8791B80428F737F6</string>
-				<string>B2D93357EEE1221BE328FB8B29A933BA</string>
-				<string>301BCB5DAB79CD593668FB0BFF4AC929</string>
-				<string>9641F27E868ACB3260656E961ED2A93B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>265D30C257C8B023FC577195561355CA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A2A6FF208CEC4C2861F1E9D42D651453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>277C89D8AEFEA7497D4DF4217EFBF6A8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>CheckboxList-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>28542D416269F21D5B1D9351E7C79E31</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>2E2ED75B03CF4A2D0719664A48C0B27E</string>
-			<key>remoteInfo</key>
-			<string>JTAppleCalendar</string>
-		</dict>
-		<key>294A11FA9C27785E57FDBC7915BBAC6A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTCalendarProtocols.swift</string>
-			<key>path</key>
-			<string>Sources/JTCalendarProtocols.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2966347B414194B480812830639D876C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>JTAppleCalendar.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2A916505D5CF7A60CEAE684C78D04DE9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>JTAppleCalendar-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2B9EC706E39AAE251BC3C7415907EA13</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>JTAppleCalendar-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2CA0762D8FEF027934338B3850579444</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_TDC.framework</string>
-			<key>path</key>
-			<string>Pods-TDC.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>5E62115DE8C09934BF8D2FE5D15FED1E</string>
-				<string>3FA451D268613890FA8A5A03801E11D5</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>2E2ED75B03CF4A2D0719664A48C0B27E</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>779E37D9C699030E3EEE21BB23F81A82</string>
-			<key>buildPhases</key>
-			<array>
-				<string>9C72E46DD5A9172504341DE21C5780F1</string>
-				<string>36C1DCD9D20BA178F26F5E04EB6499E2</string>
-				<string>F9388E434DA66EEF7517A594C3985AEF</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>JTAppleCalendar</string>
-			<key>productName</key>
-			<string>JTAppleCalendar</string>
-			<key>productReference</key>
-			<string>67A0D7E1DE17C93A2AF9E03C54B5EEBE</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>300DD0192FD64A6BB0FBBDDB9EEB21F8</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>CheckboxList.framework</string>
-			<key>path</key>
-			<string>CheckboxList.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>301BCB5DAB79CD593668FB0BFF4AC929</key>
-		<dict>
-			<key>fileRef</key>
-			<string>FDC95AEE99A1BBBC54C68645FF5923F2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>301CC87C9C538ACCB1080623B22D17E3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-TDC-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>33008DC7640DCF7CB4247C85AC18EEB7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>277C89D8AEFEA7497D4DF4217EFBF6A8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>34DDEAF9CDD467D82D8C5651D7CC7082</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A8C8A44AB41F6E12DE2DEA8910ABC3E1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>35181F20E631A55EB9792C79EE51B46D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>85132C941BA54793EB301DF1C3BB4F39</string>
-				<string>F539D89A990516C5B68084A833DE64FB</string>
-				<string>FDC95AEE99A1BBBC54C68645FF5923F2</string>
-				<string>8069C514FB51CE18BCE9ACCF2D108E40</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Resources</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>355AFAF37669143C9BABFF635FF29ABE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B8AF61B23A94A38F64F5E1D9F449D9EF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>36C1DCD9D20BA178F26F5E04EB6499E2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>265D30C257C8B023FC577195561355CA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>39386C9EB3BD51B2ABD9ACC11717433E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E974006D9443B7C2DF45E58318F24DA8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>39ADE462DB1EB091EE62BEE271354A47</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3B65B90B165BF79BB38280800B6F3E60</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B26AE7BFC67628A37AFA25C87001F571</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3B8685C03197555220832F51B0F5F264</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-TDC-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3FA451D268613890FA8A5A03801E11D5</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_ANALYZER_NONNULL</key>
-				<string>YES</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>POD_CONFIGURATION_RELEASE=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>433CD3331B6C3787F473C941B61FC68F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F302CD3B306AF1ED96B9AF31FCDBC26C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4497825F6EA40A57D5FF13EF660534B9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>CheckboxList.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>44D73420F127322691CE63DF65D6D928</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>00215AD22B0803568FEC7811A3589A3A</string>
-				<string>F9B8E6FA99BD35EC2AFC422920FCA7D4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>46381088FA19FD2DAB63ECC1AB6BAAB2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>FE7D0D2C7BF7C9FD3D19EE491FFF4C2D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4782CCA04CCB1CA7207631BF7DDDACD4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C35570225014FDA5F25A4A720FF2C7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>478A96AD49F42312E4EDDF4D2A09CAE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>39ADE462DB1EB091EE62BEE271354A47</string>
-				<string>CB86B77D10EFBEBAEEEAC3504C36E194</string>
-				<string>3B8685C03197555220832F51B0F5F264</string>
-				<string>EB62573474167E259428EB30B77104A3</string>
-				<string>7B06264C8BFD538709BEEEE8D3A7A57D</string>
-				<string>70B8481863B99686AC7F0F9BE50CCF6D</string>
-				<string>301CC87C9C538ACCB1080623B22D17E3</string>
-				<string>8D3F1BC441C0936A8172FA78E1E50F28</string>
-				<string>AF9F953A5809F64CAC98101BA15FA176</string>
-				<string>DB932FC3ACE4E7550A89289F6F4A34F8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-TDC</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-TDC</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>52E641FB526F2F62102B59468E54DD09</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>JTAppleCalendar.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5CC4396F26D3B1E9ABD29ADF262558F8</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>52E641FB526F2F62102B59468E54DD09</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/JTAppleCalendar/JTAppleCalendar-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/JTAppleCalendar/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/JTAppleCalendar/JTAppleCalendar.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>PRODUCT_NAME</key>
-				<string>JTAppleCalendar</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>5E565421C9584BC6E77C8DB558746AAA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTAppleCalendarLayout.swift</string>
-			<key>path</key>
-			<string>Sources/JTAppleCalendarLayout.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5E62115DE8C09934BF8D2FE5D15FED1E</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_ANALYZER_NONNULL</key>
-				<string>YES</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>ENABLE_TESTABILITY</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>POD_CONFIGURATION_DEBUG=1</string>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>60E3695DC85F3C90E9296C4A13373BAD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>62231F557CC0FDF918FDEEFE3FCD0816</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>34DDEAF9CDD467D82D8C5651D7CC7082</string>
-				<string>4782CCA04CCB1CA7207631BF7DDDACD4</string>
-				<string>3B65B90B165BF79BB38280800B6F3E60</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>67A0D7E1DE17C93A2AF9E03C54B5EEBE</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>JTAppleCalendar.framework</string>
-			<key>path</key>
-			<string>JTAppleCalendar.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>6ADFF6FE50CCD53902FBA3BFE6C0086E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A5BE8E0420D9BC7A9C773C0DDFCADFEF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>6B6A9F8FF2EAE04771786E11B3A5B482</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9359D2B8271060ADCA7374B556D4101E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>6E7D04BCF85196173EE80E2939F4C447</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>GlobalFunctionsAndExtensions.swift</string>
-			<key>path</key>
-			<string>Sources/GlobalFunctionsAndExtensions.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6F5A74EFC7CCDB683B811FCE620C0B25</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>JTAppleCalendar</string>
-			<key>target</key>
-			<string>2E2ED75B03CF4A2D0719664A48C0B27E</string>
-			<key>targetProxy</key>
-			<string>28542D416269F21D5B1D9351E7C79E31</string>
-		</dict>
-		<key>70B8481863B99686AC7F0F9BE50CCF6D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-TDC-frameworks.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>779E37D9C699030E3EEE21BB23F81A82</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>DE6615359623E265197EA53538265183</string>
-				<string>5CC4396F26D3B1E9ABD29ADF262558F8</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>7B06264C8BFD538709BEEEE8D3A7A57D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-TDC-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7DB346D0F39D3F0E887471402A8071AB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>93A4A3777CF96A4AAC1D13BA6DCCEA73</string>
-				<string>433CD3331B6C3787F473C941B61FC68F</string>
-				<string>A4C482E4C8B2AE6458DF9440DD082E58</string>
-				<string>1606776D6587AB1F27CEF549A4C021CC</string>
-				<string>98A251B72E2218873851DD0D0E7F2322</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7FEF79DF7B4F11AD2B2119180B55A02F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTAppleDayCell.swift</string>
-			<key>path</key>
-			<string>Sources/JTAppleDayCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8069C514FB51CE18BCE9ACCF2D108E40</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>UncheckedCircle.png</string>
-			<key>path</key>
-			<string>CheckboxListSwift/UncheckedCircle.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>85132C941BA54793EB301DF1C3BB4F39</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>CheckedBox.png</string>
-			<key>path</key>
-			<string>CheckboxListSwift/CheckedBox.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8C1FD869EC23D9FF0A3D4F417106F947</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>33008DC7640DCF7CB4247C85AC18EEB7</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>8D3F1BC441C0936A8172FA78E1E50F28</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-TDC-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8E17705EC4D7C85CE49B2AA9A3EE1DF3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9359D2B8271060ADCA7374B556D4101E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>UserInteractionFunctions.swift</string>
-			<key>path</key>
-			<string>Sources/UserInteractionFunctions.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>93A4A3777CF96A4AAC1D13BA6DCCEA73</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>text.script.ruby</string>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>name</key>
-			<string>Podfile</string>
-			<key>path</key>
-			<string>../Podfile</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-			<key>xcLanguageSpecificationIdentifier</key>
-			<string>xcode.lang.ruby</string>
-		</dict>
-		<key>950C70B6D198FA0CF93FA3ECA373FBF5</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>9814040DD46307A0F908D7CFEEA1465D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>9641F27E868ACB3260656E961ED2A93B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8069C514FB51CE18BCE9ACCF2D108E40</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>9814040DD46307A0F908D7CFEEA1465D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8D3F1BC441C0936A8172FA78E1E50F28</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>98A251B72E2218873851DD0D0E7F2322</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>478A96AD49F42312E4EDDF4D2A09CAE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9C72E46DD5A9172504341DE21C5780F1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E9B8E2429E90E3BA402B1841BE8AF935</string>
-				<string>46381088FA19FD2DAB63ECC1AB6BAAB2</string>
-				<string>156804EDB4795107792EC2F968AB19E2</string>
-				<string>A64DD8293E49497F553B07437DFF8085</string>
-				<string>6ADFF6FE50CCD53902FBA3BFE6C0086E</string>
-				<string>D1214049BD129EFFF4627D928341ADA5</string>
-				<string>C5FD4D136EF5FA6D359DE256A7BD43B3</string>
-				<string>E2228A953DAB47FBD3DA574294ADF688</string>
-				<string>F9B9D874CCC69AA1F1A04A2C20C5D613</string>
-				<string>6B6A9F8FF2EAE04771786E11B3A5B482</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>9DC361110728B75BC8F74027E8873EF4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60E3695DC85F3C90E9296C4A13373BAD</string>
-				<string>2966347B414194B480812830639D876C</string>
-				<string>52E641FB526F2F62102B59468E54DD09</string>
-				<string>FE7D0D2C7BF7C9FD3D19EE491FFF4C2D</string>
-				<string>2A916505D5CF7A60CEAE684C78D04DE9</string>
-				<string>2B9EC706E39AAE251BC3C7415907EA13</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/JTAppleCalendar</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9E67D0AD5361FD20F559392631CC84E6</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>DE1887D45F151738895C5334A6ED13B5</string>
-				<string>AA5AE999681582C14D5853F00FFA2B13</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>A2A6FF208CEC4C2861F1E9D42D651453</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>A4C482E4C8B2AE6458DF9440DD082E58</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>DA50C3BB03295D2E92B449DE3C48A87D</string>
-				<string>F09A2114C570FF0C1E12280B574D5B00</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A5BE8E0420D9BC7A9C773C0DDFCADFEF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTAppleCalendarView.swift</string>
-			<key>path</key>
-			<string>Sources/JTAppleCalendarView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A64DD8293E49497F553B07437DFF8085</key>
-		<dict>
-			<key>fileRef</key>
-			<string>5E565421C9584BC6E77C8DB558746AAA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A66717964358BE4444F1BBE461C90BB1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTAppleCalendarDelegates.swift</string>
-			<key>path</key>
-			<string>Sources/JTAppleCalendarDelegates.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A8C8A44AB41F6E12DE2DEA8910ABC3E1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>CheckBoxButton.swift</string>
-			<key>path</key>
-			<string>CheckboxListSwift/CheckBoxButton.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AA5AE999681582C14D5853F00FFA2B13</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>D2378170A220AE2D2C21FD664F46BD63</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/CheckboxList/CheckboxList-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/CheckboxList/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/CheckboxList/CheckboxList.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>PRODUCT_NAME</key>
-				<string>CheckboxList</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>AB42E01ECF888A853DD523784F075DC0</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>081990DC4FE3C5E0F354695A2B692904</string>
-			<key>remoteInfo</key>
-			<string>CheckboxList</string>
-		</dict>
-		<key>AF9F953A5809F64CAC98101BA15FA176</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-TDC.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B26AE7BFC67628A37AFA25C87001F571</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>ChecklistView.swift</string>
-			<key>path</key>
-			<string>CheckboxListSwift/ChecklistView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B2D93357EEE1221BE328FB8B29A933BA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F539D89A990516C5B68084A833DE64FB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B54AD355A2406D9AA3332C5E8B0C79E6</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>E7127ADB0A6A564810FA104A243FA925</string>
-				<string>FC55DDDF5017C3B846287AB4331FF6DD</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B863F8BD928A2B145F263CCFC5425C1D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4497825F6EA40A57D5FF13EF660534B9</string>
-				<string>D2378170A220AE2D2C21FD664F46BD63</string>
-				<string>C35570225014FDA5F25A4A720FF2C7DE</string>
-				<string>FC57D02761F0F3D8DBE82804FDA7951D</string>
-				<string>277C89D8AEFEA7497D4DF4217EFBF6A8</string>
-				<string>8E17705EC4D7C85CE49B2AA9A3EE1DF3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/CheckboxList</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8AF61B23A94A38F64F5E1D9F449D9EF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A2A6FF208CEC4C2861F1E9D42D651453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>BB0FBA95E6B290FF8791B80428F737F6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>85132C941BA54793EB301DF1C3BB4F39</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C35570225014FDA5F25A4A720FF2C7DE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>CheckboxList-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C5FD4D136EF5FA6D359DE256A7BD43B3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7FEF79DF7B4F11AD2B2119180B55A02F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C69CD56514D0F663493F5EBE249C51D6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2B9EC706E39AAE251BC3C7415907EA13</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>CB86B77D10EFBEBAEEEAC3504C36E194</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods-TDC.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D08B35BEAC4220B1E4E8028AA5778491</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>CheckboxList</string>
-			<key>target</key>
-			<string>081990DC4FE3C5E0F354695A2B692904</string>
-			<key>targetProxy</key>
-			<string>AB42E01ECF888A853DD523784F075DC0</string>
-		</dict>
-		<key>D1214049BD129EFFF4627D928341ADA5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E923AF08266F3860AE194B68A18E3A65</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D2378170A220AE2D2C21FD664F46BD63</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>CheckboxList.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D41D8CD98F00B204E9800998ECF8427E</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0730</string>
-				<key>LastUpgradeCheck</key>
-				<string>0700</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>7DB346D0F39D3F0E887471402A8071AB</string>
-			<key>productRefGroup</key>
-			<string>1606776D6587AB1F27CEF549A4C021CC</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>081990DC4FE3C5E0F354695A2B692904</string>
-				<string>2E2ED75B03CF4A2D0719664A48C0B27E</string>
-				<string>F21CA7051299DC3E1C18D9A866D572D3</string>
-			</array>
-		</dict>
-		<key>DA50C3BB03295D2E92B449DE3C48A87D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A8C8A44AB41F6E12DE2DEA8910ABC3E1</string>
-				<string>B26AE7BFC67628A37AFA25C87001F571</string>
-				<string>35181F20E631A55EB9792C79EE51B46D</string>
-				<string>B863F8BD928A2B145F263CCFC5425C1D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>CheckboxList</string>
-			<key>path</key>
-			<string>CheckboxList</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DB932FC3ACE4E7550A89289F6F4A34F8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-TDC.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DE1887D45F151738895C5334A6ED13B5</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>D2378170A220AE2D2C21FD664F46BD63</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/CheckboxList/CheckboxList-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/CheckboxList/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/CheckboxList/CheckboxList.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>CheckboxList</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>DE6615359623E265197EA53538265183</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>52E641FB526F2F62102B59468E54DD09</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/JTAppleCalendar/JTAppleCalendar-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/JTAppleCalendar/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/JTAppleCalendar/JTAppleCalendar.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>JTAppleCalendar</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>E2228A953DAB47FBD3DA574294ADF688</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EF87671E67E30C843D5881D5A05C9A3E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E7127ADB0A6A564810FA104A243FA925</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>AF9F953A5809F64CAC98101BA15FA176</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-TDC/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-TDC/Pods-TDC.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_TDC</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>E86668F20F252C440D1015B816BE59C5</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>E923AF08266F3860AE194B68A18E3A65</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTAppleCollectionReusableView.swift</string>
-			<key>path</key>
-			<string>Sources/JTAppleCollectionReusableView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E974006D9443B7C2DF45E58318F24DA8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7B06264C8BFD538709BEEEE8D3A7A57D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E9B8E2429E90E3BA402B1841BE8AF935</key>
-		<dict>
-			<key>fileRef</key>
-			<string>6E7D04BCF85196173EE80E2939F4C447</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>EB62573474167E259428EB30B77104A3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-TDC-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EF87671E67E30C843D5881D5A05C9A3E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>JTAppleViews.swift</string>
-			<key>path</key>
-			<string>Sources/JTAppleViews.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F09A2114C570FF0C1E12280B574D5B00</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6E7D04BCF85196173EE80E2939F4C447</string>
-				<string>A66717964358BE4444F1BBE461C90BB1</string>
-				<string>5E565421C9584BC6E77C8DB558746AAA</string>
-				<string>A5BE8E0420D9BC7A9C773C0DDFCADFEF</string>
-				<string>E923AF08266F3860AE194B68A18E3A65</string>
-				<string>7FEF79DF7B4F11AD2B2119180B55A02F</string>
-				<string>EF87671E67E30C843D5881D5A05C9A3E</string>
-				<string>294A11FA9C27785E57FDBC7915BBAC6A</string>
-				<string>9359D2B8271060ADCA7374B556D4101E</string>
-				<string>9DC361110728B75BC8F74027E8873EF4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>JTAppleCalendar</string>
-			<key>path</key>
-			<string>JTAppleCalendar</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21CA7051299DC3E1C18D9A866D572D3</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B54AD355A2406D9AA3332C5E8B0C79E6</string>
-			<key>buildPhases</key>
-			<array>
-				<string>39386C9EB3BD51B2ABD9ACC11717433E</string>
-				<string>355AFAF37669143C9BABFF635FF29ABE</string>
-				<string>950C70B6D198FA0CF93FA3ECA373FBF5</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>D08B35BEAC4220B1E4E8028AA5778491</string>
-				<string>6F5A74EFC7CCDB683B811FCE620C0B25</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-TDC</string>
-			<key>productName</key>
-			<string>Pods-TDC</string>
-			<key>productReference</key>
-			<string>2CA0762D8FEF027934338B3850579444</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>F302CD3B306AF1ED96B9AF31FCDBC26C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A2A6FF208CEC4C2861F1E9D42D651453</string>
-				<string>E86668F20F252C440D1015B816BE59C5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>iOS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F539D89A990516C5B68084A833DE64FB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>CheckedCircle.png</string>
-			<key>path</key>
-			<string>CheckboxListSwift/CheckedCircle.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F9388E434DA66EEF7517A594C3985AEF</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>C69CD56514D0F663493F5EBE249C51D6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F9B8E6FA99BD35EC2AFC422920FCA7D4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E86668F20F252C440D1015B816BE59C5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F9B9D874CCC69AA1F1A04A2C20C5D613</key>
-		<dict>
-			<key>fileRef</key>
-			<string>294A11FA9C27785E57FDBC7915BBAC6A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>FC55DDDF5017C3B846287AB4331FF6DD</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>DB932FC3ACE4E7550A89289F6F4A34F8</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-TDC/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-TDC/Pods-TDC.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_TDC</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>FC57D02761F0F3D8DBE82804FDA7951D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>CheckboxList-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FDC95AEE99A1BBBC54C68645FF5923F2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>UncheckedBox.png</string>
-			<key>path</key>
-			<string>CheckboxListSwift/UncheckedBox.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FE7D0D2C7BF7C9FD3D19EE491FFF4C2D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>JTAppleCalendar-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>D41D8CD98F00B204E9800998ECF8427E</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		156804EDB4795107792EC2F968AB19E2 /* JTAppleCalendarDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A252EA427A4DD73D20367CA97CDACF3A /* JTAppleCalendarDelegates.swift */; };
+		265D30C257C8B023FC577195561355CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		46381088FA19FD2DAB63ECC1AB6BAAB2 /* JTAppleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EE4393EB0F4DF95B3F9CCB28BD11D7 /* JTAppleCalendar-dummy.m */; };
+		6ADFF6FE50CCD53902FBA3BFE6C0086E /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB32D7C81AFC4EC91455DA4405C6A2F9 /* JTAppleCalendarView.swift */; };
+		6B6A9F8FF2EAE04771786E11B3A5B482 /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B686C66692C067E0B7CBE6CF09E6 /* UserInteractionFunctions.swift */; };
+		835E2461B24D0105928604D9D0165715 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		8DE1AE45EC10FF8AA098ABD7B632166C /* Pods-TDC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B06264C8BFD538709BEEEE8D3A7A57D /* Pods-TDC-dummy.m */; };
+		A64DD8293E49497F553B07437DFF8085 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F1FB3AB16C390BA73D307B32588D37 /* JTAppleCalendarLayout.swift */; };
+		B7229110A92CF486505685AA63DF06F0 /* Pods-TDC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D3F1BC441C0936A8172FA78E1E50F28 /* Pods-TDC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5FD4D136EF5FA6D359DE256A7BD43B3 /* JTAppleDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C24A1AB38178F95701A8C7BB90B5 /* JTAppleDayCell.swift */; };
+		C69CD56514D0F663493F5EBE249C51D6 /* JTAppleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBE9725C9F9506D234D1E8B265AE40E /* JTAppleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1214049BD129EFFF4627D928341ADA5 /* JTAppleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805F246511623B611E599D5D3252C91 /* JTAppleCollectionReusableView.swift */; };
+		E2228A953DAB47FBD3DA574294ADF688 /* JTAppleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65322CCFFFF61871261D664252E2AA06 /* JTAppleViews.swift */; };
+		E9B8E2429E90E3BA402B1841BE8AF935 /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78EA8A8F702B18BDE4C9324B6949B /* GlobalFunctionsAndExtensions.swift */; };
+		F9B9D874CCC69AA1F1A04A2C20C5D613 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5439DA9CC59EC225D8FD2621C29D7D /* JTCalendarProtocols.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D33F96A830546ECDC21F921E1EA0D6F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E2ED75B03CF4A2D0719664A48C0B27E;
+			remoteInfo = JTAppleCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		005E56362875F15D69DAD6949F22B79F /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1869B686C66692C067E0B7CBE6CF09E6 /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserInteractionFunctions.swift; path = Sources/UserInteractionFunctions.swift; sourceTree = "<group>"; };
+		26CD9313739E9CF27A25C38C7F8F6B09 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2805F246511623B611E599D5D3252C91 /* JTAppleCollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCollectionReusableView.swift; path = Sources/JTAppleCollectionReusableView.swift; sourceTree = "<group>"; };
+		29CA137D90F39E7A01D9C1AE0C32C26A /* JTAppleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		301CC87C9C538ACCB1080623B22D17E3 /* Pods-TDC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TDC-resources.sh"; sourceTree = "<group>"; };
+		3233BBAF8F0379AA24CADB239D478465 /* JTAppleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JTAppleCalendar.modulemap; sourceTree = "<group>"; };
+		39ADE462DB1EB091EE62BEE271354A47 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B8685C03197555220832F51B0F5F264 /* Pods-TDC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TDC-acknowledgements.markdown"; sourceTree = "<group>"; };
+		65322CCFFFF61871261D664252E2AA06 /* JTAppleViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleViews.swift; path = Sources/JTAppleViews.swift; sourceTree = "<group>"; };
+		70B8481863B99686AC7F0F9BE50CCF6D /* Pods-TDC-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TDC-frameworks.sh"; sourceTree = "<group>"; };
+		76E5C24A1AB38178F95701A8C7BB90B5 /* JTAppleDayCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleDayCell.swift; path = Sources/JTAppleDayCell.swift; sourceTree = "<group>"; };
+		7B06264C8BFD538709BEEEE8D3A7A57D /* Pods-TDC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TDC-dummy.m"; sourceTree = "<group>"; };
+		87EE4393EB0F4DF95B3F9CCB28BD11D7 /* JTAppleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTAppleCalendar-dummy.m"; sourceTree = "<group>"; };
+		8D3F1BC441C0936A8172FA78E1E50F28 /* Pods-TDC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TDC-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A252EA427A4DD73D20367CA97CDACF3A /* JTAppleCalendarDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarDelegates.swift; path = Sources/JTAppleCalendarDelegates.swift; sourceTree = "<group>"; };
+		ACEE4C3D8E4915DB3BFCD08D00CFEE6A /* JTAppleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTAppleCalendar.xcconfig; sourceTree = "<group>"; };
+		AF9F953A5809F64CAC98101BA15FA176 /* Pods-TDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TDC.debug.xcconfig"; sourceTree = "<group>"; };
+		B6C78EA8A8F702B18BDE4C9324B6949B /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlobalFunctionsAndExtensions.swift; path = Sources/GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
+		BD608C3E6F3064481C0B6F23D735014F /* Pods_TDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB5439DA9CC59EC225D8FD2621C29D7D /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTCalendarProtocols.swift; path = Sources/JTCalendarProtocols.swift; sourceTree = "<group>"; };
+		CB86B77D10EFBEBAEEEAC3504C36E194 /* Pods-TDC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TDC.modulemap"; sourceTree = "<group>"; };
+		CBBE9725C9F9506D234D1E8B265AE40E /* JTAppleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-umbrella.h"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DB932FC3ACE4E7550A89289F6F4A34F8 /* Pods-TDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TDC.release.xcconfig"; sourceTree = "<group>"; };
+		EB62573474167E259428EB30B77104A3 /* Pods-TDC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TDC-acknowledgements.plist"; sourceTree = "<group>"; };
+		F0F1FB3AB16C390BA73D307B32588D37 /* JTAppleCalendarLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayout.swift; path = Sources/JTAppleCalendarLayout.swift; sourceTree = "<group>"; };
+		FB32D7C81AFC4EC91455DA4405C6A2F9 /* JTAppleCalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarView.swift; path = Sources/JTAppleCalendarView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A19B0219F2975A2F9C53DFE28EF0672 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				835E2461B24D0105928604D9D0165715 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36C1DCD9D20BA178F26F5E04EB6499E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265D30C257C8B023FC577195561355CA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0298CF7C33D6CDCCD584418B3CD5C6E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67EB63A104AAC7C7352DFF91938F3B0E /* JTAppleCalendar */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		478A96AD49F42312E4EDDF4D2A09CAE6 /* Pods-TDC */ = {
+			isa = PBXGroup;
+			children = (
+				39ADE462DB1EB091EE62BEE271354A47 /* Info.plist */,
+				CB86B77D10EFBEBAEEEAC3504C36E194 /* Pods-TDC.modulemap */,
+				3B8685C03197555220832F51B0F5F264 /* Pods-TDC-acknowledgements.markdown */,
+				EB62573474167E259428EB30B77104A3 /* Pods-TDC-acknowledgements.plist */,
+				7B06264C8BFD538709BEEEE8D3A7A57D /* Pods-TDC-dummy.m */,
+				70B8481863B99686AC7F0F9BE50CCF6D /* Pods-TDC-frameworks.sh */,
+				301CC87C9C538ACCB1080623B22D17E3 /* Pods-TDC-resources.sh */,
+				8D3F1BC441C0936A8172FA78E1E50F28 /* Pods-TDC-umbrella.h */,
+				AF9F953A5809F64CAC98101BA15FA176 /* Pods-TDC.debug.xcconfig */,
+				DB932FC3ACE4E7550A89289F6F4A34F8 /* Pods-TDC.release.xcconfig */,
+			);
+			name = "Pods-TDC";
+			path = "Target Support Files/Pods-TDC";
+			sourceTree = "<group>";
+		};
+		50F97D944B617DD0D4918DC9F593F7B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				005E56362875F15D69DAD6949F22B79F /* JTAppleCalendar.framework */,
+				BD608C3E6F3064481C0B6F23D735014F /* Pods_TDC.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67EB63A104AAC7C7352DFF91938F3B0E /* JTAppleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				B6C78EA8A8F702B18BDE4C9324B6949B /* GlobalFunctionsAndExtensions.swift */,
+				A252EA427A4DD73D20367CA97CDACF3A /* JTAppleCalendarDelegates.swift */,
+				F0F1FB3AB16C390BA73D307B32588D37 /* JTAppleCalendarLayout.swift */,
+				FB32D7C81AFC4EC91455DA4405C6A2F9 /* JTAppleCalendarView.swift */,
+				2805F246511623B611E599D5D3252C91 /* JTAppleCollectionReusableView.swift */,
+				76E5C24A1AB38178F95701A8C7BB90B5 /* JTAppleDayCell.swift */,
+				65322CCFFFF61871261D664252E2AA06 /* JTAppleViews.swift */,
+				CB5439DA9CC59EC225D8FD2621C29D7D /* JTCalendarProtocols.swift */,
+				1869B686C66692C067E0B7CBE6CF09E6 /* UserInteractionFunctions.swift */,
+				8F1051AB6FA4EBFC95326E44F2026BD2 /* Support Files */,
+			);
+			path = JTAppleCalendar;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				0298CF7C33D6CDCCD584418B3CD5C6E2 /* Pods */,
+				50F97D944B617DD0D4918DC9F593F7B0 /* Products */,
+				98A251B72E2218873851DD0D0E7F2322 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8F1051AB6FA4EBFC95326E44F2026BD2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				26CD9313739E9CF27A25C38C7F8F6B09 /* Info.plist */,
+				3233BBAF8F0379AA24CADB239D478465 /* JTAppleCalendar.modulemap */,
+				ACEE4C3D8E4915DB3BFCD08D00CFEE6A /* JTAppleCalendar.xcconfig */,
+				87EE4393EB0F4DF95B3F9CCB28BD11D7 /* JTAppleCalendar-dummy.m */,
+				29CA137D90F39E7A01D9C1AE0C32C26A /* JTAppleCalendar-prefix.pch */,
+				CBBE9725C9F9506D234D1E8B265AE40E /* JTAppleCalendar-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JTAppleCalendar";
+			sourceTree = "<group>";
+		};
+		98A251B72E2218873851DD0D0E7F2322 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				478A96AD49F42312E4EDDF4D2A09CAE6 /* Pods-TDC */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9A75A72F0A99ACE75E221A64177FE022 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7229110A92CF486505685AA63DF06F0 /* Pods-TDC-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9388E434DA66EEF7517A594C3985AEF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C69CD56514D0F663493F5EBE249C51D6 /* JTAppleCalendar-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2E2ED75B03CF4A2D0719664A48C0B27E /* JTAppleCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 779E37D9C699030E3EEE21BB23F81A82 /* Build configuration list for PBXNativeTarget "JTAppleCalendar" */;
+			buildPhases = (
+				9C72E46DD5A9172504341DE21C5780F1 /* Sources */,
+				36C1DCD9D20BA178F26F5E04EB6499E2 /* Frameworks */,
+				F9388E434DA66EEF7517A594C3985AEF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JTAppleCalendar;
+			productName = JTAppleCalendar;
+			productReference = 005E56362875F15D69DAD6949F22B79F /* JTAppleCalendar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D382BAF1A2595D73C9D2325C1FE5E98A /* Pods-TDC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28DD24AD61C5DF2430B8CCB62658F354 /* Build configuration list for PBXNativeTarget "Pods-TDC" */;
+			buildPhases = (
+				F6AE6A8D38D30FA940C614B5CD3D3CD4 /* Sources */,
+				0A19B0219F2975A2F9C53DFE28EF0672 /* Frameworks */,
+				9A75A72F0A99ACE75E221A64177FE022 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E088E0E006D153DB15423B388DC78774 /* PBXTargetDependency */,
+			);
+			name = "Pods-TDC";
+			productName = "Pods-TDC";
+			productReference = BD608C3E6F3064481C0B6F23D735014F /* Pods_TDC.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					2E2ED75B03CF4A2D0719664A48C0B27E = {
+						LastSwiftMigration = 0800;
+					};
+					D382BAF1A2595D73C9D2325C1FE5E98A = {
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 50F97D944B617DD0D4918DC9F593F7B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2E2ED75B03CF4A2D0719664A48C0B27E /* JTAppleCalendar */,
+				D382BAF1A2595D73C9D2325C1FE5E98A /* Pods-TDC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C72E46DD5A9172504341DE21C5780F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9B8E2429E90E3BA402B1841BE8AF935 /* GlobalFunctionsAndExtensions.swift in Sources */,
+				46381088FA19FD2DAB63ECC1AB6BAAB2 /* JTAppleCalendar-dummy.m in Sources */,
+				156804EDB4795107792EC2F968AB19E2 /* JTAppleCalendarDelegates.swift in Sources */,
+				A64DD8293E49497F553B07437DFF8085 /* JTAppleCalendarLayout.swift in Sources */,
+				6ADFF6FE50CCD53902FBA3BFE6C0086E /* JTAppleCalendarView.swift in Sources */,
+				D1214049BD129EFFF4627D928341ADA5 /* JTAppleCollectionReusableView.swift in Sources */,
+				C5FD4D136EF5FA6D359DE256A7BD43B3 /* JTAppleDayCell.swift in Sources */,
+				E2228A953DAB47FBD3DA574294ADF688 /* JTAppleViews.swift in Sources */,
+				F9B9D874CCC69AA1F1A04A2C20C5D613 /* JTCalendarProtocols.swift in Sources */,
+				6B6A9F8FF2EAE04771786E11B3A5B482 /* UserInteractionFunctions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6AE6A8D38D30FA940C614B5CD3D3CD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE1AE45EC10FF8AA098ABD7B632166C /* Pods-TDC-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E088E0E006D153DB15423B388DC78774 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JTAppleCalendar;
+			target = 2E2ED75B03CF4A2D0719664A48C0B27E /* JTAppleCalendar */;
+			targetProxy = D33F96A830546ECDC21F921E1EA0D6F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CC4396F26D3B1E9ABD29ADF262558F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACEE4C3D8E4915DB3BFCD08D00CFEE6A /* JTAppleCalendar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JTAppleCalendar/JTAppleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JTAppleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JTAppleCalendar/JTAppleCalendar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = JTAppleCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9C40E065B0D7E9ADB677D07479E2EC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF9F953A5809F64CAC98101BA15FA176 /* Pods-TDC.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TDC/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TDC/Pods-TDC.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TDC;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DE6615359623E265197EA53538265183 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACEE4C3D8E4915DB3BFCD08D00CFEE6A /* JTAppleCalendar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JTAppleCalendar/JTAppleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JTAppleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JTAppleCalendar/JTAppleCalendar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = JTAppleCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E50E91F426A72A22B1D010ECD5A8CF94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB932FC3ACE4E7550A89289F6F4A34F8 /* Pods-TDC.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TDC/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TDC/Pods-TDC.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TDC;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28DD24AD61C5DF2430B8CCB62658F354 /* Build configuration list for PBXNativeTarget "Pods-TDC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C40E065B0D7E9ADB677D07479E2EC01 /* Debug */,
+				E50E91F426A72A22B1D010ECD5A8CF94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */,
+				3FA451D268613890FA8A5A03801E11D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		779E37D9C699030E3EEE21BB23F81A82 /* Build configuration list for PBXNativeTarget "JTAppleCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE6615359623E265197EA53538265183 /* Debug */,
+				5CC4396F26D3B1E9ABD29ADF262558F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
