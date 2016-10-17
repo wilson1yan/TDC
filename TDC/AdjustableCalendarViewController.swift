@@ -18,21 +18,22 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var updateButton: UIBarButtonItem!
 
-    let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+    private let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
     
     // Core Data
-    var appDelegate:AppDelegate!
-    var managedContext:NSManagedObjectContext!
+    private var appDelegate:AppDelegate!
+    private var managedContext:NSManagedObjectContext!
     
     // API
     var tws: TaskWithStreak!
-    var dates: [Date]!
-    var streak: Int!
     var isPresentingHistory: Bool = false
-    
-    var fs: CGFloat = 5
-    var text: NSString { return NSString(string: tws.task.name!) }
 
+    private var dates: [Date]!
+    private var streak: Int!
+    
+    private var fs: CGFloat = 5
+    private var text: NSString { return NSString(string: tws.task.name!) }
+    private var calendarCellViewDict: Dictionary<NSDate,CalendarDayCellView> = [:]
 
     // MARK - View Controller lifecycle
     override func viewDidLoad() {
@@ -127,30 +128,37 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
     private func configueViewsIfMissedDates() {
         let missedDates = getMissedDates()
         if missedDates > 0 && !NSDate().isInDateList(dates, calendar: cal){
+            var canDismissWithTap = true
             let consecDays = getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar:cal))
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
             if missedDates == 1 && consecDays >= 5{
-                alertController.title = "You've missed a day. I'll trust it's just an honest mistake."
+                alertController.title = "You've missed a day after \(consecDays) consecutive days. I'll trust it was just an honest mistake."
                 let fix = UIAlertAction(title: "Fix It", style: .Default, handler: { [unowned self](alertAction) in
-                    //update stuff
-                    })
+                    self.streak = consecDays
+                    let day = NSDate().getDaysBefore(1, calendar: self.cal)
+                    self.setDatetoCheck(day)
+                    self.calendarCellViewDict[day]?.selectedDate()
+                })
                 let startOver = UIAlertAction(title: "Start Over", style: .Default, handler: { [unowned self] (alertAction) in
                     self.daysLeftView.days = Double(self.streak)
-                    })
+                })
                 
                 alertController.addAction(fix)
                 alertController.addAction(startOver)
                 
                 daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2,calendar:cal)))
+                canDismissWithTap = false
             } else {
                 alertController.title = "You've missed \(missedDates) " + (missedDates == 1 ? "day":"days") + " . Try again!"
                 daysLeftView.days = Double(getConsecutiveDaysStartingFrom(NSDate().getDaysBefore(2, calendar: cal)))
             }
             
-            presentViewController(alertController, animated: true, completion: { [unowned self] in
-                alertController.view.superview?.userInteractionEnabled = true
-                alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose)))
-                })
+            presentViewController(alertController, animated: true) { [unowned self] in
+                if canDismissWithTap {
+                    alertController.view.superview?.userInteractionEnabled = true
+                    alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose)))
+                }
+            }
         } else {
             daysLeftView.days = Double(streak)
         }
@@ -213,6 +221,34 @@ class AdjustableCalendarViewController: UIViewController, UIGestureRecognizerDel
         monthLabel.text = monthName
         
     }
+    
+    private func setDatetoCheck(date: NSDate) {
+        addAndSaveDate(date)
+        streak  = streak + 1
+        daysLeftView.days = Double(streak)
+        
+        if streak >= tws.task.duration as! Int {
+            let alertController = UIAlertController(title: "Congratulations! You've done your task for " + String(tws.task.duration!) + " consecutive days!", message: nil, preferredStyle: .Alert)
+            let extend = UIAlertAction(title: "Extend " + String(tws.task.duration!) + " days", style: .Default, handler: { [unowned self] (alertAction) in
+                Task.extendTaskDuration(self.tws.task.primaryId as! Int, withDuration: self.tws.task.duration as! Int, inMananagedObjectContext: self.managedContext)
+                self.tws.task = Task.getTaskWithId(self.tws.task.primaryId as! Int, inManagedObjectContext: self.managedContext)!
+                self.daysLeftView.duration = Double(self.tws.task.duration!)
+            })
+            let endTask = UIAlertAction(title: "End Task", style: .Default, handler: { [unowned self] (alertAction) in
+                let state = TaskStates.Complete
+                Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
+                if self.navigationController != nil {
+                    self.navigationController!.popViewControllerAnimated(true)
+                }
+                })
+            
+            alertController.addAction(extend)
+            alertController.addAction(endTask)
+            
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+
+    }
 }
 
 extension AdjustableCalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
@@ -224,34 +260,9 @@ extension AdjustableCalendarViewController: JTAppleCalendarViewDataSource, JTApp
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         if !date.isInDateList(dates!, calendar: cal) {
-            (cell as! CalendarDayCellView).selectedDate()
-            addAndSaveDate(date)
-            streak  = streak + 1
-            daysLeftView.days = Double(streak)
-            //daysLeftView.createAnimatedCircleMask()
-            
-            if streak == tws.task.duration! {
-                let alertController = UIAlertController(title: "Congratulations! You've done your task for " + String(tws.task.duration!) + " consecutive days!", message: nil, preferredStyle: .Alert)
-                let extend = UIAlertAction(title: "Extend " + String(tws.task.duration!) + " days", style: .Default, handler: { [unowned self] (alertAction) in
-                    Task.extendTaskDuration(self.tws.task.primaryId as! Int, withDuration: self.tws.task.duration as! Int, inMananagedObjectContext: self.managedContext)
-                    self.tws.task = Task.getTaskWithId(self.tws.task.primaryId as! Int, inManagedObjectContext: self.managedContext)!
-                    self.daysLeftView.duration = Double(self.tws.task.duration!)
-                    
-                    //self.daysLeftView.createAnimatedCircleMask()
-                    })
-                let endTask = UIAlertAction(title: "End Task", style: .Default, handler: { [unowned self] (alertAction) in
-                    let state = TaskStates.Complete
-                    Task.updateTaskState(self.tws.task.primaryId as! Int, withState: state, inManagedObjectContext: self.managedContext)
-                    if self.navigationController != nil {
-                        self.navigationController!.popViewControllerAnimated(true)
-                    }
-                    })
-                
-                alertController.addAction(extend)
-                alertController.addAction(endTask)
-                
-                presentViewController(alertController, animated: true, completion: nil)
-            }
+            //(cell as! CalendarDayCellView).selectedDate()
+            calendarCellViewDict[date]?.selectedDate()
+            setDatetoCheck(date)
         }
     }
     
@@ -267,6 +278,7 @@ extension AdjustableCalendarViewController: JTAppleCalendarViewDataSource, JTApp
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
         if let cellView = cell as? CalendarDayCellView {
             cellView.setupCellBeforeDisplay(cellState, date: date, cal: cal, dates: dates, task: tws.task, isHistory: isPresentingHistory)
+            calendarCellViewDict[date] = cell as! CalendarDayCellView
         }
     }
     

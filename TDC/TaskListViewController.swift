@@ -152,12 +152,13 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
             if let destination = segue.destinationViewController as? CreateNewTaskViewController {
                 destination.recentViewController = self
             }
-        } else if segue.identifier == "Edit Task" {
-            if let destination = segue.destinationViewController as? CreateNewTaskViewController {
-                destination.recentViewController = self
-                destination.currentTask = taskToEdit
-            }
         }
+//        else if segue.identifier == "Edit Task" {
+//            if let destination = segue.destinationViewController as? CreateNewTaskViewController {
+//                destination.recentViewController = self
+//                destination.currentTask = taskToEdit
+//            }
+//        }
     }
     
     // MARK: - Table view data source
